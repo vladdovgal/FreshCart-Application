@@ -12,7 +12,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_gravity="bottom"
-        app:backgroundTint="@color/colorDark"
+        app:backgroundTint="@color/colorPrimary"
         app:fabCradleDiameter="80dp">
 
         <androidx.constraintlayout.widget.ConstraintLayout
@@ -63,6 +63,6 @@
         android:src="@drawable/ic_search"
         app:backgroundTint="@color/colorWhite"
         app:layout_anchor="@id/bottomAppBar"
-        app:tint="@color/colorDark" />
+        app:tint="@color/colorPrimary" />
 
 </androidx.coordinatorlayout.widget.CoordinatorLayout>
