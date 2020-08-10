@@ -2,7 +2,20 @@
     <!-- Base application theme. -->
     <style name="AppTheme" parent="Theme.MaterialComponents.Light.NoActionBar">
         <item name="colorPrimary">@color/colorPrimary</item>
+        <item name="colorPrimaryDark">@color/colorPrimary</item>
         <item name="colorAccent">@color/colorAccent</item>
     </style>
 
+    <style name="SmallLoginTextViews" parent="TextPoppinsMedium">
+        <item name="android:textSize">@dimen/smallFont</item>
+        <item name="android:textColor">@color/colorGray</item>
+    </style>
+
+    <style name="TabTextAppearance" parent="TextAppearance.Design.Tab">
+        <item name="textAllCaps">false</item>
+    </style>
+
+    <style name="TextPoppinsMedium">
+        <item name="fontFamily">@font/poppins_medium</item>
+    </style>
 </resources>
