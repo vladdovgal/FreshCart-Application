@@ -4,11 +4,11 @@
     android:shape="rectangle"   >
 
     <solid
-        android:color="@color/colorAccent" >
+        android:color="@color/colorWhite" >
     </solid>
 
     <corners
-        android:radius="100dp"   >
+        android:radius="?attr/actionBarSize"   >
     </corners>
 
 </shape>

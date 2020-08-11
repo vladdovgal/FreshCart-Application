@@ -1,5 +1,6 @@
 package com.jsp.freshcartshop
 
+import android.content.Intent
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.res.ResourcesCompat
@@ -17,6 +18,11 @@ class LoginActivity : AppCompatActivity() {
         inputUsername.typeface = poppinsTypeface
         etPassword.typeface = poppinsTypeface
         inputPassword.typeface = poppinsTypeface
+
+        signInButton.setOnClickListener {
+            val intent = Intent(this, MainActivity::class.java)
+            startActivity(intent)
+        }
     }
 
 }

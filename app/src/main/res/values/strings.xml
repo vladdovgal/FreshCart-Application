@@ -3,10 +3,10 @@
     <string name="home">Home</string>
     <string name="cart">Cart</string>
     <string name="search">Search</string>
-    <string name="loginTip">Username or Email</string>
-    <string name="passwordTip">Password</string>
-    <string name="rememberMe">Remember Me</string>
-    <string name="forgotPassword"><u>Forgot Password ?</u></string>
-    <string name="signIn">Sign in</string>
-    <string name="notMember">Not a Member ? <u>Sign up now</u></string>
+    <string name="login_tip">Username or Email</string>
+    <string name="password_tip">Password</string>
+    <string name="remember_me">Remember Me</string>
+    <string name="forgot_password"><u>Forgot Password ?</u></string>
+    <string name="sign_in">Sign in</string>
+    <string name="not_member">Not a Member ? <u>Sign up now</u></string>
 </resources>

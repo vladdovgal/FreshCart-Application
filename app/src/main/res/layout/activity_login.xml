@@ -7,6 +7,10 @@
     tools:context=".LoginActivity"
     android:background="@color/colorBackground">
 
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
@@ -31,7 +35,7 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="50dp"
             android:background="@color/colorBackground"
-            android:hint="@string/loginTip"
+            android:hint="@string/login_tip"
             app:boxBackgroundColor="#00FFFFFF">
 
             <com.google.android.material.textfield.TextInputEditText
@@ -49,7 +53,7 @@
             android:id="@+id/inputPassword"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="@string/passwordTip"
+            android:hint="@string/password_tip"
             app:boxBackgroundColor="#00FFFFFF">
 
             <com.google.android.material.textfield.TextInputEditText
@@ -84,7 +88,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginStart="5dp"
                 style="@style/SmallLoginTextViews"
-                android:text="@string/rememberMe"
+                android:text="@string/remember_me"
                 app:layout_constraintBottom_toBottomOf="@+id/cbRememberMe"
                 app:layout_constraintStart_toEndOf="@+id/cbRememberMe"
                 app:layout_constraintTop_toTopOf="@+id/cbRememberMe" />
@@ -93,7 +97,7 @@
                 android:id="@+id/tvForgotPassword"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="@string/forgotPassword"
+                android:text="@string/forgot_password"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
@@ -107,7 +111,7 @@
             android:layout_height="wrap_content"
             android:textAppearance="@style/TabTextAppearance"
             android:textColor="@color/colorWhite"
-            android:text="@string/signIn"
+            android:text="@string/sign_in"
             android:fontFamily="@font/poppins_medium"
             android:layout_marginTop="30dp"
             style="@style/Widget.MaterialComponents.Button"
@@ -120,7 +124,7 @@
             android:id="@+id/tvNotMember"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="@string/notMember"
+            android:text="@string/not_member"
             style="@style/SmallLoginTextViews"
             android:gravity="center"
             android:layout_marginTop="@dimen/paddingSmall"/>
@@ -128,44 +132,60 @@
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:paddingStart="@dimen/paddingSmall"
+            android:paddingLeft="@dimen/paddingSmall"
             android:paddingRight="@dimen/paddingSmall"
             android:layout_marginTop="@dimen/paddingMedium">
 
-            <ImageView
-                android:id="@+id/imageView"
-                android:layout_width="70dp"
-                android:layout_height="70dp"
-                android:src="@drawable/facebook"
+            <FrameLayout
+                android:id="@+id/frameLayout2"
+                style="@style/SocialNetworkIconFrameLogin"
                 app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toStartOf="@+id/imageView3"
+                app:layout_constraintEnd_toStartOf="@+id/frameLayout"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent" />
+                app:layout_constraintTop_toTopOf="parent">
 
-            <ImageView
-                android:id="@+id/imageView3"
-                android:layout_width="70dp"
-                android:layout_height="70dp"
-                android:src="@drawable/instagram"
+                <ImageView
+                    android:id="@+id/icFacebook"
+                    style="@style/SocialNetworkIconLogin"
+                    android:src="@drawable/ic_facebook" />
+            </FrameLayout>
+
+            <FrameLayout
+                android:id="@+id/frameLayout"
+                style="@style/SocialNetworkIconFrameLogin"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent" />
+                app:layout_constraintTop_toTopOf="parent">
 
-            <ImageView
-                android:id="@+id/imageView2"
-                android:layout_width="70dp"
-                android:layout_height="70dp"
-                android:src="@drawable/twitter"
+                <ImageView
+                    android:id="@+id/icInstagram"
+                    style="@style/SocialNetworkIconLogin"
+                    android:src="@drawable/ic_instagram"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toStartOf="@+id/imageView3"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+            </FrameLayout>
+
+            <FrameLayout
+                style="@style/SocialNetworkIconFrameLogin"
+                app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toEndOf="@+id/imageView3"
-                app:layout_constraintTop_toTopOf="parent" />
+                app:layout_constraintStart_toEndOf="@+id/frameLayout"
+                app:layout_constraintTop_toTopOf="parent">
 
+                <ImageView
+                    android:id="@+id/icTwitter"
+                    android:background="@drawable/rounded_shape"
+                    style="@style/SocialNetworkIconLogin"
+                    android:src="@drawable/ic_twitter" />
+            </FrameLayout>
 
         </androidx.constraintlayout.widget.ConstraintLayout>
 
     </LinearLayout>
 
-
+    </ScrollView>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
