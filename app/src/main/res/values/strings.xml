@@ -1,11 +1,11 @@
 <resources>
-    <string name="toolbarTitle">FreshCart</string>
-    <string name="arrowBack">Arrow Back</string>
-    <string name="navMenu">Navigation Menu</string>
     <string name="app_name">Fresh Cart</string>
     <string name="home">Home</string>
     <string name="cart">Cart</string>
     <string name="search">Search</string>
+    <string name="toolbarTitle">FreshCart</string>
+    <string name="arrowBack">Arrow Back</string>
+    <string name="navMenu">Navigation Menu</string>
     <string name="login_tip">Username or Email</string>
     <string name="password_tip">Password</string>
     <string name="remember_me">Remember Me</string>
