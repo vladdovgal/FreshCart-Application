@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <dimen name="navMenuMarginEnd">20dp</dimen>
-    <dimen name="toolbarTitle">20sp</dimen>
+    <dimen name="navigation_menu_margin_end">20dp</dimen>
+    <dimen name="toolbar_title">20sp</dimen>
+    <dimen name="toolbar_corner_radius">35dp</dimen>
 </resources>

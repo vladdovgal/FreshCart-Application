@@ -19,51 +19,57 @@
             android:id="@+id/toolbar"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:background="@drawable/toolbar_rounded_corners_bottom"
+            android:background="@drawable/background_toolbar_base"
             android:backgroundTint="?attr/colorPrimary"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="1.0"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            tools:ignore="MissingConstraints">
+            >
 
             <androidx.constraintlayout.widget.ConstraintLayout
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content">
+                android:layout_height="wrap_content"
+                >
 
                 <ImageButton
                     android:id="@+id/arrowBack"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
                     android:background="?attr/colorPrimary"
                     android:src="@drawable/ic_arrow_back"
                     android:contentDescription="@string/arrowBack"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toTopOf="parent" />
+                    />
 
                 <TextView
                     android:id="@+id/toolbarTitle"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    app:layout_constraintBottom_toBottomOf="@+id/arrowBack"
+                    app:layout_constraintEnd_toStartOf="@id/navMenu"
+                    app:layout_constraintHorizontal_chainStyle="packed"
+                    app:layout_constraintStart_toEndOf="@id/arrowBack"
                     android:gravity="center"
                     android:text="@string/toolbarTitle"
                     android:textColor="?attr/whiteColor"
-                    android:textSize="@dimen/toolbarTitle"
-                    app:layout_constraintEnd_toStartOf="@+id/navMenu"
-                    app:layout_constraintHorizontal_chainStyle="packed"
-                    app:layout_constraintStart_toEndOf="@+id/arrowBack"
-                    tools:layout_editor_absoluteY="0dp" />
+                    android:textSize="@dimen/toolbar_title"
+                    />
 
                 <ImageButton
                     android:id="@+id/navMenu"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:background="?attr/colorPrimary"
-                    android:src="@drawable/ic_nav_menu"
-                    android:contentDescription="@string/navMenu"
-                    android:layout_marginEnd="@dimen/navMenuMarginEnd"
+                    app:layout_constraintBottom_toBottomOf="@+id/arrowBack"
                     app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintHorizontal_chainStyle="packed" />
+                    app:layout_constraintHorizontal_chainStyle="packed"
+                    android:layout_marginEnd="@dimen/navigation_menu_margin_end"
+                    android:background="?attr/colorPrimary"
+                    android:contentDescription="@string/navMenu"
+                    android:src="@drawable/ic_nav_menu"
+                    />
+
             </androidx.constraintlayout.widget.ConstraintLayout>
 
         </androidx.appcompat.widget.Toolbar>
