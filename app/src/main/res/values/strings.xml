@@ -1,4 +1,7 @@
 <resources>
+    <string name="toolbarTitle">FreshCart</string>
+    <string name="arrowBack">Arrow Back</string>
+    <string name="navMenu">Navigation Menu</string>
     <string name="app_name">Fresh Cart</string>
     <string name="home">Home</string>
     <string name="cart">Cart</string>

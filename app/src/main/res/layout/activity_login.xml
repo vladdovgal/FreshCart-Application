@@ -15,7 +15,8 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="vertical"
-        android:padding="@dimen/padding_medium">
+        android:padding="@dimen/padding_medium"
+        >
 
         <TextView
             android:id="@+id/welcomeLogo"
@@ -25,7 +26,8 @@
             android:gravity="center_horizontal"
             android:text="@string/app_name"
             android:textColor="@color/colorPrimary"
-            android:textSize="@dimen/extra_large_font" />
+            android:textSize="@dimen/extra_large_font"
+            />
 
 
 
@@ -36,7 +38,8 @@
             android:layout_marginTop="50dp"
             android:background="@color/colorBackground"
             android:hint="@string/login_tip"
-            app:boxBackgroundColor="#00FFFFFF">
+            app:boxBackgroundColor="#00FFFFFF"
+            >
 
             <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/etUsername"
@@ -45,7 +48,8 @@
                 android:inputType="text"
                 android:gravity="center"
                 android:textSize="@dimen/large_font"
-                android:textColor="@color/colorGray" />
+                android:textColor="@color/colorGray"
+                />
 
         </com.google.android.material.textfield.TextInputLayout>
 
@@ -54,7 +58,9 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:hint="@string/password_tip"
-            app:boxBackgroundColor="#00FFFFFF">
+            app:boxBackgroundColor="#00FFFFFF"
+            app:boxStrokeColor="@color/colorPrimary"
+            >
 
             <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/etPassword"
@@ -63,7 +69,9 @@
                 android:gravity="center"
                 android:inputType="textPassword"
                 android:textSize="@dimen/large_font"
-                android:textColor="@color/colorGray"/>
+                android:textColor="@color/colorGray"
+                app:boxStrokeColor="@color/colorPrimary"
+                />
 
         </com.google.android.material.textfield.TextInputLayout>
 
@@ -81,7 +89,8 @@
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
                 style="@style/SmallLoginTextViews"
-                android:button="@drawable/checkbox_selector"/>
+                android:button="@drawable/checkbox_selector"
+                />
 
             <TextView
                 android:layout_width="wrap_content"
@@ -91,7 +100,8 @@
                 android:text="@string/remember_me"
                 app:layout_constraintBottom_toBottomOf="@+id/cbRememberMe"
                 app:layout_constraintStart_toEndOf="@+id/cbRememberMe"
-                app:layout_constraintTop_toTopOf="@+id/cbRememberMe" />
+                app:layout_constraintTop_toTopOf="@+id/cbRememberMe"
+                />
 
             <TextView
                 android:id="@+id/tvForgotPassword"
@@ -101,7 +111,8 @@
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
-                style="@style/SmallLoginTextViews"/>
+                style="@style/SmallLoginTextViews"
+                />
 
         </androidx.constraintlayout.widget.ConstraintLayout>
 
@@ -109,16 +120,17 @@
             android:id="@+id/signInButton"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_marginTop="30dp"
+            android:backgroundTint="@color/colorPrimary"
+            android:fontFamily="@font/poppins_medium"
+            android:paddingTop="@dimen/padding_small"
+            android:paddingBottom="@dimen/padding_small"
+            android:text="@string/sign_in"
             android:textAppearance="@style/TabTextAppearance"
             android:textColor="@color/colorWhite"
-            android:text="@string/sign_in"
-            android:fontFamily="@font/poppins_medium"
-            android:layout_marginTop="30dp"
-            style="@style/Widget.MaterialComponents.Button"
-            app:cornerRadius="?attr/actionBarSize"
             android:textSize="@dimen/large_font"
-            android:paddingBottom="@dimen/padding_small"
-            android:paddingTop="@dimen/padding_small"/>
+            app:cornerRadius="?attr/actionBarSize"
+            />
 
         <TextView
             android:id="@+id/tvNotMember"
@@ -127,14 +139,16 @@
             android:text="@string/not_member"
             style="@style/SmallLoginTextViews"
             android:gravity="center"
-            android:layout_marginTop="@dimen/padding_small"/>
+            android:layout_marginTop="@dimen/padding_small"
+            />
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:paddingLeft="@dimen/padding_small"
             android:paddingRight="@dimen/padding_small"
-            android:layout_marginTop="@dimen/padding_medium">
+            android:layout_marginTop="@dimen/padding_medium"
+            >
 
             <ImageView
                 android:id="@+id/icFacebook"
@@ -145,7 +159,8 @@
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toStartOf="@+id/icInstagram"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent" />
+                app:layout_constraintTop_toTopOf="parent"
+                />
 
             <ImageView
                 android:id="@+id/icInstagram"
@@ -156,7 +171,8 @@
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent" />
+                app:layout_constraintTop_toTopOf="parent"
+                />
 
             <ImageView
                 android:id="@+id/icTwitter"
@@ -167,7 +183,8 @@
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toEndOf="@+id/icInstagram"
-                app:layout_constraintTop_toTopOf="parent" />
+                app:layout_constraintTop_toTopOf="parent"
+                />
 
         </androidx.constraintlayout.widget.ConstraintLayout>
 
