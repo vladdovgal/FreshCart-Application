@@ -3,4 +3,7 @@
     <string name="home">Home</string>
     <string name="cart">Cart</string>
     <string name="search">Search</string>
+    <string name="toolbarTitle">FreshCart</string>
+    <string name="arrowBack">Arrow Back</string>
+    <string name="navMenu">Navigation Menu</string>
 </resources>
