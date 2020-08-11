@@ -15,7 +15,7 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="vertical"
-        android:padding="@dimen/paddingMedium">
+        android:padding="@dimen/padding_medium">
 
         <TextView
             android:id="@+id/welcomeLogo"
@@ -25,7 +25,7 @@
             android:gravity="center_horizontal"
             android:text="@string/app_name"
             android:textColor="@color/colorPrimary"
-            android:textSize="@dimen/extraLargeFont" />
+            android:textSize="@dimen/extra_large_font" />
 
 
 
@@ -44,7 +44,7 @@
                 android:layout_height="wrap_content"
                 android:inputType="text"
                 android:gravity="center"
-                android:textSize="@dimen/mediumFont"
+                android:textSize="@dimen/large_font"
                 android:textColor="@color/colorGray" />
 
         </com.google.android.material.textfield.TextInputLayout>
@@ -62,7 +62,7 @@
                 android:layout_height="wrap_content"
                 android:gravity="center"
                 android:inputType="textPassword"
-                android:textSize="@dimen/mediumFont"
+                android:textSize="@dimen/large_font"
                 android:textColor="@color/colorGray"/>
 
         </com.google.android.material.textfield.TextInputLayout>
@@ -116,9 +116,9 @@
             android:layout_marginTop="30dp"
             style="@style/Widget.MaterialComponents.Button"
             app:cornerRadius="?attr/actionBarSize"
-            android:textSize="@dimen/mediumFont"
-            android:paddingBottom="@dimen/paddingSmall"
-            android:paddingTop="@dimen/paddingSmall"/>
+            android:textSize="@dimen/large_font"
+            android:paddingBottom="@dimen/padding_small"
+            android:paddingTop="@dimen/padding_small"/>
 
         <TextView
             android:id="@+id/tvNotMember"
@@ -127,14 +127,14 @@
             android:text="@string/not_member"
             style="@style/SmallLoginTextViews"
             android:gravity="center"
-            android:layout_marginTop="@dimen/paddingSmall"/>
+            android:layout_marginTop="@dimen/padding_small"/>
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:paddingLeft="@dimen/paddingSmall"
-            android:paddingRight="@dimen/paddingSmall"
-            android:layout_marginTop="@dimen/paddingMedium">
+            android:paddingLeft="@dimen/padding_small"
+            android:paddingRight="@dimen/padding_small"
+            android:layout_marginTop="@dimen/padding_medium">
 
             <ImageView
                 android:id="@+id/icFacebook"
@@ -162,7 +162,7 @@
                 android:id="@+id/icTwitter"
                 style="@style/SocialNetworkIconLogin"
                 android:background="@drawable/rounded_shape"
-                android:padding="20dp"
+                android:padding="@dimen/padding_small"
                 android:src="@drawable/ic_twitter"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
