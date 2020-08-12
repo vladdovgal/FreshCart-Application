@@ -3,11 +3,12 @@
     <!--    Font sizes-->
     <dimen name="small_font">14sp</dimen>
     <dimen name="medium_font"></dimen>
-    <dimen name="large_font">24sp</dimen>
+    <dimen name="large_font">22sp</dimen>
     <dimen name="extra_large_font">52sp</dimen>
 
     <!--    Paddings-->
     <dimen name="padding_small">20dp</dimen>
     <dimen name="padding_medium">30dp</dimen>
+    <dimen name="padding_extra_small">3dp</dimen>
 
 </resources>

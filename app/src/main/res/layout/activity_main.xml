@@ -50,6 +50,7 @@
                     app:layout_constraintEnd_toStartOf="@id/navMenu"
                     app:layout_constraintHorizontal_chainStyle="packed"
                     app:layout_constraintStart_toEndOf="@id/arrowBack"
+                    android:fontFamily="@font/fortemt"
                     android:gravity="center"
                     android:text="@string/toolbarTitle"
                     android:textColor="?attr/whiteColor"
