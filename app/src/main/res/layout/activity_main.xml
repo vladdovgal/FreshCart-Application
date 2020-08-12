@@ -4,7 +4,76 @@
     android:layout_height="match_parent"
     xmlns:tools="http://schemas.android.com/tools"
     tools:context=".MainActivity"
-    android:background="@color/colorBackground">
+    android:background="?attr/backgroundColor">
+
+    <androidx.cardview.widget.CardView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:cardCornerRadius="0dp"
+        app:cardElevation="0dp"
+        android:backgroundTint="?attr/backgroundColor"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <androidx.appcompat.widget.Toolbar
+            android:id="@+id/toolbar"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/background_toolbar_base"
+            android:backgroundTint="?attr/colorPrimary"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="1.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            >
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                >
+
+                <ImageButton
+                    android:id="@+id/arrowBack"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    android:background="?attr/colorPrimary"
+                    android:src="@drawable/ic_arrow_back"
+                    android:contentDescription="@string/arrowBack"
+                    />
+
+                <TextView
+                    android:id="@+id/toolbarTitle"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    app:layout_constraintBottom_toBottomOf="@+id/arrowBack"
+                    app:layout_constraintEnd_toStartOf="@id/navMenu"
+                    app:layout_constraintHorizontal_chainStyle="packed"
+                    app:layout_constraintStart_toEndOf="@id/arrowBack"
+                    android:gravity="center"
+                    android:text="@string/toolbarTitle"
+                    android:textColor="?attr/whiteColor"
+                    android:textSize="@dimen/toolbar_title"
+                    />
+
+                <ImageButton
+                    android:id="@+id/navMenu"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    app:layout_constraintBottom_toBottomOf="@+id/arrowBack"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintHorizontal_chainStyle="packed"
+                    android:layout_marginEnd="@dimen/navigation_menu_margin_end"
+                    android:background="?attr/colorPrimary"
+                    android:contentDescription="@string/navMenu"
+                    android:src="@drawable/ic_nav_menu"
+                    />
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+        </androidx.appcompat.widget.Toolbar>
+
+    </androidx.cardview.widget.CardView>
 
     <com.google.android.material.bottomappbar.BottomAppBar
         android:id="@+id/bottomAppBar"
@@ -41,7 +110,6 @@
                     android:layout_centerInParent="true"
                     android:contentDescription="@string/cart"
                     android:src="@drawable/ic_shopping_cart" />
-
         </androidx.constraintlayout.widget.ConstraintLayout>
 
     </com.google.android.material.bottomappbar.BottomAppBar>
