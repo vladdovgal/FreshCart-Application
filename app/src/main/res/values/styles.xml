@@ -4,11 +4,7 @@
         <item name="colorPrimary">@color/colorPrimary</item>
         <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
         <item name="backgroundColor">@color/colorBackground</item>
-<<<<<<< HEAD
-<!--        <item name="whiteColor">@color/colorWhite</item>-->
-=======
         <item name="whiteColor">@color/colorWhite</item>
->>>>>>> develop
     </style>
 
     <style name="SmallLoginTextViews" parent="TextPoppinsMedium">
