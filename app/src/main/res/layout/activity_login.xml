@@ -13,7 +13,7 @@
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_height="wrap_content"
         android:orientation="vertical"
         android:padding="@dimen/padding_medium"
         >
@@ -26,6 +26,7 @@
             android:gravity="center_horizontal"
             android:text="@string/app_name"
             android:textColor="@color/colorPrimary"
+            android:fontFamily="@font/fortemt"
             android:textSize="@dimen/extra_large_font"
             />
 
@@ -36,19 +37,23 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="50dp"
-            android:background="@color/colorBackground"
             android:hint="@string/login_tip"
             app:boxBackgroundColor="#00FFFFFF"
+            app:boxStrokeColor="@color/colorPrimary"
+            android:fontFamily="@font/poppins_medium"
             >
 
             <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/etUsername"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:inputType="text"
                 android:gravity="center"
+                android:inputType="text"
                 android:textSize="@dimen/large_font"
                 android:textColor="@color/colorGray"
+                app:boxStrokeColor="@color/colorPrimary"
+                android:background="@color/colorBackground"
+                android:fontFamily="@font/poppins_medium"
                 />
 
         </com.google.android.material.textfield.TextInputLayout>
@@ -60,6 +65,7 @@
             android:hint="@string/password_tip"
             app:boxBackgroundColor="#00FFFFFF"
             app:boxStrokeColor="@color/colorPrimary"
+            android:fontFamily="@font/poppins_medium"
             >
 
             <com.google.android.material.textfield.TextInputEditText
@@ -71,6 +77,8 @@
                 android:textSize="@dimen/large_font"
                 android:textColor="@color/colorGray"
                 app:boxStrokeColor="@color/colorPrimary"
+                android:background="@color/colorBackground"
+                android:fontFamily="@font/poppins_medium"
                 />
 
         </com.google.android.material.textfield.TextInputLayout>
@@ -90,17 +98,7 @@
                 app:layout_constraintTop_toTopOf="parent"
                 style="@style/SmallLoginTextViews"
                 android:button="@drawable/checkbox_selector"
-                />
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="5dp"
-                style="@style/SmallLoginTextViews"
-                android:text="@string/remember_me"
-                app:layout_constraintBottom_toBottomOf="@+id/cbRememberMe"
-                app:layout_constraintStart_toEndOf="@+id/cbRememberMe"
-                app:layout_constraintTop_toTopOf="@+id/cbRememberMe"
+                android:hint="@string/remember_me"
                 />
 
             <TextView
@@ -112,6 +110,7 @@
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
                 style="@style/SmallLoginTextViews"
+                android:fontFamily="@font/poppins_medium"
                 />
 
         </androidx.constraintlayout.widget.ConstraintLayout>
