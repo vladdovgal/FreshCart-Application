@@ -6,4 +6,11 @@
     <string name="toolbarTitle">FreshCart</string>
     <string name="arrowBack">Arrow Back</string>
     <string name="navMenu">Navigation Menu</string>
+    <string name="login_tip">Username or Email</string>
+    <string name="password_tip">Password</string>
+    <string name="remember_me">&#160;&#160;Remember Me</string>
+    <string name="forgot_password"><u>Forgot Password ?</u></string>
+    <string name="sign_in">Sign in</string>
+    <string name="not_member">Not a Member ? <u>Sign up now</u></string>
+    <string name="loginTitle">Login</string>
 </resources>
