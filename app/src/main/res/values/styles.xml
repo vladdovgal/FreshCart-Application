@@ -1,16 +1,17 @@
 <resources>
     <!-- Base application theme. -->
     <style name="AppTheme" parent="Theme.MaterialComponents.Light.NoActionBar">
-        <item name="colorPrimary">@color/colorPrimary</item>
-        <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
-        <item name="backgroundColor">@color/colorBackground</item>
-        <item name="whiteColor">@color/colorWhite</item>
-        <item name="colorAccent">@color/colorPrimary</item>
+        <item name="primary_color">@color/color_primary</item>
+        <item name="primary_dark_color">@color/color_primary_dark</item>
+        <item name="background_color">@color/color_background</item>
+        <item name="white_color">@color/color_white</item>
+        <item name="gray_color">@color/color_gray</item>
+        <item name="android:statusBarColor">@color/color_primary_dark</item>
     </style>
 
     <style name="SmallLoginTextViews" parent="TextPoppinsMedium">
         <item name="android:textSize">@dimen/small_font</item>
-        <item name="android:textColor">@color/colorGray</item>
+        <item name="android:textColor">@color/color_gray</item>
     </style>
 
     <style name="TabTextAppearance" parent="TextAppearance.Design.Tab">

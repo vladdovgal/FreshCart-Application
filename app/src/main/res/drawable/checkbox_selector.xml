@@ -3,7 +3,7 @@
     <item
         android:drawable="@drawable/ic_checked_circle"
         android:state_checked="true"
-        android:buttonTint="@color/colorPrimaryDark"
+        android:buttonTint="?attr/primary_dark_color"
         />
     <item
         android:drawable="@drawable/ic_unchecked_circle"
