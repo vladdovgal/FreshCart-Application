@@ -4,7 +4,7 @@
     android:layout_height="match_parent"
     xmlns:tools="http://schemas.android.com/tools"
     tools:context=".MainActivity"
-    android:background="?attr/background_color"
+    android:background="?attr/bcColor"
     >
 
     <androidx.cardview.widget.CardView
@@ -13,7 +13,7 @@
         app:layout_constraintTop_toTopOf="parent"
         app:cardCornerRadius="0dp"
         app:cardElevation="0dp"
-        android:backgroundTint="?attr/background_color"
+        android:backgroundTint="?attr/bcColor"
         >
 
         <androidx.appcompat.widget.Toolbar
@@ -25,7 +25,7 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
             android:background="@drawable/bc_toolbar_base"
-            android:backgroundTint="?attr/primary_color"
+            android:backgroundTint="?attr/primaryColor"
             >
 
             <androidx.constraintlayout.widget.ConstraintLayout
@@ -39,7 +39,7 @@
                     android:layout_height="wrap_content"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent"
-                    android:background="?attr/primary_color"
+                    android:background="?attr/primaryColor"
                     android:src="@drawable/ic_arrow_back"
                     android:contentDescription="@string/arrow_back"
                     />
@@ -55,7 +55,7 @@
                     app:layout_constraintStart_toEndOf="@id/arrowBack"
                     android:fontFamily="@font/fortemt"
                     android:text="@string/toolbar_title"
-                    android:textColor="?attr/white_color"
+                    android:textColor="?attr/whiteColor"
                     android:textSize="@dimen/large_font"
                     />
 
@@ -67,7 +67,7 @@
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintHorizontal_chainStyle="packed"
                     android:layout_marginEnd="@dimen/navigation_menu_margin_end"
-                    android:background="?attr/primary_color"
+                    android:background="?attr/primaryColor"
                     android:contentDescription="@string/navigation_menu"
                     android:src="@drawable/ic_nav_menu"
                     />
@@ -83,7 +83,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_gravity="bottom"
-        app:backgroundTint="?attr/primary_color"
+        app:backgroundTint="?attr/primaryColor"
         >
 
         <androidx.constraintlayout.widget.ConstraintLayout
@@ -102,7 +102,7 @@
                     android:layout_centerInParent="true"
                     android:contentDescription="@string/home"
                     android:src="@drawable/ic_home"
-                    app:tint="?attr/white_color"
+                    app:tint="?attr/whiteColor"
                     />
 
                 <androidx.appcompat.widget.AppCompatImageView
@@ -128,9 +128,9 @@
         app:layout_anchor="@id/bottomAppBar"
         android:contentDescription="@string/search"
         android:src="@drawable/ic_search"
-        app:backgroundTint="?attr/white_color"
+        app:backgroundTint="?attr/whiteColor"
         android:rotation="-90"
-        app:tint="?attr/primary_color"
+        app:tint="?attr/primaryColor"
         />
 
 </androidx.coordinatorlayout.widget.CoordinatorLayout>

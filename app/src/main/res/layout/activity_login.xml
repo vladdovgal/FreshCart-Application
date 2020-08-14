@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".LoginActivity"
-    android:background="?attr/background_color"
+    android:background="?attr/bcColor"
     >
 
     <androidx.cardview.widget.CardView
@@ -14,7 +14,7 @@
         app:layout_constraintTop_toTopOf="parent"
         app:cardCornerRadius="0dp"
         app:cardElevation="0dp"
-        android:backgroundTint="?attr/background_color"
+        android:backgroundTint="?attr/bcColor"
         >
 
         <androidx.appcompat.widget.Toolbar
@@ -28,7 +28,7 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
             android:background="@drawable/bc_toolbar_base"
-            android:backgroundTint="?attr/primary_color"
+            android:backgroundTint="?attr/primaryColor"
             >
 
             <androidx.constraintlayout.widget.ConstraintLayout
@@ -48,7 +48,7 @@
                     android:fontFamily="@font/liberation_sans_regular"
                     android:text="@string/login_title"
                     android:textFontWeight="800"
-                    android:textColor="?attr/white_color"
+                    android:textColor="?attr/whiteColor"
                     android:textSize="@dimen/large_font"
                     />
 
@@ -77,7 +77,7 @@
             android:layout_marginTop="80dp"
             android:gravity="center_horizontal"
             android:text="@string/app_name"
-            android:textColor="?attr/primary_color"
+            android:textColor="?attr/primaryColor"
             android:fontFamily="@font/fortemt"
             android:textSize="@dimen/extra_large_font"
             />
@@ -89,7 +89,7 @@
             android:layout_marginTop="50dp"
             android:hint="@string/login_tip"
             app:boxBackgroundColor="#00FFFFFF"
-            app:boxStrokeColor="?attr/primary_color"
+            app:boxStrokeColor="?attr/primaryColor"
             android:fontFamily="@font/poppins_medium"
             >
 
@@ -100,9 +100,9 @@
                 android:gravity="center"
                 android:inputType="text"
                 android:textSize="@dimen/large_font"
-                android:textColor="?attr/gray_color"
-                app:boxStrokeColor="?attr/primary_color"
-                android:background="?attr/background_color"
+                android:textColor="?attr/grayColor"
+                app:boxStrokeColor="?attr/primaryColor"
+                android:background="?attr/bcColor"
                 android:fontFamily="@font/poppins_medium"
                 android:paddingBottom="@dimen/padding_extra_small"
                 />
@@ -115,7 +115,7 @@
             android:layout_height="wrap_content"
             android:hint="@string/password_tip"
             app:boxBackgroundColor="#00FFFFFF"
-            app:boxStrokeColor="?attr/primary_color"
+            app:boxStrokeColor="?attr/primaryColor"
             android:fontFamily="@font/poppins_medium"
             >
 
@@ -128,9 +128,9 @@
                 android:paddingBottom="@dimen/padding_extra_small"
                 android:inputType="textPassword"
                 android:textSize="@dimen/large_font"
-                android:textColor="?attr/gray_color"
-                app:boxStrokeColor="?attr/primary_color"
-                android:background="?attr/background_color"
+                android:textColor="?attr/grayColor"
+                app:boxStrokeColor="?attr/primaryColor"
+                android:background="?attr/bcColor"
                 android:fontFamily="@font/poppins_medium"
                 />
 
@@ -174,13 +174,13 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="@dimen/padding_medium"
-            android:backgroundTint="?attr/primary_color"
+            android:backgroundTint="?attr/primaryColor"
             android:fontFamily="@font/poppins_medium"
             android:paddingTop="@dimen/padding_small"
             android:paddingBottom="@dimen/padding_small"
             android:text="@string/sign_in"
             android:textAppearance="@style/TabTextAppearance"
-            android:textColor="?attr/white_color"
+            android:textColor="?attr/whiteColor"
             android:textSize="@dimen/large_font"
             app:cornerRadius="?attr/actionBarSize"
             />

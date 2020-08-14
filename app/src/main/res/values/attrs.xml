@@ -1,8 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <attr name="primary_color" format="reference"/>
-    <attr name="primary_dark_color" format="reference"/>
-    <attr name="white_color" format="reference"/>
-    <attr name="gray_color" format="reference"/>
-    <attr name="background_color" format="reference"/>
+    <attr name="primaryColor" format="reference"/>
+    <attr name="primaryDarkColor" format="reference"/>
+    <attr name="whiteColor" format="reference"/>
+    <attr name="grayColor" format="reference"/>
+    <attr name="accentColor" format="reference"/>
+    <attr name="bcColor" format="reference"/>
 </resources>
