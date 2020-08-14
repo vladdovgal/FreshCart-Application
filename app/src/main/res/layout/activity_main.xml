@@ -4,26 +4,28 @@
     android:layout_height="match_parent"
     xmlns:tools="http://schemas.android.com/tools"
     tools:context=".MainActivity"
-    android:background="?attr/backgroundColor">
+    android:background="?attr/bcColor"
+    >
 
     <androidx.cardview.widget.CardView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        app:layout_constraintTop_toTopOf="parent"
         app:cardCornerRadius="0dp"
         app:cardElevation="0dp"
-        android:backgroundTint="?attr/backgroundColor"
-        app:layout_constraintTop_toTopOf="parent">
+        android:backgroundTint="?attr/bcColor"
+        >
 
         <androidx.appcompat.widget.Toolbar
             android:id="@+id/toolbar"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:background="@drawable/background_toolbar_base"
-            android:backgroundTint="?attr/colorPrimary"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="1.0"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
+            android:background="@drawable/bc_toolbar_base"
+            android:backgroundTint="?attr/primaryColor"
             >
 
             <androidx.constraintlayout.widget.ConstraintLayout
@@ -37,22 +39,22 @@
                     android:layout_height="wrap_content"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent"
-                    android:background="?attr/colorPrimary"
+                    android:background="?attr/primaryColor"
                     android:src="@drawable/ic_arrow_back"
-                    android:contentDescription="@string/arrowBack"
+                    android:contentDescription="@string/arrow_back"
                     />
 
                 <TextView
                     android:id="@+id/toolbarTitle"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    app:layout_constraintBottom_toBottomOf="@+id/arrowBack"
+                    android:gravity="center"
+                    app:layout_constraintBottom_toBottomOf="@id/arrowBack"
                     app:layout_constraintEnd_toStartOf="@id/navMenu"
                     app:layout_constraintHorizontal_chainStyle="packed"
                     app:layout_constraintStart_toEndOf="@id/arrowBack"
                     android:fontFamily="@font/fortemt"
-                    android:gravity="center"
-                    android:text="@string/toolbarTitle"
+                    android:text="@string/toolbar_title"
                     android:textColor="?attr/whiteColor"
                     android:textSize="@dimen/large_font"
                     />
@@ -61,12 +63,12 @@
                     android:id="@+id/navMenu"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    app:layout_constraintBottom_toBottomOf="@+id/arrowBack"
+                    app:layout_constraintBottom_toBottomOf="@id/arrowBack"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintHorizontal_chainStyle="packed"
                     android:layout_marginEnd="@dimen/navigation_menu_margin_end"
-                    android:background="?attr/colorPrimary"
-                    android:contentDescription="@string/navMenu"
+                    android:background="?attr/primaryColor"
+                    android:contentDescription="@string/navigation_menu"
                     android:src="@drawable/ic_nav_menu"
                     />
 
@@ -81,11 +83,13 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_gravity="bottom"
-        app:backgroundTint="@color/colorPrimary">
+        app:backgroundTint="?attr/primaryColor"
+        >
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content">
+            android:layout_height="wrap_content"
+            >
 
                 <androidx.appcompat.widget.AppCompatImageView
                     android:id="@+id/homeNavButton"
@@ -98,7 +102,8 @@
                     android:layout_centerInParent="true"
                     android:contentDescription="@string/home"
                     android:src="@drawable/ic_home"
-                    app:tint="@color/colorWhite"/>
+                    app:tint="?attr/whiteColor"
+                    />
 
                 <androidx.appcompat.widget.AppCompatImageView
                     android:id="@+id/cartNavButton"
@@ -110,7 +115,9 @@
                     app:layout_constraintWidth_percent="0.4"
                     android:layout_centerInParent="true"
                     android:contentDescription="@string/cart"
-                    android:src="@drawable/ic_shopping_cart" />
+                    android:src="@drawable/ic_shopping_cart"
+                    />
+
         </androidx.constraintlayout.widget.ConstraintLayout>
 
     </com.google.android.material.bottomappbar.BottomAppBar>
@@ -118,11 +125,12 @@
     <com.google.android.material.floatingactionbutton.FloatingActionButton
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        app:layout_anchor="@id/bottomAppBar"
         android:contentDescription="@string/search"
         android:src="@drawable/ic_search"
-        app:backgroundTint="@color/colorWhite"
-        app:layout_anchor="@id/bottomAppBar"
+        app:backgroundTint="?attr/whiteColor"
         android:rotation="-90"
-        app:tint="@color/colorPrimary" />
+        app:tint="?attr/primaryColor"
+        />
 
 </androidx.coordinatorlayout.widget.CoordinatorLayout>

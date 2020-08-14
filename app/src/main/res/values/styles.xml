@@ -1,10 +1,12 @@
 <resources>
     <!-- Base application theme. -->
     <style name="AppTheme" parent="Theme.MaterialComponents.Light.NoActionBar">
-        <item name="colorPrimary">@color/colorPrimary</item>
-        <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
-        <item name="backgroundColor">@color/colorBackground</item>
+        <item name="primaryColor">@color/colorPrimary</item>
+        <item name="primaryDarkColor">@color/colorPrimaryDark</item>
+        <item name="bcColor">@color/colorBackground</item>
         <item name="whiteColor">@color/colorWhite</item>
+        <item name="grayColor">@color/colorGray</item>
+        <item name="android:statusBarColor">@color/colorPrimaryDark</item>
         <item name="colorAccent">@color/colorPrimary</item>
     </style>
 
