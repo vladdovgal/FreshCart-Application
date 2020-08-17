@@ -1,21 +1,23 @@
 package com.jsp.freshcartshop.viewModel
 
-import android.view.View
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.jsp.freshcartshop.model.LoginUser
 
+
 class LoginViewModel : ViewModel() {
-    var EmailAddress = MutableLiveData<String>()
-        get() = field
-    var Password = MutableLiveData<String>()
+    var emailAddress = MutableLiveData<String>()
+    var password = MutableLiveData<String>()
+    private lateinit var userMutableLiveData : MutableLiveData<LoginUser>
 
-    private var userMutableLiveData : MutableLiveData<LoginUser>? = null;
+    fun getUser() : MutableLiveData<LoginUser> = userMutableLiveData
 
-    fun getUser() : MutableLiveData<LoginUser> = userMutableLiveData ?: MutableLiveData()
-
-    fun onClick(view : View) {
-        val loginUser = LoginUser(EmailAddress.value!!, Password.value!!);
-        userMutableLiveData?.value = loginUser;
+    fun onClick() {
+        if (emailAddress.value != null && password.value!= null) {
+            val loginUser = LoginUser(
+                emailAddress.value ?: "",
+                password.value ?:"");
+            userMutableLiveData.value = loginUser;
+        }
     }
 }

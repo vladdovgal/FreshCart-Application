@@ -99,6 +99,7 @@
             app:boxBackgroundColor="#00FFFFFF"
             app:boxStrokeColor="?attr/primaryColor"
             android:fontFamily="@font/poppins_medium"
+
             >
 
             <com.google.android.material.textfield.TextInputEditText
@@ -106,14 +107,14 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:gravity="center"
-                android:inputType="text"
+                android:inputType="textEmailAddress"
                 android:textSize="@dimen/large_font"
                 android:textColor="?attr/grayColor"
                 app:boxStrokeColor="?attr/primaryColor"
                 android:background="?attr/bcColor"
                 android:fontFamily="@font/poppins_medium"
-                android:text="@={loginViewModel.emailAddress}"
                 android:paddingBottom="@dimen/padding_extra_small"
+                android:text="@={loginViewModel.emailAddress}"
                 />
 
         </com.google.android.material.textfield.TextInputLayout>
@@ -141,6 +142,7 @@
                 app:boxStrokeColor="?attr/primaryColor"
                 android:background="?attr/bcColor"
                 android:fontFamily="@font/poppins_medium"
+                android:text="@={loginViewModel.password}"
                 />
 
         </com.google.android.material.textfield.TextInputLayout>
@@ -192,7 +194,7 @@
             android:textColor="?attr/whiteColor"
             android:textSize="@dimen/large_font"
             app:cornerRadius="?attr/actionBarSize"
-            android:onClick="@{ (v) -> loginViewModel.onClick()}"
+            android:onClick="@{ () -> loginViewModel.onClick()}"
             />
 
         <TextView
