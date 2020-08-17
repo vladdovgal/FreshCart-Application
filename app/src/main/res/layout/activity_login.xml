@@ -1,10 +1,17 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.coordinatorlayout.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<layout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
+    xmlns:tools="http://schemas.android.com/tools">
+    <data>
+        <variable
+            name="loginViewModel"
+            type="com.jsp.freshcartshop.viewModel.LoginViewModel"/>
+    </data>
+<androidx.coordinatorlayout.widget.CoordinatorLayout
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".LoginActivity"
+    tools:context=".view.LoginActivity"
     android:background="?attr/bcColor"
     >
 
@@ -68,6 +75,7 @@
         android:layout_height="wrap_content"
         android:orientation="vertical"
         android:padding="@dimen/padding_medium"
+        tools:context=".view.LoginActivity"
         >
 
         <TextView
@@ -104,6 +112,7 @@
                 app:boxStrokeColor="?attr/primaryColor"
                 android:background="?attr/bcColor"
                 android:fontFamily="@font/poppins_medium"
+                android:text="@={loginViewModel.emailAddress}"
                 android:paddingBottom="@dimen/padding_extra_small"
                 />
 
@@ -183,6 +192,7 @@
             android:textColor="?attr/whiteColor"
             android:textSize="@dimen/large_font"
             app:cornerRadius="?attr/actionBarSize"
+            android:onClick="@{ (v) -> loginViewModel.onClick()}"
             />
 
         <TextView
@@ -246,3 +256,4 @@
     </ScrollView>
 
 </androidx.coordinatorlayout.widget.CoordinatorLayout>
+</layout>
