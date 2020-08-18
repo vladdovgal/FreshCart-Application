@@ -9,15 +9,13 @@ import com.jsp.freshcartshop.model.LoginUser
 class LoginViewModel : ViewModel() {
     var emailAddress = MutableLiveData<String>()
     var password = MutableLiveData<String>()
-    private var userMutableLiveData : MutableLiveData<LoginUser>? = null
-
-    fun getUser() : MutableLiveData<LoginUser> = userMutableLiveData ?: MutableLiveData()
+    var userMutableLiveData : MutableLiveData<LoginUser> = MutableLiveData()
 
     fun onClick() {
             val loginUser = LoginUser(
                 emailAddress.value ?: "",
                 password.value ?:"");
-            userMutableLiveData?.value  = loginUser;
+            userMutableLiveData.value = loginUser;
         Log.d("myLogs", "Email : ${emailAddress.value} Pass: ${password.value}")
     }
 }

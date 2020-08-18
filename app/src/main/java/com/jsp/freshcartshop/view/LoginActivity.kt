@@ -20,6 +20,7 @@ class LoginActivity : AppCompatActivity() {
     private lateinit var loginViewModel: LoginViewModel
     private lateinit var binding : ActivityLoginBinding
 
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
@@ -29,7 +30,7 @@ class LoginActivity : AppCompatActivity() {
         binding.lifecycleOwner = this
         binding.loginViewModel = loginViewModel
 
-        loginViewModel.getUser().observe(this, androidx.lifecycle.Observer<LoginUser>() {
+        loginViewModel.userMutableLiveData.observe(this, androidx.lifecycle.Observer<LoginUser>() {
             fun onChanged(@Nullable loginUser: LoginUser) {
                 when {
                     TextUtils.isEmpty(Objects.requireNonNull(loginUser).strEmailAddress) -> {
