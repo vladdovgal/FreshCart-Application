@@ -1,0 +1,250 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.coordinatorlayout.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".LoginActivity"
+    android:background="?attr/bcColor"
+    >
+
+    <androidx.cardview.widget.CardView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toTopOf="parent"
+        app:cardCornerRadius="0dp"
+        app:cardElevation="0dp"
+        android:backgroundTint="?attr/bcColor"
+        >
+
+        <androidx.appcompat.widget.Toolbar
+            android:id="@+id/toolbar"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center_horizontal"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="1.0"
+            app:contentInsetStart="0dp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            android:background="@drawable/bc_toolbar_base"
+            android:backgroundTint="?attr/primaryColor"
+            >
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                >
+
+                <TextView
+                    android:id="@+id/toolbarTitle"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintHorizontal_chainStyle="packed"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    android:fontFamily="@font/liberation_sans_regular"
+                    android:text="@string/sign_up"
+                    android:textFontWeight="800"
+                    android:textColor="?attr/whiteColor"
+                    android:textSize="@dimen/large_font"
+                    />
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+        </androidx.appcompat.widget.Toolbar>
+
+    </androidx.cardview.widget.CardView>
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        >
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:padding="@dimen/padding_medium"
+            >
+
+            <TextView
+                android:id="@+id/welcomeLogo"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="80dp"
+                android:gravity="center_horizontal"
+                android:text="@string/app_name"
+                android:textColor="?attr/primaryColor"
+                android:fontFamily="@font/fortemt"
+                android:textSize="@dimen/extra_large_font"
+                />
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/inputFullName"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="50dp"
+                android:hint="@string/sign_up_full_name"
+                app:boxBackgroundColor="#00FFFFFF"
+                app:boxStrokeColor="?attr/primaryColor"
+                android:fontFamily="@font/poppins_medium"
+                >
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/etFullName"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    android:inputType="text"
+                    android:textSize="@dimen/large_font"
+                    android:textColor="?attr/grayColor"
+                    app:boxStrokeColor="?attr/primaryColor"
+                    android:background="?attr/bcColor"
+                    android:fontFamily="@font/poppins_medium"
+                    android:paddingBottom="@dimen/padding_extra_small"
+                    />
+
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/inputUsername"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="@string/sign_up_username"
+                app:boxBackgroundColor="#00FFFFFF"
+                app:boxStrokeColor="?attr/primaryColor"
+                android:fontFamily="@font/poppins_medium"
+                >
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/etUsername"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    android:layout_marginTop="@dimen/padding_small"
+                    android:inputType="text"
+                    android:textSize="@dimen/large_font"
+                    android:textColor="?attr/grayColor"
+                    app:boxStrokeColor="?attr/primaryColor"
+                    android:background="?attr/bcColor"
+                    android:fontFamily="@font/poppins_medium"
+                    android:paddingBottom="@dimen/padding_extra_small"
+                    />
+
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/inputEmail"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="@string/sign_up_email"
+                app:boxBackgroundColor="#00FFFFFF"
+                app:boxStrokeColor="?attr/primaryColor"
+                android:fontFamily="@font/poppins_medium"
+                >
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/etEmail"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    android:layout_marginTop="@dimen/padding_small"
+                    android:inputType="text"
+                    android:textSize="@dimen/large_font"
+                    android:textColor="?attr/grayColor"
+                    app:boxStrokeColor="?attr/primaryColor"
+                    android:background="?attr/bcColor"
+                    android:fontFamily="@font/poppins_medium"
+                    android:paddingBottom="@dimen/padding_extra_small"
+                    />
+
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/inputPassword"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="@string/password_tip"
+                app:boxBackgroundColor="#00FFFFFF"
+                app:boxStrokeColor="?attr/primaryColor"
+                android:fontFamily="@font/poppins_medium"
+                >
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/etPassword"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    android:layout_marginTop="@dimen/padding_small"
+                    android:paddingBottom="@dimen/padding_extra_small"
+                    android:inputType="textPassword"
+                    android:textSize="@dimen/large_font"
+                    android:textColor="?attr/grayColor"
+                    app:boxStrokeColor="?attr/primaryColor"
+                    android:background="?attr/bcColor"
+                    android:fontFamily="@font/poppins_medium"
+                    />
+
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_marginTop="30dp"
+                >
+
+                <CheckBox
+                    android:id="@+id/cbAgree"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    style="@style/SmallLoginTextViews"
+                    android:button="@drawable/checkbox_selector"
+                    android:hint="@string/agree_to_the"
+                    />
+
+                <TextView
+                    android:id="@+id/tvTermsConditions"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/terms_and_conditions"
+                    style="@style/SmallLoginTextViews"
+                    android:fontFamily="@font/poppins_medium"
+                    />
+
+            </LinearLayout>
+
+            <Button
+                android:id="@+id/signUpButton"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/padding_medium"
+                android:backgroundTint="?attr/primaryColor"
+                android:fontFamily="@font/poppins_medium"
+                android:paddingTop="@dimen/padding_small"
+                android:paddingBottom="@dimen/padding_small"
+                android:text="@string/create_account"
+                android:textAppearance="@style/TabTextAppearance"
+                android:textColor="?attr/whiteColor"
+                android:textSize="@dimen/large_font"
+                app:cornerRadius="?attr/actionBarSize"
+                />
+
+            <TextView
+                android:id="@+id/tvHaveAccount"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/padding_small"
+                android:text="@string/have_an_account"
+                style="@style/SmallLoginTextViews"
+                android:gravity="center"
+                />
+
+        </LinearLayout>
+
+    </ScrollView>
+
+</androidx.coordinatorlayout.widget.CoordinatorLayout>

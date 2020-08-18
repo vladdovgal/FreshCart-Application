@@ -8,11 +8,13 @@
         android:title="item 1"
         app:showAsAction="never"
         />
+
     <item
         android:id="@+id/secondItem"
         android:title="item 2"
         app:showAsAction="never"
         />
+
     <item
         android:id="@+id/thirdItem"
         android:title="item 3"
