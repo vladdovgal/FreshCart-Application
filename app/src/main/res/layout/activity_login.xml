@@ -194,7 +194,6 @@
             android:textColor="?attr/whiteColor"
             android:textSize="@dimen/large_font"
             app:cornerRadius="?attr/actionBarSize"
-            android:onClick="@{ () -> loginViewModel.onClick()}"
             />
 
         <TextView
