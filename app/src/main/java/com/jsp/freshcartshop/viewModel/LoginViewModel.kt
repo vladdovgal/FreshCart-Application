@@ -1,5 +1,6 @@
 package com.jsp.freshcartshop.viewModel
 
+import android.util.Log
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.jsp.freshcartshop.model.LoginUser
@@ -8,16 +9,15 @@ import com.jsp.freshcartshop.model.LoginUser
 class LoginViewModel : ViewModel() {
     var emailAddress = MutableLiveData<String>()
     var password = MutableLiveData<String>()
-    private lateinit var userMutableLiveData : MutableLiveData<LoginUser>
+    private var userMutableLiveData : MutableLiveData<LoginUser>? = null
 
-    fun getUser() : MutableLiveData<LoginUser> = userMutableLiveData
+    fun getUser() : MutableLiveData<LoginUser> = userMutableLiveData ?: MutableLiveData()
 
     fun onClick() {
-        if (emailAddress.value != null && password.value!= null) {
             val loginUser = LoginUser(
                 emailAddress.value ?: "",
                 password.value ?:"");
-            userMutableLiveData.value = loginUser;
-        }
+            userMutableLiveData?.value  = loginUser;
+        Log.d("myLogs", "Email : ${emailAddress.value} Pass: ${password.value}")
     }
 }
