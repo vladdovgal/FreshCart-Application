@@ -2,6 +2,7 @@
 <androidx.coordinatorlayout.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/signIn"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".view.LoginActivity"
@@ -46,7 +47,7 @@
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent"
                     android:fontFamily="@font/liberation_sans_regular"
-                    android:text="@string/sign_up"
+                    android:text="@string/login_title"
                     android:textFontWeight="800"
                     android:textColor="?attr/whiteColor"
                     android:textSize="@dimen/large_font"
@@ -83,37 +84,11 @@
                 />
 
             <com.google.android.material.textfield.TextInputLayout
-                android:id="@+id/inputFullName"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="50dp"
-                android:hint="@string/sign_up_full_name"
-                app:boxBackgroundColor="?attr/whiteColor"
-                app:boxStrokeColor="?attr/primaryColor"
-                android:fontFamily="@font/poppins_medium"
-                >
-
-                <com.google.android.material.textfield.TextInputEditText
-                    android:id="@+id/etFullName"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:gravity="center"
-                    android:inputType="text"
-                    android:textSize="@dimen/large_font"
-                    android:textColor="?attr/grayColor"
-                    app:boxStrokeColor="?attr/primaryColor"
-                    android:background="?attr/bcColor"
-                    android:fontFamily="@font/poppins_medium"
-                    android:paddingBottom="@dimen/padding_extra_small"
-                    />
-
-            </com.google.android.material.textfield.TextInputLayout>
-
-            <com.google.android.material.textfield.TextInputLayout
                 android:id="@+id/inputUsername"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:hint="@string/sign_up_username"
+                android:layout_marginTop="50dp"
+                android:hint="@string/login_tip"
                 app:boxBackgroundColor="?attr/whiteColor"
                 app:boxStrokeColor="?attr/primaryColor"
                 android:fontFamily="@font/poppins_medium"
@@ -124,34 +99,6 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:gravity="center"
-                    android:layout_marginTop="@dimen/padding_small"
-                    android:inputType="text"
-                    android:textSize="@dimen/large_font"
-                    android:textColor="?attr/grayColor"
-                    app:boxStrokeColor="?attr/primaryColor"
-                    android:background="?attr/bcColor"
-                    android:fontFamily="@font/poppins_medium"
-                    android:paddingBottom="@dimen/padding_extra_small"
-                    />
-
-            </com.google.android.material.textfield.TextInputLayout>
-
-            <com.google.android.material.textfield.TextInputLayout
-                android:id="@+id/inputEmail"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:hint="@string/sign_up_email"
-                app:boxBackgroundColor="?attr/whiteColor"
-                app:boxStrokeColor="?attr/primaryColor"
-                android:fontFamily="@font/poppins_medium"
-                >
-
-                <com.google.android.material.textfield.TextInputEditText
-                    android:id="@+id/etEmail"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:gravity="center"
-                    android:layout_marginTop="@dimen/padding_small"
                     android:inputType="text"
                     android:textSize="@dimen/large_font"
                     android:textColor="?attr/grayColor"
@@ -190,7 +137,7 @@
 
             </com.google.android.material.textfield.TextInputLayout>
 
-            <LinearLayout
+            <androidx.constraintlayout.widget.ConstraintLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="horizontal"
@@ -198,27 +145,33 @@
                 >
 
                 <CheckBox
-                    android:id="@+id/cbAgree"
+                    android:id="@+id/cbRememberMe"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
                     style="@style/SmallLoginTextViews"
                     android:button="@drawable/checkbox_selector"
-                    android:hint="@string/agree_to_the"
+                    android:hint="@string/remember_me"
                     />
 
                 <TextView
-                    android:id="@+id/tvTermsConditions"
+                    android:id="@+id/tvForgotPassword"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="@string/terms_and_conditions"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    android:text="@string/forgot_password"
                     style="@style/SmallLoginTextViews"
                     android:fontFamily="@font/poppins_medium"
                     />
 
-            </LinearLayout>
+            </androidx.constraintlayout.widget.ConstraintLayout>
 
             <Button
-                android:id="@+id/signUpButton"
+                android:id="@+id/signInButton"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="@dimen/padding_medium"
@@ -226,7 +179,7 @@
                 android:fontFamily="@font/poppins_medium"
                 android:paddingTop="@dimen/padding_small"
                 android:paddingBottom="@dimen/padding_small"
-                android:text="@string/create_account"
+                android:text="@string/sign_in"
                 android:textAppearance="@style/TabTextAppearance"
                 android:textColor="?attr/whiteColor"
                 android:textSize="@dimen/large_font"
@@ -234,14 +187,60 @@
                 />
 
             <TextView
-                android:id="@+id/tvHaveAccount"
+                android:id="@+id/tvNotMember"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="@dimen/padding_small"
-                android:text="@string/have_an_account"
+                android:text="@string/not_member"
                 style="@style/SmallLoginTextViews"
                 android:gravity="center"
                 />
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:paddingLeft="@dimen/padding_small"
+                android:paddingRight="@dimen/padding_small"
+                android:layout_marginTop="@dimen/padding_small"
+                >
+
+                <ImageView
+                    android:id="@+id/facebookImageView"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toStartOf="@+id/instagramImageView"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    android:padding="@dimen/padding_small"
+                    style="@style/SocialNetworkIconLogin"
+                    android:background="@drawable/rounded_shape"
+                    android:src="@drawable/ic_facebook"
+                    />
+
+                <ImageView
+                    android:id="@+id/instagramImageView"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    android:padding="@dimen/padding_small"
+                    style="@style/SocialNetworkIconLogin"
+                    android:background="@drawable/rounded_shape"
+                    android:src="@drawable/ic_instagram"
+                    />
+
+                <ImageView
+                    android:id="@+id/twitterImageView"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toEndOf="@+id/instagramImageView"
+                    app:layout_constraintTop_toTopOf="parent"
+                    android:padding="@dimen/padding_small"
+                    style="@style/SocialNetworkIconLogin"
+                    android:background="@drawable/rounded_shape"
+                    android:src="@drawable/ic_twitter"
+                    />
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
 
         </LinearLayout>
 
