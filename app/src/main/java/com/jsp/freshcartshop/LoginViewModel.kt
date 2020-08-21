@@ -1,4 +1,4 @@
-package com.jsp.freshcartshop.viewModel
+package com.jsp.freshcartshop
 
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel

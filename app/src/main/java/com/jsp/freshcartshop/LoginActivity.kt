@@ -1,13 +1,13 @@
-package com.jsp.freshcartshop.view
+package com.jsp.freshcartshop
 
+import android.content.Intent
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import androidx.databinding.DataBindingUtil
+import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProviders
-import com.jsp.freshcartshop.R
 import com.jsp.freshcartshop.databinding.ActivityLoginBinding
 import com.jsp.freshcartshop.utils.StringUtils
-import com.jsp.freshcartshop.viewModel.LoginViewModel
 import kotlinx.android.synthetic.main.activity_login.*
 
 
@@ -21,7 +21,6 @@ class LoginActivity : AppCompatActivity() {
 
         loginViewModel = ViewModelProviders.of(this).get(LoginViewModel::class.java)
         binding = DataBindingUtil.setContentView(this, R.layout.activity_login)
-
         binding.lifecycleOwner = this
         binding.loginViewModel = loginViewModel
 
@@ -30,7 +29,7 @@ class LoginActivity : AppCompatActivity() {
             if (error != "") {
                 loginViewModel.errorPass.value = error
                 binding.etPassword.requestFocus()
-            }
+            } else loginViewModel.errorPass.value = ""
         })
 
         loginViewModel.emailAddress.observe(this, androidx.lifecycle.Observer() {
@@ -38,16 +37,48 @@ class LoginActivity : AppCompatActivity() {
             if (error != "") {
                 loginViewModel.errorEmail.value = error
                 binding.etUsername.requestFocus()
-            }
+            } else loginViewModel.errorEmail.value = ""
         })
 
         binding.signInButton.setOnClickListener {
+            var flag = true
             if (loginViewModel.errorEmail.value != "") {
                 etUsername.error = loginViewModel.errorEmail.value
+                flag = false
             }
             if (loginViewModel.errorPass.value != "") {
                 etPassword.error = loginViewModel.errorPass.value
+                flag = false
+            }
+            if (flag) {
+                startActivity(Intent(this, MainActivity::class.java))
             }
         }
+
+        binding.signInButton.setOnClickListener {
+            val intent = Intent(this, MainActivity::class.java)
+            startActivity(intent)
+        }
+
+        binding.tvNotMember.setOnClickListener{
+            val signUpFragment = SignUpFragment()
+            openFragment(signUpFragment)
+        }
+    }
+
+    override fun onBackPressed() {
+        if (supportFragmentManager.backStackEntryCount == 0) {
+            this.finish()
+        } else {
+            supportFragmentManager.popBackStack()
+        }
+    }
+
+    private fun openFragment(fragment: Fragment) {
+        supportFragmentManager
+            .beginTransaction()
+            .replace(R.id.signIn, fragment)
+            .addToBackStack(null)
+            .commit()
     }
 }

@@ -12,8 +12,8 @@ class StringUtils {
                 TextUtils.isEmpty(Objects.requireNonNull(password)) -> {
                     "Password can't be empty"
                 }
-                !password.isPasswordLengthGreaterThan5() -> {
-                    "Enter at least 6 Digit password"
+                password.length <= 5 -> {
+                    "Password must be 6 digits or longer"
                 }
                 else -> ""
             }
@@ -30,9 +30,6 @@ class StringUtils {
                     else -> ""
             }
         }
-
-        private fun String.isPasswordLengthGreaterThan5() : Boolean =  this.length > 5
-
     }
 
 }
