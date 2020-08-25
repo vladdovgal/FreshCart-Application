@@ -55,11 +55,6 @@ class LoginActivity : AppCompatActivity() {
             }
         }
 
-        binding.signInButton.setOnClickListener {
-            val intent = Intent(this, MainActivity::class.java)
-            startActivity(intent)
-        }
-
         binding.tvNotMember.setOnClickListener{
             val signUpFragment = SignUpFragment()
             openFragment(signUpFragment)

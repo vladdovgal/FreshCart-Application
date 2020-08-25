@@ -17,7 +17,6 @@ class SignUpFragment : Fragment() {
             var intent = Intent(activity, LoginActivity::class.java)
             startActivity(intent)
         }
-
         return view
     }
 
