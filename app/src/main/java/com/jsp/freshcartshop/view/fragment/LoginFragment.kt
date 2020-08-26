@@ -9,9 +9,9 @@ import androidx.navigation.findNavController
 import com.jsp.freshcartshop.R
 import kotlinx.android.synthetic.main.fragment_login.*
 
-class LoginFragment : Fragment() {
+class LoginFragment : BaseFragment() {
 
-    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
+    override fun setFragmentLayout(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View {
         return inflater.inflate(R.layout.fragment_login, container, false)
     }
 

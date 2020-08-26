@@ -10,9 +10,9 @@ import com.jsp.freshcartshop.R
 import kotlinx.android.synthetic.main.fragment_sign_up.*
 import kotlinx.android.synthetic.main.fragment_sign_up.view.*
 
-class SignUpFragment : Fragment() {
+class SignUpFragment : BaseFragment() {
 
-    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
+    override fun setFragmentLayout(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View {
         return inflater.inflate(R.layout.fragment_sign_up, container, false)
     }
 

@@ -7,9 +7,9 @@ import android.view.View
 import android.view.ViewGroup
 import com.jsp.freshcartshop.R
 
-class ProductFragment : Fragment() {
+class ProductFragment : BaseFragment() {
 
-    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
+    override fun setFragmentLayout(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View {
         return inflater.inflate(R.layout.fragment_product, container, false)
     }
 

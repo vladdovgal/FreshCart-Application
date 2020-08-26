@@ -9,10 +9,9 @@ import com.jsp.freshcartshop.R
 import com.jsp.freshcartshop.view.MainActivity
 
 
-class SearchFragment : Fragment() {
+class SearchFragment : BaseFragment() {
 
-    override fun onCreateView(
-        inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
+    override fun setFragmentLayout(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View {
         return inflater.inflate(R.layout.fragment_search, container, false)
     }
 

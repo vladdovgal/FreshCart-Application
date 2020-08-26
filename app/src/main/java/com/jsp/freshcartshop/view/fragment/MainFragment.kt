@@ -9,9 +9,9 @@ import com.jsp.freshcartshop.R
 import com.jsp.freshcartshop.view.MainActivity
 import kotlinx.android.synthetic.main.fragment_main.*
 
-class MainFragment : Fragment() {
+class MainFragment : BaseFragment() {
 
-    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
+    override fun setFragmentLayout(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View {
         return inflater.inflate(R.layout.fragment_main, container, false)
     }
 
