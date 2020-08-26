@@ -17,13 +17,19 @@ class LoginActivity : BaseActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-
         loginViewModel = ViewModelProviders.of(this).get(LoginViewModel::class.java)
         binding = DataBindingUtil.setContentView(this, R.layout.activity_login)
         binding.lifecycleOwner = this
         binding.loginViewModel = loginViewModel
-        observeData()
+        init()
+    }
 
+    private fun init() {
+        observeData()
+        setOnClickListeners()
+    }
+
+    private fun setOnClickListeners() {
         binding.signInButton.setOnClickListener {
             var flag = true
             if (loginViewModel.errorEmail.value != "") {
@@ -61,21 +67,29 @@ class LoginActivity : BaseActivity() {
             .commit()
     }
 
+    private fun validatePassword(password: String) {
+        val error = ValidationUtils.isPasswordValid(password)
+        if (error != "") {
+            loginViewModel.errorPass.value = error
+            binding.etPassword.requestFocus()
+        } else loginViewModel.errorPass.value = ""
+    }
+
+    private fun validateEmail(email : String) {
+        val error = ValidationUtils.isEmailValid(email)
+        if (error != "") {
+            loginViewModel.errorEmail.value = error
+            binding.etUsername.requestFocus()
+        } else loginViewModel.errorEmail.value = ""
+    }
+
     private fun observeData() {
         loginViewModel.password.observe(this, androidx.lifecycle.Observer() {
-            val error = ValidationUtils.isPasswordValid(it)
-            if (error != "") {
-                loginViewModel.errorPass.value = error
-                binding.etPassword.requestFocus()
-            } else loginViewModel.errorPass.value = ""
+            validatePassword(it)
         })
 
         loginViewModel.emailAddress.observe(this, androidx.lifecycle.Observer() {
-            val error = ValidationUtils.isEmailValid(it)
-            if (error != "") {
-                loginViewModel.errorEmail.value = error
-                binding.etUsername.requestFocus()
-            } else loginViewModel.errorEmail.value = ""
+            validateEmail(it)
         })
     }
 }
