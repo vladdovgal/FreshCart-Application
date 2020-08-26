@@ -7,7 +7,7 @@ import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProviders
 import com.jsp.freshcartshop.databinding.ActivityLoginBinding
-import com.jsp.freshcartshop.utils.StringUtils
+import com.jsp.freshcartshop.utils.ValidationUtils
 import kotlinx.android.synthetic.main.activity_login.*
 
 
@@ -23,22 +23,7 @@ class LoginActivity : AppCompatActivity() {
         binding = DataBindingUtil.setContentView(this, R.layout.activity_login)
         binding.lifecycleOwner = this
         binding.loginViewModel = loginViewModel
-
-        loginViewModel.password.observe(this, androidx.lifecycle.Observer() {
-            val error = StringUtils.isPasswordValid(it)
-            if (error != "") {
-                loginViewModel.errorPass.value = error
-                binding.etPassword.requestFocus()
-            } else loginViewModel.errorPass.value = ""
-        })
-
-        loginViewModel.emailAddress.observe(this, androidx.lifecycle.Observer() {
-            val error = StringUtils.isEmailValid(it)
-            if (error != "") {
-                loginViewModel.errorEmail.value = error
-                binding.etUsername.requestFocus()
-            } else loginViewModel.errorEmail.value = ""
-        })
+        observeData()
 
         binding.signInButton.setOnClickListener {
             var flag = true
@@ -75,5 +60,23 @@ class LoginActivity : AppCompatActivity() {
             .replace(R.id.signIn, fragment)
             .addToBackStack(null)
             .commit()
+    }
+
+    private fun observeData() {
+        loginViewModel.password.observe(this, androidx.lifecycle.Observer() {
+            val error = ValidationUtils.isPasswordValid(it)
+            if (error != "") {
+                loginViewModel.errorPass.value = error
+                binding.etPassword.requestFocus()
+            } else loginViewModel.errorPass.value = ""
+        })
+
+        loginViewModel.emailAddress.observe(this, androidx.lifecycle.Observer() {
+            val error = ValidationUtils.isEmailValid(it)
+            if (error != "") {
+                loginViewModel.errorEmail.value = error
+                binding.etUsername.requestFocus()
+            } else loginViewModel.errorEmail.value = ""
+        })
     }
 }
