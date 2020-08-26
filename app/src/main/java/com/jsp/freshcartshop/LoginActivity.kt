@@ -26,29 +26,32 @@ class LoginActivity : BaseActivity() {
 
     private fun init() {
         observeData()
-        setOnClickListeners()
+        binding.signInButton.setOnClickListener {
+            onSignInClick()
+        }
+        binding.tvNotMember.setOnClickListener {
+            onTvNotMemberClick()
+        }
     }
 
-    private fun setOnClickListeners() {
-        binding.signInButton.setOnClickListener {
-            var flag = true
-            if (loginViewModel.errorEmail.value != "") {
-                etUsername.error = loginViewModel.errorEmail.value
-                flag = false
-            }
-            if (loginViewModel.errorPass.value != "") {
-                etPassword.error = loginViewModel.errorPass.value
-                flag = false
-            }
-            if (flag) {
-                startActivity(Intent(this, MainActivity::class.java))
-            }
+    private fun onSignInClick() {
+        var flag = true
+        if (loginViewModel.errorEmail.value != "") {
+            etUsername.error = loginViewModel.errorEmail.value
+            flag = false
         }
+        if (loginViewModel.errorPass.value != "") {
+            etPassword.error = loginViewModel.errorPass.value
+            flag = false
+        }
+        if (flag) {
+            startActivity(Intent(this, MainActivity::class.java))
+        }
+    }
 
-        binding.tvNotMember.setOnClickListener{
-            val signUpFragment = SignUpFragment()
-            openFragment(signUpFragment)
-        }
+    private fun onTvNotMemberClick() {
+        val signUpFragment = SignUpFragment()
+        openFragment(signUpFragment)
     }
 
     override fun onBackPressed() {
