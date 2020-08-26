@@ -9,56 +9,6 @@
     android:background="?attr/bcColor"
     >
 
-    <androidx.cardview.widget.CardView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        app:layout_constraintTop_toTopOf="parent"
-        app:cardCornerRadius="0dp"
-        app:cardElevation="0dp"
-        android:backgroundTint="?attr/bcColor"
-        >
-
-        <androidx.appcompat.widget.Toolbar
-            android:id="@+id/toolbar"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:gravity="center_horizontal"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="1.0"
-            app:contentInsetStart="0dp"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            android:background="@drawable/bc_toolbar_base"
-            android:backgroundTint="?attr/primaryColor"
-            >
-
-            <androidx.constraintlayout.widget.ConstraintLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                >
-
-                <TextView
-                    android:id="@+id/toolbarTitle"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    app:layout_constraintBottom_toBottomOf="parent"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintHorizontal_chainStyle="packed"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toTopOf="parent"
-                    android:fontFamily="@font/liberation_sans_regular"
-                    android:text="@string/login_title"
-                    android:textFontWeight="800"
-                    android:textColor="?attr/whiteColor"
-                    android:textSize="@dimen/large_font"
-                    />
-
-            </androidx.constraintlayout.widget.ConstraintLayout>
-
-        </androidx.appcompat.widget.Toolbar>
-
-    </androidx.cardview.widget.CardView>
-
     <ScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent"

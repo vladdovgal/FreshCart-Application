@@ -6,6 +6,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import com.jsp.freshcartshop.R
+import com.jsp.freshcartshop.view.BaseActivity
 import com.jsp.freshcartshop.view.MainActivity
 
 
@@ -17,6 +18,6 @@ class ShoppingCartFragment : BaseFragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        (activity as MainActivity).setToolBarTitle(getString(R.string.cart))
+        (activity as BaseActivity).setToolBarTitle(getString(R.string.cart))
     }
 }

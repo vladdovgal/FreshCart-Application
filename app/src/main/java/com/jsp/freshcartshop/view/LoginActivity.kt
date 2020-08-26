@@ -8,7 +8,7 @@ import com.jsp.freshcartshop.R
 import com.jsp.freshcartshop.view.fragment.SignUpFragment
 import kotlinx.android.synthetic.main.activity_login.*
 
-class LoginActivity : AppCompatActivity() {
+class LoginActivity : BaseActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)

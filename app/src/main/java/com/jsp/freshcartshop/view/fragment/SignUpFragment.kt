@@ -7,6 +7,7 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.navigation.findNavController
 import com.jsp.freshcartshop.R
+import com.jsp.freshcartshop.view.BaseActivity
 import kotlinx.android.synthetic.main.fragment_sign_up.*
 import kotlinx.android.synthetic.main.fragment_sign_up.view.*
 
@@ -26,5 +27,7 @@ class SignUpFragment : BaseFragment() {
         tvHaveAccount.setOnClickListener {
             view.findNavController().navigate(R.id.action_signUpFragment_to_loginFragment)
         }
+
+        (activity as BaseActivity).setToolBarTitle(getString(R.string.sign_up))
     }
 }
