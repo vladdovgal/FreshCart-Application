@@ -6,7 +6,7 @@
     <dimen name="large_font">22sp</dimen>
     <dimen name="extra_large_font">52sp</dimen>
 
-    <!--    Paddings-->
+    <!--    Paddings -->
     <dimen name="padding_small">20dp</dimen>
     <dimen name="padding_medium">30dp</dimen>
     <dimen name="padding_extra_small">3dp</dimen>
@@ -14,6 +14,8 @@
     <dimen name="navigation_menu_margin_end">20dp</dimen>
     <dimen name="toolbar_title">20sp</dimen>
     <dimen name="toolbar_corner_radius">35dp</dimen>
+    
+    <dimen name="button_sign_in_padding">15dp</dimen>
 
     <dimen name="fragment_main_margin_bottom">85dp</dimen>
 
