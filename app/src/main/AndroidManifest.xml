@@ -12,8 +12,6 @@
         android:theme="@style/AppTheme"
         >
 
-        <activity android:name=".view.BaseActivity" />
-
         <activity android:name=".view.MainActivity" />
 
         <activity android:name=".view.LoginActivity">
