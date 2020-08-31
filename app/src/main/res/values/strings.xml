@@ -24,4 +24,11 @@
     <string name="agree_to_the">&#160;&#160;Agree to the</string>
     <string name="terms_and_conditions"> <u>terms and conditions</u></string>
     <string name="have_an_account">Have an Account ? <b>Sign In</b></string>
+    <!-- Login / Sign Up error messages -->
+    <string name="empty_pass">Password can\'t be empty</string>
+    <string name="empty_email">Email can\'t be empty</string>
+    <string name="email_not_valid">Input valid email</string>
+    <string name="pass_not_valid">Password is not valid</string>
+    <string name="short_pass">Password must be 6 digits or longer</string>
+
 </resources>
