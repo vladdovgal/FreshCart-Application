@@ -19,6 +19,4 @@ class SignUpFragment : Fragment() {
         }
         return view
     }
-
-
 }
