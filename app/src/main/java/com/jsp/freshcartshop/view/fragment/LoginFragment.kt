@@ -13,10 +13,11 @@ import com.jsp.freshcartshop.databinding.FragmentLoginBinding
 import com.jsp.freshcartshop.utils.ValidationUtils
 import com.jsp.freshcartshop.view.BaseActivity
 import kotlinx.android.synthetic.main.fragment_login.*
+import org.koin.android.ext.android.get
 
 class LoginFragment : BaseFragment() {
 
-    private lateinit var loginViewModel: LoginViewModel
+    private var loginViewModel: LoginViewModel = get()
     private lateinit var binding : FragmentLoginBinding
 
     override fun setFragmentLayout(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View {

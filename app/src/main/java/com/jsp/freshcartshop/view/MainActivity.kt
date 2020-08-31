@@ -1,8 +1,6 @@
 package com.jsp.freshcartshop.view
 
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.view.View
 import android.widget.PopupMenu
 import androidx.navigation.findNavController
 import com.jsp.freshcartshop.R
