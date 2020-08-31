@@ -8,6 +8,10 @@ import org.koin.core.context.startKoin
 class FreshCartApplication : Application() {
     override fun onCreate() {
         super.onCreate()
+        initKoin()
+    }
+
+    fun initKoin() {
         startKoin {
             androidLogger()
             androidContext(this@FreshCartApplication)
