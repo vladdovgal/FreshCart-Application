@@ -5,7 +5,6 @@ import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
 import androidx.recyclerview.widget.RecyclerView
 import com.jsp.freshcartshop.R
-
 import com.jsp.freshcartshop.databinding.RecyclerviewProductBinding
 import com.jsp.freshcartshop.model.Product
 

@@ -42,8 +42,6 @@ class MainFragment : BaseFragment() {
         mainViewModel.products.observe(viewLifecycleOwner, Observer { products ->
             binding.vpMainProducts.adapter = ProductPagerAdapter(requireContext(), products)
          })
-
-
     }
 
     override fun onActivityCreated(savedInstanceState: Bundle?) {

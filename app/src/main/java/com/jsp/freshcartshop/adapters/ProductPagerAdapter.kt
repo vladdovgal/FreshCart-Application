@@ -25,10 +25,10 @@ class ProductPagerAdapter(private val context: Context, private val products: Li
 
         val product = products[position]
 
-        binding.productName.text = product.name
-        binding.productOldPrice.text = "\$"  + product.oldPrice.toString()
-        binding.productPrice.text = "\$"  + product.price.toString()
-        binding.productImage.setImageResource(product.image)
+        binding.tvProductRecommendName.text = product.name
+        binding.tvProductRecommendOldPrice.text = "\$"  + product.oldPrice.toString()
+        binding.tvProductRecommendPrice.text = "\$"  + product.price.toString()
+        binding.imgProductRecommendImage.setImageResource(product.image)
 
         container.addView(binding.root)
 
