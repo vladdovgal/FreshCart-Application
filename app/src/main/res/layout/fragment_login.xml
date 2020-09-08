@@ -35,7 +35,7 @@
                     android:id="@+id/welcomeLogo"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="80dp"
+                    android:layout_marginTop="30dp"
                     android:gravity="center_horizontal"
                     android:text="@string/app_name"
                     android:textColor="?attr/primaryColor"
@@ -66,7 +66,7 @@
                         android:background="?attr/bcColor"
                         android:fontFamily="@font/poppins_medium"
                         android:paddingBottom="@dimen/padding_extra_small"
-                        android:text="@={loginViewModel.emailAddress}"
+                        android:text="@={loginViewModel.login}"
                         />
 
                 </com.google.android.material.textfield.TextInputLayout>
@@ -139,8 +139,8 @@
                     android:layout_marginTop="@dimen/padding_medium"
                     android:backgroundTint="?attr/primaryColor"
                     android:fontFamily="@font/poppins_medium"
-                    android:paddingTop="@dimen/padding_small"
-                    android:paddingBottom="@dimen/padding_small"
+                    android:paddingTop="@dimen/button_sign_in_padding"
+                    android:paddingBottom="@dimen/button_sign_in_padding"
                     android:text="@string/sign_in"
                     android:textAppearance="@style/TabTextAppearance"
                     android:textColor="?attr/whiteColor"
