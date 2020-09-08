@@ -28,5 +28,11 @@
     <string name="email_not_valid">Input valid email</string>
     <string name="pass_not_valid">Password is not valid</string>
     <string name="short_pass">Password must be 6 digits or longer</string>
+    <!-- Main Fragment -->
+    <string name="deal_of_the_day">Deal of the Day</string>
+    <string name="all_products">All products</string>
+    <string name="discount">Get 15% Off</string>
+    <string name="discount_description">On your first order</string>
+    <string name="shop_now">Shop Now</string>
 
 </resources>

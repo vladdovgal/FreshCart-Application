@@ -6,4 +6,5 @@
     <attr name="grayColor" format="reference"/>
     <attr name="accentColor" format="reference"/>
     <attr name="bcColor" format="reference"/>
+    <attr name="blackColor" format="reference"/>
 </resources>

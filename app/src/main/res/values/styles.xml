@@ -6,6 +6,7 @@
         <item name="bcColor">@color/colorBackground</item>
         <item name="whiteColor">@color/colorWhite</item>
         <item name="grayColor">@color/colorGray</item>
+        <item name="blackColor">@color/colorBlack</item>
         <item name="android:statusBarColor">@color/colorPrimaryDark</item>
         <item name="colorAccent">@color/colorPrimary</item>
     </style>
