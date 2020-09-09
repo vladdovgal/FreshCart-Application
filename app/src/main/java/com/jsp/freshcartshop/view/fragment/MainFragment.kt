@@ -38,14 +38,10 @@ class MainFragment : BaseFragment() {
         init()
     }
 
-    override fun onActivityCreated(savedInstanceState: Bundle?) {
-        super.onActivityCreated(savedInstanceState)
-        initRecyrlerView()
-    }
-
     fun init() {
-        setDiscount(15)
         initViewPager()
+        initRecyrlerView()
+        setDiscount(15)
     }
 
     fun initViewPager() {
