@@ -3,7 +3,9 @@
 
     <item
         android:drawable="@drawable/tab_indicator_selected"
-        android:state_selected="true"/>
+        android:state_selected="true"
+        />
 
     <item android:drawable="@drawable/tab_indicator_default"/>
+
 </selector>
