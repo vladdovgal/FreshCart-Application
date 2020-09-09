@@ -5,10 +5,8 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.viewpager.widget.PagerAdapter
-import com.jsp.freshcartshop.R
-import com.jsp.freshcartshop.databinding.ViewpagerProductBinding
+import com.jsp.freshcartshop.databinding.ListItemViewpagerProductBinding
 import com.jsp.freshcartshop.model.Product
-import kotlinx.android.synthetic.main.viewpager_product.view.*
 
 class ProductPagerAdapter(private val context: Context, private val products: List<Product>) : PagerAdapter() {
 
@@ -21,15 +19,8 @@ class ProductPagerAdapter(private val context: Context, private val products: Li
     }
 
     override fun instantiateItem(container: ViewGroup, position: Int): Any {
-        val binding = ViewpagerProductBinding.inflate(LayoutInflater.from(context), container, false)
-
-        val product = products[position]
-
-        binding.tvProductRecommendName.text = product.name
-        binding.tvProductRecommendOldPrice.text = "\$"  + product.oldPrice.toString()
-        binding.tvProductRecommendPrice.text = "\$"  + product.price.toString()
-        binding.imgProductRecommendImage.setImageResource(product.image)
-
+        val binding = ListItemViewpagerProductBinding.inflate(LayoutInflater.from(context), container, false)
+        binding.product = products[position]
         container.addView(binding.root)
 
         return binding.root

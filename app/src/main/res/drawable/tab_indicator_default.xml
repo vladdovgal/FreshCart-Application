@@ -5,10 +5,10 @@
     android:thickness="1dp"
     android:useLevel="false">
     <solid
-        android:color="#000000">
+        android:color="?attr/blackColor">
     </solid>
     <size
-        android:height="30dp"
-        android:width="30dp">
+        android:height="@dimen/tab_indicator_size"
+        android:width="@dimen/tab_indicator_size">
     </size>
 </shape>

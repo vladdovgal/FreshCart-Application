@@ -67,7 +67,7 @@
                     app:layout_constraintBottom_toBottomOf="@id/arrowBack"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintHorizontal_chainStyle="packed"
-                    android:layout_marginEnd="@dimen/base_margin_start_end"
+                    android:layout_marginEnd="@dimen/margin_medium"
                     android:background="?attr/primaryColor"
                     android:contentDescription="@string/navigation_menu"
                     android:src="@drawable/ic_nav_menu"

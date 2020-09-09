@@ -19,8 +19,6 @@ import org.koin.android.ext.android.get
 class MainFragment : BaseFragment() {
 
     private val mainViewModel: MainViewModel = get()
-    private lateinit var productPagerAdapter: ProductPagerAdapter
-    private lateinit var productRecyclerAdapter: ProductRecyclerAdapter
     private lateinit var binding: FragmentMainBinding
 
     override fun setFragmentLayout(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View {
@@ -37,16 +35,28 @@ class MainFragment : BaseFragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         (activity as MainActivity).setToolBarTitle(getString(R.string.toolbar_title))
-        tabDots.setupWithViewPager(vpMainProducts, true)
-        mainViewModel.getProducts()
-        mainViewModel.products.observe(viewLifecycleOwner, Observer { products ->
-            binding.vpMainProducts.adapter = ProductPagerAdapter(requireContext(), products)
-         })
+        init()
     }
 
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
+        initRecyrlerView()
+    }
 
+    fun init() {
+        setDiscount(15)
+        initViewPager()
+    }
+
+    fun initViewPager() {
+        tdMainViewPager.setupWithViewPager(vpMainProducts, true)
+        mainViewModel.getProducts()
+        mainViewModel.products.observe(viewLifecycleOwner, Observer { products ->
+            binding.vpMainProducts.adapter = ProductPagerAdapter(requireContext(), products)
+        })
+    }
+
+    fun initRecyrlerView() {
         mainViewModel.getProducts()
         mainViewModel.products.observe(viewLifecycleOwner, Observer { products ->
             rvMainProducts.also {
@@ -54,6 +64,10 @@ class MainFragment : BaseFragment() {
                 it.adapter = ProductRecyclerAdapter().also { it.addAll(products) }
             }
         })
+    }
+
+    private fun setDiscount(amount: Int) {
+        tvDiscount.text = resources.getString(R.string.discount, amount)
     }
 
 }
