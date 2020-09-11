@@ -5,11 +5,13 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.jsp.freshcartshop.Coroutines
 import com.jsp.freshcartshop.data.repository.FreshCartRepository
+import com.jsp.freshcartshop.data.repository.FreshCartRepositoryImpl
 import com.jsp.freshcartshop.model.Product
 import kotlinx.coroutines.Job
+import org.koin.java.KoinJavaComponent.inject
 
-class MainViewModel(private val freshCartRepository: FreshCartRepository) : ViewModel() {
-
+class MainViewModel : ViewModel() {
+    private val freshCartRepository by inject(FreshCartRepositoryImpl::class.java)
     private lateinit var job: Job
 
     private val _products = MutableLiveData<List<Product>>()
