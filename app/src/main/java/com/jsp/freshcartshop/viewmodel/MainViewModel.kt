@@ -4,11 +4,11 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.jsp.freshcartshop.Coroutines
+import com.jsp.freshcartshop.data.repository.FreshCartRepository
 import com.jsp.freshcartshop.model.Product
-import com.jsp.freshcartshop.repository.ProductRepository
 import kotlinx.coroutines.Job
 
-class MainViewModel(private val productRepository: ProductRepository) : ViewModel() {
+class MainViewModel(private val freshCartRepository: FreshCartRepository) : ViewModel() {
 
     private lateinit var job: Job
 
@@ -18,7 +18,7 @@ class MainViewModel(private val productRepository: ProductRepository) : ViewMode
 
     fun getProducts() {
         job = Coroutines.ioThenMain(
-            { productRepository.getAll()},
+            { freshCartRepository.getAllProducts()},
             {_products.value = it?.value}
         )
     }

@@ -1,12 +1,11 @@
-package com.jsp.freshcartshop.data.db.dao.impl
+package com.jsp.freshcartshop.data.db.dao
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import com.jsp.freshcartshop.R
-import com.jsp.freshcartshop.data.db.dao.ProductDao
 import com.jsp.freshcartshop.model.Product
 
-class ProductDaoFakeImpl : ProductDao {
+class FreshCartDaoFakeImpl : FreshCartDao {
 
     private val productList = mutableListOf<Product>()
     private val products = MutableLiveData<List<Product>>()
@@ -16,7 +15,7 @@ class ProductDaoFakeImpl : ProductDao {
         products.value = productList
     }
 
-    override fun getAll() = products
+    override fun getAllProducts() = products
 
     private fun fillProducts() {
         productList.add(Product(1, "Water Lemon", 15, 20, R.drawable.water_lemon))
