@@ -15,7 +15,7 @@
     <dimen name="toolbar_title">20sp</dimen>
     <dimen name="toolbar_corner_radius">35dp</dimen>
     
-    <dimen name="button_sign_in_padding">15dp</dimen>
+    <dimen name="big_button_padding">15dp</dimen>
 
     <dimen name="fragment_main_margin_bottom">85dp</dimen>
 

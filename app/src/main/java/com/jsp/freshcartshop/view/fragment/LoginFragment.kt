@@ -4,14 +4,14 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
 import androidx.databinding.DataBindingUtil
-import androidx.lifecycle.ViewModelProviders
+import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.findNavController
-import com.jsp.freshcartshop.viewmodel.LoginViewModel
 import com.jsp.freshcartshop.R
 import com.jsp.freshcartshop.databinding.FragmentLoginBinding
-import com.jsp.freshcartshop.utils.ValidationUtils
 import com.jsp.freshcartshop.view.BaseActivity
+import com.jsp.freshcartshop.viewmodel.LoginViewModel
 import kotlinx.android.synthetic.main.fragment_login.*
 import org.koin.android.ext.android.get
 
@@ -25,10 +25,11 @@ class LoginFragment : BaseFragment() {
     }
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
-        loginViewModel = ViewModelProviders.of(this).get(LoginViewModel::class.java)
+        loginViewModel = ViewModelProvider(this).get(LoginViewModel::class.java)
         binding = DataBindingUtil.inflate(inflater, R.layout.fragment_login, container, false)
         binding.lifecycleOwner = this
         binding.loginViewModel = loginViewModel
+
         return binding.root
     }
 
@@ -49,17 +50,11 @@ class LoginFragment : BaseFragment() {
     }
 
     private fun onSignInClick(view: View) {
-        var flag = true
-        if (loginViewModel.errorEmail.value != "") {
-            etUsername.error = loginViewModel.errorEmail.value
-            flag = false
-        }
-        if (loginViewModel.errorPass.value != "") {
-            etPassword.error = loginViewModel.errorPass.value
-            flag = false
-        }
-        if (flag) {
-            view.findNavController().navigate(R.id.action_loginFragment_to_mainActivity)
+        if (checkForSyntaxWarnings())  {
+            if (loginViewModel.validateInput()) {
+                view.findNavController().navigate(R.id.action_loginFragment_to_mainActivity)
+            } else Toast.makeText(context, resources.getString(R.string.wrong_login_or_pass),
+                Toast.LENGTH_SHORT).show()
         }
     }
 
@@ -67,29 +62,31 @@ class LoginFragment : BaseFragment() {
         view.findNavController().navigate(R.id.action_loginFragment_to_signUpFragment)
     }
 
-    private fun validatePassword(password: String) {
-        val error = ValidationUtils.isPasswordValid(password)
-        if (error != "") {
-            loginViewModel.errorPass.value = error
-            binding.etPassword.requestFocus()
-        } else loginViewModel.errorPass.value = ""
-    }
-
-    private fun validateEmail(email : String) {
-        val error = ValidationUtils.isEmailValid(email)
-        if (error != "") {
-            loginViewModel.errorEmail.value = error
-            binding.etUsername.requestFocus()
-        } else loginViewModel.errorEmail.value = ""
+    private fun checkForSyntaxWarnings() : Boolean {
+        var isLoginFieldsValid = true
+        if (loginViewModel.login.value != null && loginViewModel.password.value != null) {
+            if (loginViewModel.errorEmail.value != "") {
+                etLogin.error = loginViewModel.errorEmail.value
+                isLoginFieldsValid = false
+            }
+        } else {
+            Toast.makeText(context, resources.getString(R.string.empty_fields), Toast.LENGTH_SHORT).show()
+            return false
+        }
+        if (loginViewModel.errorPass.value != "") {
+            etPassword.error = loginViewModel.errorPass.value
+            isLoginFieldsValid = false
+        }
+        return isLoginFieldsValid
     }
 
     private fun observeData() {
-        loginViewModel.password.observe(viewLifecycleOwner, androidx.lifecycle.Observer() {
-            validatePassword(it)
+        loginViewModel.password.observe(viewLifecycleOwner, androidx.lifecycle.Observer {
+            loginViewModel.validatePassword(it)
         })
 
-        loginViewModel.emailAddress.observe(viewLifecycleOwner, androidx.lifecycle.Observer() {
-            validateEmail(it)
+        loginViewModel.login.observe(viewLifecycleOwner, androidx.lifecycle.Observer {
+            loginViewModel.validateEmail(it)
         })
     }
 }
