@@ -25,7 +25,6 @@ class LoginViewModel : ViewModel() {
             password.value.toString())
     }
 
-
     // Validate input using ValidationUtils
     fun validatePassword(password: String) {
         val error = ValidationUtils.isPasswordValid(password)

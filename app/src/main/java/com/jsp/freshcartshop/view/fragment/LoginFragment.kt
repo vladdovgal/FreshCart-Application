@@ -53,7 +53,8 @@ class LoginFragment : BaseFragment() {
         if (checkForSyntaxWarnings())  {
             if (loginViewModel.validateInput()) {
                 view.findNavController().navigate(R.id.action_loginFragment_to_mainActivity)
-            } else Toast.makeText(context, "Wrong login or password", Toast.LENGTH_SHORT).show()
+            } else Toast.makeText(context, resources.getString(R.string.wrong_login_or_pass),
+                Toast.LENGTH_SHORT).show()
         }
     }
 
@@ -62,21 +63,21 @@ class LoginFragment : BaseFragment() {
     }
 
     private fun checkForSyntaxWarnings() : Boolean {
-        var flag = true
+        var isLoginFieldsValid = true
         if (loginViewModel.login.value != null && loginViewModel.password.value != null) {
             if (loginViewModel.errorEmail.value != "") {
                 etLogin.error = loginViewModel.errorEmail.value
-                flag = false
+                isLoginFieldsValid = false
             }
         } else {
-            Toast.makeText(context, "Input fields can't be empty", Toast.LENGTH_SHORT).show()
+            Toast.makeText(context, resources.getString(R.string.empty_fields), Toast.LENGTH_SHORT).show()
             return false
         }
         if (loginViewModel.errorPass.value != "") {
             etPassword.error = loginViewModel.errorPass.value
-            flag = false
+            isLoginFieldsValid = false
         }
-        return flag
+        return isLoginFieldsValid
     }
 
     private fun observeData() {
