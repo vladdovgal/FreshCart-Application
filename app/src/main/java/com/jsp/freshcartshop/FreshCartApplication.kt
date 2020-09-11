@@ -15,7 +15,7 @@ class FreshCartApplication : Application() {
         startKoin {
             androidLogger()
             androidContext(this@FreshCartApplication)
-            modules(loginViewModelModule, repositoryModule)
+            modules(listOf(viewModelModule, repositoryModule))
         }
     }
 }

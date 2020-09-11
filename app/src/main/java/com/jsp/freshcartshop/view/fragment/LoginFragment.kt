@@ -50,7 +50,7 @@ class LoginFragment : BaseFragment() {
     }
 
     private fun onSignInClick(view: View) {
-        if (validateSyntax())  {
+        if (checkForSyntaxWarnings())  {
             if (loginViewModel.validateInput()) {
                 view.findNavController().navigate(R.id.action_loginFragment_to_mainActivity)
             } else Toast.makeText(context, "Wrong login or password", Toast.LENGTH_SHORT).show()
@@ -61,7 +61,7 @@ class LoginFragment : BaseFragment() {
         view.findNavController().navigate(R.id.action_loginFragment_to_signUpFragment)
     }
 
-    private fun validateSyntax() : Boolean {
+    private fun checkForSyntaxWarnings() : Boolean {
         var flag = true
         if (loginViewModel.login.value != null && loginViewModel.password.value != null) {
             if (loginViewModel.errorEmail.value != "") {

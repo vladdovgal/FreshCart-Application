@@ -3,7 +3,7 @@ package com.jsp.freshcartshop.data.db
 import com.jsp.freshcartshop.data.repository.Login
 import com.jsp.freshcartshop.data.repository.UserAccount
 
-class LoginDaoFakeImpl : LoginDao {
+class FreshCartDao {
 
     private val accountsList = mutableListOf<UserAccount>()
 
@@ -12,13 +12,13 @@ class LoginDaoFakeImpl : LoginDao {
             Login("root@a.a", "root")))
     }
 
-    override fun getAccount(login: String): UserAccount {
+    fun getAccount(login: String): UserAccount {
         // todo getAccount data from database
         return accountsList.find { it.loginData.email == login || it.username == login }
             ?: UserAccount("","", Login("", ""))
     }
 
-    override fun insert(account: UserAccount) {
+    fun insert(account: UserAccount) {
         // todo insert user into database
     }
 }

@@ -2,26 +2,31 @@ package com.jsp.freshcartshop.viewmodel
 
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
-import com.jsp.freshcartshop.data.db.LoginDaoFakeImpl
-import com.jsp.freshcartshop.data.repository.LoginRepositoryImpl
+import com.jsp.freshcartshop.data.repository.FreshCartRepositoryImpl
 import com.jsp.freshcartshop.utils.ValidationUtils
+import org.koin.java.KoinJavaComponent.inject
 
 
-class LoginViewModel(private val loginRepository: LoginRepositoryImpl =
-                         LoginRepositoryImpl(LoginDaoFakeImpl())) : ViewModel() {
+class LoginViewModel : ViewModel() {
+    // Application Repository
+    private val appRepository by inject(FreshCartRepositoryImpl::class.java)
+
+    // Login data
     var login = MutableLiveData<String>()
     var password = MutableLiveData<String>()
+
+    // Warnings data
     var errorPass = MutableLiveData<String>()
     var errorEmail = MutableLiveData<String>()
 
-    // call repository to check if such user exists
+    // Call repository to check if such user exists
     fun validateInput(): Boolean {
-        return loginRepository.isValidAccount(login.value.toString(),
+        return appRepository.loginUser(login.value.toString(),
             password.value.toString())
     }
 
 
-    // validate input using ValidationUtils
+    // Validate input using ValidationUtils
     fun validatePassword(password: String) {
         val error = ValidationUtils.isPasswordValid(password)
         if (error != "") {
