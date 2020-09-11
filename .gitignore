@@ -36,7 +36,10 @@ captures/
 # Intellij
 *.iml
 # IDEA project files
-.idea/
+.idea
 
 # Keystore files
 *.jks
+
+.externalNativeBuild
+.cxx
