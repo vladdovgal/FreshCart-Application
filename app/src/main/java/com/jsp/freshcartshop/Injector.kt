@@ -14,5 +14,5 @@ val viewModelModule =  module {
 
 val repositoryModule = module {
     single { FreshCartDao() }
-    single { FreshCartRepositoryImpl(get()) }
+    single { FreshCartRepositoryImpl(get<FreshCartDao>()) }
 }
