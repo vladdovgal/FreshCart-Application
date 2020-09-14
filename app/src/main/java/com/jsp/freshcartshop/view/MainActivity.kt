@@ -37,8 +37,10 @@ class MainActivity : BaseActivity() {
         }
 
         cartNavButton.setOnClickListener {
-            findNavController(R.id.mainActivityHost).navigate(R.id.shoppingCartFragment)
+            findNavController(R.id.mainActivityHost).navigate(R.id.productFragment)
         }
+
+
     }
 
     private fun showNavMenu() {

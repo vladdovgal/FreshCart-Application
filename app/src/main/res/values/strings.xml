@@ -30,4 +30,6 @@
     <string name="short_pass">Password must be 6 digits or longer</string>
     <string name="empty_fields">Input fields can\'t be empty</string>
     <string name="wrong_login_or_pass">Wrong login or password</string>
+    <string name="add_to_cart">Add to Cart</string>
+    <string name="empty_string" />
 </resources>

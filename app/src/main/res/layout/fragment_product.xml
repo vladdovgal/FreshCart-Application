@@ -1,9 +1,138 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    tools:context=".view.fragment.ProductFragment"
-    >
 
-</FrameLayout>
+<layout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+    <data>
+
+    </data>
+
+    <androidx.coordinatorlayout.widget.CoordinatorLayout
+        android:id="@+id/coordinator_layout"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/colorBackground"
+        >
+
+        <LinearLayout
+            android:id="@+id/product_image_card"
+            android:layout_width="match_parent"
+            android:layout_height="300dp"
+            android:layout_marginBottom="388dp"
+            app:layout_constraintVertical_bias="0.0"
+            android:orientation="vertical"
+            android:background="@drawable/bc_product_cardview"
+            />
+        <androidx.appcompat.widget.Toolbar
+            android:id="@+id/toolbar_product"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="1.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            android:background="@drawable/bc_toolbar_base"
+            android:backgroundTint="@color/colorWhite"
+            >
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                >
+
+                <ImageButton
+                    android:id="@+id/arrowBack"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    android:background="@drawable/ic_arrow_back_primary"
+                    android:backgroundTint="@color/colorPrimary"
+                    android:contentDescription="@string/arrow_back"
+                    />
+
+                <ImageButton
+                    android:id="@+id/navMenu"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    app:layout_constraintBottom_toBottomOf="@id/arrowBack"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintHorizontal_chainStyle="packed"
+                    android:layout_marginEnd="@dimen/navigation_menu_margin_end"
+                    android:background="@drawable/ic_nav_menu_primary"
+                    android:backgroundTint="@color/colorPrimary"
+                    android:contentDescription="@string/navigation_menu"
+                    />
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+        </androidx.appcompat.widget.Toolbar>
+        <androidx.cardview.widget.CardView
+            android:id="@+id/fab_add_to_cart"
+            android:layout_width="wrap_content"
+            android:layout_marginEnd="50dp"
+            android:backgroundTint="@color/colorPrimary"
+            app:layout_anchorGravity="right|bottom"
+            style="@style/ProductButtonStyle"
+            >
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:padding="10dp"
+                android:text="@string/add_to_cart"
+                android:gravity="center"
+                android:fontFamily="@font/poppins_medium"
+                android:textColor="@color/colorWhite"
+                android:textSize="18sp"
+                android:textStyle="bold"
+                android:layout_marginEnd="10dp"
+                android:layout_marginStart="10dp"
+                />
+
+        </androidx.cardview.widget.CardView>
+
+        <androidx.cardview.widget.CardView
+            android:id="@+id/fab_items_count"
+            android:layout_width="wrap_content"
+            android:layout_marginStart="50dp"
+            android:backgroundTint="@color/colorWhite"
+            app:layout_anchorGravity="left|bottom"
+            style="@style/ProductButtonStyle"
+            >
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="horizontal"
+                android:padding="10dp">
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="start|center"
+                    android:src="@drawable/ic_count_minus"
+                    />
+
+                <TextView
+                    android:layout_width="65dp"
+                    android:layout_height="wrap_content"
+                    android:text="1"
+                    android:layout_gravity="center"
+                    android:textSize="@dimen/large_font"
+                    android:textColor="@color/colorPrimaryDark"
+                    android:textStyle="bold"
+                    android:textAllCaps="false"
+                    android:gravity="center"
+                    android:fontFamily="@font/poppins_medium"/>
+
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="end|center"
+                    android:src="@drawable/ic_count_plus" />
+            </LinearLayout>
+
+        </androidx.cardview.widget.CardView>
+    </androidx.coordinatorlayout.widget.CoordinatorLayout>
+</layout>
