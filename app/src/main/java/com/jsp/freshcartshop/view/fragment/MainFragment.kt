@@ -14,6 +14,7 @@ import com.jsp.freshcartshop.databinding.FragmentMainBinding
 import com.jsp.freshcartshop.view.MainActivity
 import com.jsp.freshcartshop.viewmodel.MainViewModel
 import kotlinx.android.synthetic.main.fragment_main.*
+import kotlinx.coroutines.launch
 import org.koin.android.ext.android.get
 
 class MainFragment : BaseFragment() {
@@ -36,24 +37,19 @@ class MainFragment : BaseFragment() {
         super.onViewCreated(view, savedInstanceState)
         (activity as MainActivity).setToolBarTitle(getString(R.string.toolbar_title))
         init()
+        bindUI()
     }
 
-    fun init() {
-        initViewPager()
-        initRecyrlerView()
+    private fun init() {
         setDiscount(15)
     }
 
-    fun initViewPager() {
+    private fun bindUI() = launch  {
         tdMainViewPager.setupWithViewPager(vpMainProducts, true)
-        mainViewModel.getProducts()
         mainViewModel.products.observe(viewLifecycleOwner, Observer { products ->
             binding.vpMainProducts.adapter = ProductPagerAdapter(requireContext(), products)
         })
-    }
 
-    fun initRecyrlerView() {
-        mainViewModel.getProducts()
         mainViewModel.products.observe(viewLifecycleOwner, Observer { products ->
             rvMainProducts.also {
                 it.layoutManager = GridLayoutManager(activity, 3)
