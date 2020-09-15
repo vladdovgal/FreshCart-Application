@@ -45,4 +45,22 @@
         <item name="android:layout_height">50dp</item>
     </style>
 
+    <style name="ProductNamePriceStyle">
+        <item name="fontFamily">@font/poppins_medium</item>
+        <item name="android:textColor">@color/colorPrimary</item>
+        <item name="android:textSize">25dp</item>
+        <item name="android:textStyle">bold</item>
+    </style>
+
+
+    <!--    Rating Bar -->
+    <style name="MyRatingBar" parent="Theme.AppCompat">
+        <item name="colorControlNormal">@color/colorPrimary</item>
+        <item name="colorControlActivated">@color/colorPrimary</item>
+        <item name="colorPrimary">@color/colorPrimary</item>
+    </style>
+
+    <style name="MyRatingBarStyle" parent="Widget.AppCompat.RatingBar.Small">
+        <item name="ratingBarStyle">@style/MyRatingBarStyle</item>
+    </style>
 </resources>

@@ -3,10 +3,8 @@
 <layout
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools">
-    <data>
-
-    </data>
+    xmlns:tools="http://schemas.android.com/tools"
+    >
 
     <androidx.coordinatorlayout.widget.CoordinatorLayout
         android:id="@+id/coordinator_layout"
@@ -14,16 +12,38 @@
         android:layout_height="match_parent"
         android:background="@color/colorBackground"
         >
-
-        <LinearLayout
+        <androidx.constraintlayout.widget.ConstraintLayout
             android:id="@+id/product_image_card"
             android:layout_width="match_parent"
-            android:layout_height="300dp"
+            android:layout_height="@dimen/product_card_height"
             android:layout_marginBottom="388dp"
             app:layout_constraintVertical_bias="0.0"
             android:orientation="vertical"
             android:background="@drawable/bc_product_cardview"
-            />
+            >
+
+            <androidx.viewpager.widget.ViewPager
+                android:id="@+id/product_view_pager"
+                android:layout_width="wrap_content"
+                android:layout_height="100dp"
+                android:layout_weight="90"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="parent"/>
+            <com.google.android.material.tabs.TabLayout
+                android:id="@+id/tab_layout_product_viewpager"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:tabGravity="center"
+                app:layout_constraintTop_toBottomOf="@id/product_view_pager"
+                app:layout_constraintEnd_toEndOf="parent"
+                android:background="@android:color/transparent"
+                app:tabBackground="@drawable/tab_selector"
+                app:tabIndicatorHeight="0dp"
+                app:tabMaxWidth="15dp"
+                />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
         <androidx.appcompat.widget.Toolbar
             android:id="@+id/toolbar_product"
             android:layout_width="match_parent"
@@ -68,6 +88,7 @@
             </androidx.constraintlayout.widget.ConstraintLayout>
 
         </androidx.appcompat.widget.Toolbar>
+
         <androidx.cardview.widget.CardView
             android:id="@+id/fab_add_to_cart"
             android:layout_width="wrap_content"
@@ -107,10 +128,11 @@
                 android:layout_height="match_parent"
                 android:orientation="horizontal"
                 android:padding="10dp">
-                <ImageView
+                <ImageButton
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_gravity="start|center"
+                    android:background="@color/colorWhite"
                     android:src="@drawable/ic_count_minus"
                     />
 
@@ -126,13 +148,107 @@
                     android:gravity="center"
                     android:fontFamily="@font/poppins_medium"/>
 
-                <ImageView
+                <ImageButton
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_gravity="end|center"
+                    android:background="@color/colorWhite"
                     android:src="@drawable/ic_count_plus" />
             </LinearLayout>
 
         </androidx.cardview.widget.CardView>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:layout_marginTop="@dimen/product_card_height"
+            android:paddingStart="@dimen/padding_medium"
+            android:paddingEnd="@dimen/padding_medium"
+            android:paddingTop="60dp"
+            >
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <TextView
+                    android:id="@+id/product_name"
+                    style="@style/ProductNamePriceStyle"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/poppins_medium"
+                    android:text="Coconut"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <TextView
+                    android:id="@+id/product_price"
+                    style="@style/ProductNamePriceStyle"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="$20.00"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <RatingBar
+                    android:id="@+id/ratingBar_indicator"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:numStars="5"
+                    app:layout_constraintTop_toBottomOf="@id/product_name"
+                    app:layout_constraintStart_toStartOf="parent"
+                    android:stepSize="0.5"
+                    android:rating="4.5"
+                    android:scaleY="1.2"
+                    android:scaleX="1.2"
+                    android:transformPivotX="0dp"
+                    style="?attr/ratingBarStyleSmall"
+                    android:layout_gravity="center"/>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    app:layout_constraintStart_toEndOf="@id/ratingBar_indicator"
+                    app:layout_constraintTop_toBottomOf="@id/product_name"
+                    android:text="204 review"
+                    android:layout_marginStart="25dp"
+                    android:fontFamily="@font/poppins_medium"
+                    android:textStyle="bold"/>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/product_price"
+                    android:fontFamily="@font/poppins_medium"
+                    android:textStyle="bold"
+                    android:text="927 in stock"/>
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+            <TextView
+                android:id="@+id/product_description"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/poppins_medium"
+                android:layout_marginTop="@dimen/padding_medium"
+                android:text="@string/product_description"
+                />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:padding="10dp"
+                android:paddingStart="20dp"
+                android:paddingEnd="20dp"
+                android:layout_marginTop="@dimen/padding_small"
+                android:background="@drawable/bg_product_card_button"
+                android:backgroundTint="@color/colorWhite"
+                android:fontFamily="@font/poppins_medium"
+                android:text="cash on delivery avaliable all below $100"
+                android:textColor="@color/colorPrimary"
+                android:textSize="14dp"/>
+        </LinearLayout>
+
     </androidx.coordinatorlayout.widget.CoordinatorLayout>
 </layout>
