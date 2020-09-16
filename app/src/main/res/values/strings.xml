@@ -30,4 +30,11 @@
     <string name="short_pass">Password must be 6 digits or longer</string>
     <string name="empty_fields">Input fields can\'t be empty</string>
     <string name="wrong_login_or_pass">Wrong login or password</string>
+    <!-- Main Fragment -->
+    <string name="deal_of_the_day">Deal of the Day</string>
+    <string name="all_products">All products</string>
+    <string name="discount">Get %1$d$ Off</string>
+    <string name="discount_description">On your first order</string>
+    <string name="shop_now">Shop Now</string>
+
 </resources>
