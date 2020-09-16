@@ -9,18 +9,16 @@ import com.jsp.freshcartshop.model.Product
 class FreshCartDao {
 
     private val productList = mutableListOf<Product>()
-    private val products = MutableLiveData<List<Product>>()
     private val accountsList = mutableListOf<UserAccount>()
 
     init {
         fillProducts()
-        products.postValue(productList)
         accountsList.add(UserAccount("John Root", "root",
             Login("root@a.a", "root")
         ))
     }
 
-    fun getAllProducts() = products
+    fun getAllProducts() = productList
 
     private fun fillProducts() {
         productList.add(Product(1, "Water Lemon", 15, 20, R.drawable.water_lemon))

@@ -52,6 +52,14 @@
                         android:textColor="?attr/primaryColor"
                         />
 
+                    <ProgressBar
+                        android:id="@+id/pbRecommendProducts"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center_horizontal"
+                        style="?android:attr/progressBarStyleLarge"
+                        android:visibility="gone"/>
+
                     <androidx.viewpager.widget.ViewPager
                         android:id="@+id/vpMainProducts"
                         android:layout_width="wrap_content"
@@ -89,6 +97,15 @@
                         android:text="@string/all_products"
                         android:textSize="@dimen/large_font"
                         android:textColor="?attr/primaryColor"
+                        />
+
+                    <ProgressBar
+                        android:id="@+id/pbAllProducts"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center_horizontal"
+                        style="?android:attr/progressBarStyleLarge"
+                        android:visibility="gone"
                         />
 
                     <androidx.recyclerview.widget.RecyclerView

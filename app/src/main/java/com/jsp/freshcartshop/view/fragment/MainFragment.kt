@@ -4,6 +4,7 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.ProgressBar
 import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.Observer
 import androidx.recyclerview.widget.GridLayoutManager
@@ -44,16 +45,28 @@ class MainFragment : BaseFragment() {
         setDiscount(15)
     }
 
-    private fun bindUI() = launch  {
+    private fun bindUI() {
+        mainViewModel.loadProducts()
+
         tdMainViewPager.setupWithViewPager(vpMainProducts, true)
-        mainViewModel.products.observe(viewLifecycleOwner, Observer { products ->
+        mainViewModel.productList.observe(viewLifecycleOwner, Observer { products ->
             binding.vpMainProducts.adapter = ProductPagerAdapter(requireContext(), products)
         })
 
-        mainViewModel.products.observe(viewLifecycleOwner, Observer { products ->
+        mainViewModel.productList.observe(viewLifecycleOwner, Observer { products ->
             rvMainProducts.also {
                 it.layoutManager = GridLayoutManager(activity, 3)
                 it.adapter = ProductRecyclerAdapter().also { it.addAll(products) }
+            }
+        })
+
+        mainViewModel.isLoading.observe(viewLifecycleOwner, Observer { isLoading ->
+            if (isLoading) {
+                pbRecommendProducts.visibility = ProgressBar.VISIBLE
+                pbAllProducts.visibility = ProgressBar.VISIBLE
+            } else {
+                pbRecommendProducts.visibility = ProgressBar.GONE
+                pbAllProducts.visibility = ProgressBar.GONE
             }
         })
     }

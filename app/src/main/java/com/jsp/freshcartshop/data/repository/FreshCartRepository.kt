@@ -9,5 +9,5 @@ interface FreshCartRepository {
 
     fun insertUser(fullName : String, username: String, login: Login) : Unit
 
-    fun getAllProducts(): LiveData<List<Product>>
+    suspend fun getProducts(): List<Product>?
 }

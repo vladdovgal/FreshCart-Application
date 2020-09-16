@@ -1,8 +1,11 @@
 package com.jsp.freshcartshop.data.repository
 
-import androidx.lifecycle.LiveData
 import com.jsp.freshcartshop.data.db.dao.FreshCartDao
 import com.jsp.freshcartshop.model.Product
+import kotlinx.coroutines.delay
+import kotlin.coroutines.resume
+import kotlin.coroutines.resumeWithException
+import kotlin.coroutines.suspendCoroutine
 
 class FreshCartRepositoryImpl(private val applicationDao: FreshCartDao) : FreshCartRepository {
 
@@ -16,7 +19,16 @@ class FreshCartRepositoryImpl(private val applicationDao: FreshCartDao) : FreshC
         applicationDao.insert(account)
     }
 
-    override fun getAllProducts(): LiveData<List<Product>> {
-        return applicationDao.getAllProducts()
+    override suspend fun getProducts(): List<Product>? {
+        //simulation of data loading
+        delay(3000)
+        return suspendCoroutine { continuation ->
+            val response = applicationDao.getAllProducts()
+            if (response != null) {
+                continuation.resume(response)
+            } else {
+                continuation.resumeWithException(Exception("Can't load the products"))
+            }
+        }
     }
 }
