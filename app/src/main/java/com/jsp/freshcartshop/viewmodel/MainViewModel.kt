@@ -3,7 +3,6 @@ package com.jsp.freshcartshop.viewmodel
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
-import com.jsp.freshcartshop.Coroutines
 import com.jsp.freshcartshop.data.repository.FreshCartRepositoryImpl
 import com.jsp.freshcartshop.model.Product
 import kotlinx.coroutines.Job
@@ -23,17 +22,17 @@ class MainViewModel : ViewModel() {
         get() = _product
 
     fun getProducts() {
-        job = Coroutines.ioThenMain(
-            { freshCartRepository.getAllProducts()},
-            {_products.value = it?.value}
-        )
+//        job = Coroutines.ioThenMain(
+//            { freshCartRepository.getAllProducts()},
+//            {_products.value = it?.value}
+//        )
     }
 
     fun getProductById(id : Long) {
-        job = Coroutines.ioThenMain(
-            {freshCartRepository.getProductById(id)},
-            {_product.value = it?.value}
-        )
+//        job = Coroutines.ioThenMain(
+//            {freshCartRepository.getProductById(id)},
+//            {_product.value = it?.value}
+//        )
     }
 
     override fun onCleared() {

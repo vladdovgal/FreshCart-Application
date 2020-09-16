@@ -16,11 +16,13 @@ class FreshCartDao {
     init {
         accountsList.add(UserAccount("John Root", "root",
             Login("root@a.a", "root")))
+        fillProducts()
     }
 
     fun getAllProducts() = products
-        private fun fillProducts() {
-            productList.add(Product(2, "Coconut", 20, 25, R.drawable.coconut))
+
+    private fun fillProducts() {
+        productList.add(Product(2, "Coconut", 20, 25, R.drawable.coconut))
     }
 
     fun getAccount(login: String): UserAccount {
@@ -34,6 +36,7 @@ class FreshCartDao {
     }
 
     fun getProduct(id: Long): LiveData<Product> {
+        // todo get product by id from database
         val product = products.value?.find { it.id == id }
         return MutableLiveData<Product>(product)
     }

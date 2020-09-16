@@ -1,6 +1,5 @@
 package com.jsp.freshcartshop.data.repository
 
-import androidx.lifecycle.LiveData
 import com.jsp.freshcartshop.model.Product
 
 interface FreshCartRepository {
@@ -8,7 +7,7 @@ interface FreshCartRepository {
 
     fun insertUser(fullName : String, username: String, login: Login) : Unit
 
-    fun getAllProducts(): LiveData<List<Product>>
+    suspend fun getAllProducts(): List<Product>?
 
-    fun getProductById(id : Long) : LiveData<Product>
+    suspend fun getProductById(id : Long) : Product?
 }

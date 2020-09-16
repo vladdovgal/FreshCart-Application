@@ -1,6 +1,5 @@
 package com.jsp.freshcartshop.data.repository
 
-import androidx.lifecycle.LiveData
 import com.jsp.freshcartshop.data.db.FreshCartDao
 import com.jsp.freshcartshop.model.Product
 
@@ -15,12 +14,12 @@ class FreshCartRepositoryImpl(private val applicationDao: FreshCartDao) : FreshC
         applicationDao.insert(account)
     }
 
-    override fun getAllProducts(): LiveData<List<Product>> {
-        return applicationDao.getAllProducts()
+    override suspend fun getAllProducts(): List<Product>? {
+        return applicationDao.getAllProducts().value
     }
 
-    override fun getProductById(id: Long): LiveData<Product> {
-        return applicationDao.getProduct(id)
+    override suspend fun getProductById(id: Long): Product? {
+        return applicationDao.getProduct(id).value
     }
 
 }

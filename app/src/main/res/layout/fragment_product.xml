@@ -1,22 +1,31 @@
 <?xml version="1.0" encoding="utf-8"?>
-
 <layout
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     >
 
+    <data>
+        <variable
+            name="mainViewModel"
+            type="com.jsp.freshcartshop.viewmodel.MainViewModel" />
+    </data>
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/colorBackground">
+
     <androidx.coordinatorlayout.widget.CoordinatorLayout
         android:id="@+id/coordinator_layout"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:background="@color/colorBackground"
+        android:layout_height="wrap_content"
         >
+
         <androidx.constraintlayout.widget.ConstraintLayout
             android:id="@+id/product_image_card"
             android:layout_width="match_parent"
             android:layout_height="@dimen/product_card_height"
-            android:layout_marginBottom="388dp"
             app:layout_constraintVertical_bias="0.0"
             android:orientation="vertical"
             android:background="@drawable/bc_product_cardview"
@@ -44,50 +53,6 @@
                 />
 
         </androidx.constraintlayout.widget.ConstraintLayout>
-        <androidx.appcompat.widget.Toolbar
-            android:id="@+id/toolbar_product"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="1.0"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            android:background="@drawable/bc_toolbar_base"
-            android:backgroundTint="@color/colorWhite"
-            >
-
-            <androidx.constraintlayout.widget.ConstraintLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                >
-
-                <ImageButton
-                    android:id="@+id/arrowBack"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toTopOf="parent"
-                    android:background="@drawable/ic_arrow_back_primary"
-                    android:backgroundTint="@color/colorPrimary"
-                    android:contentDescription="@string/arrow_back"
-                    />
-
-                <ImageButton
-                    android:id="@+id/navMenu"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    app:layout_constraintBottom_toBottomOf="@id/arrowBack"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintHorizontal_chainStyle="packed"
-                    android:layout_marginEnd="@dimen/navigation_menu_margin_end"
-                    android:background="@drawable/ic_nav_menu_primary"
-                    android:backgroundTint="@color/colorPrimary"
-                    android:contentDescription="@string/navigation_menu"
-                    />
-
-            </androidx.constraintlayout.widget.ConstraintLayout>
-
-        </androidx.appcompat.widget.Toolbar>
 
         <androidx.cardview.widget.CardView
             android:id="@+id/fab_add_to_cart"
@@ -165,8 +130,10 @@
             android:layout_marginTop="@dimen/product_card_height"
             android:paddingStart="@dimen/padding_medium"
             android:paddingEnd="@dimen/padding_medium"
-            android:paddingTop="60dp"
+            android:paddingTop="@dimen/padding_big"
+            android:paddingBottom="@dimen/padding_small"
             >
+
             <androidx.constraintlayout.widget.ConstraintLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content">
@@ -231,7 +198,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:fontFamily="@font/poppins_medium"
-                android:layout_marginTop="@dimen/padding_medium"
+                android:layout_marginTop="@dimen/padding_small"
                 android:text="@string/product_description"
                 />
 
@@ -251,4 +218,5 @@
         </LinearLayout>
 
     </androidx.coordinatorlayout.widget.CoordinatorLayout>
+</ScrollView>
 </layout>
