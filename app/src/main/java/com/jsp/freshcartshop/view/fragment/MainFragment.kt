@@ -38,14 +38,14 @@ class MainFragment : BaseFragment() {
         super.onViewCreated(view, savedInstanceState)
         (activity as MainActivity).setToolBarTitle(getString(R.string.toolbar_title))
         init()
-        bindUI()
     }
 
     private fun init() {
+        observeData()
         setDiscount(15)
     }
 
-    private fun bindUI() {
+    private fun observeData() {
         mainViewModel.loadProducts()
 
         tdMainViewPager.setupWithViewPager(vpMainProducts, true)

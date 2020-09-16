@@ -1,6 +1,5 @@
 package com.jsp.freshcartshop.data.db.dao
 
-import androidx.lifecycle.MutableLiveData
 import com.jsp.freshcartshop.R
 import com.jsp.freshcartshop.data.repository.Login
 import com.jsp.freshcartshop.data.repository.UserAccount
