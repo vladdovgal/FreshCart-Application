@@ -1,4 +1,4 @@
-package com.jsp.freshcartshop.data.db
+package com.jsp.freshcartshop.data.db.dao
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
@@ -10,19 +10,25 @@ import com.jsp.freshcartshop.model.Product
 class FreshCartDao {
 
     private val productList = mutableListOf<Product>()
-    private val products = MutableLiveData<List<Product>>()
     private val accountsList = mutableListOf<UserAccount>()
 
     init {
-        accountsList.add(UserAccount("John Root", "root",
-            Login("root@a.a", "root")))
         fillProducts()
+        accountsList.add(UserAccount("John Root", "root",
+            Login("root@a.a", "root")
+        ))
     }
 
-    fun getAllProducts() = products
+    fun getAllProducts() = productList
 
     private fun fillProducts() {
+        productList.add(Product(1, "Water Lemon", 15, 20, R.drawable.water_lemon))
         productList.add(Product(2, "Coconut", 20, 25, R.drawable.coconut))
+        productList.add(Product(3, "Pear", 20, 22, R.drawable.pear))
+        productList.add(Product(4, "Guava", 15, 17, R.drawable.guava))
+        productList.add(Product(5, "Apple", 15, 20, R.drawable.apple))
+        productList.add(Product(6, "Bitter Melon", 18, 22, R.drawable.bitter_melon))
+        productList.add(Product(7, "Brinjal", 14, 18, R.drawable.brinjal))
     }
 
     fun getAccount(login: String): UserAccount {
@@ -31,13 +37,13 @@ class FreshCartDao {
             ?: UserAccount("","", Login("", ""))
     }
 
-    fun insert(account: UserAccount) {Int
-        // todo insert user intInto database
+    fun insert(account: UserAccount) {
+        // todo insert user into database
     }
 
     fun getProduct(id: Long): LiveData<Product> {
         // todo get product by id from database
-        val product = products.value?.find { it.id == id }
+        val product = productList.find { it.id == id }
         return MutableLiveData<Product>(product)
     }
 }

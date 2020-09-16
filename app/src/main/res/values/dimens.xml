@@ -2,7 +2,7 @@
 <resources>
     <!--    Font sizes-->
     <dimen name="small_font">14sp</dimen>
-    <dimen name="medium_font"></dimen>
+    <dimen name="medium_font">18sp</dimen>
     <dimen name="large_font">22sp</dimen>
     <dimen name="extra_large_font">52sp</dimen>
 
@@ -11,14 +11,21 @@
     <dimen name="padding_medium">30dp</dimen>
     <dimen name="padding_extra_small">3dp</dimen>
 
-    <dimen name="navigation_menu_margin_end">20dp</dimen>
+    <!--    Margins -->
+    <dimen name="margin_extra_small">5dp</dimen>
+    <dimen name="margin_small">10dp</dimen>
+    <dimen name="margin_medium">20dp</dimen>
+
     <dimen name="toolbar_title">20sp</dimen>
     <dimen name="toolbar_corner_radius">35dp</dimen>
     <dimen name="product_card_corner_radius">40dp</dimen>
     <dimen name="big_button_padding">15dp</dimen>
-    <dimen name="fragment_main_margin_bottom">85dp</dimen>
-    <dimen name="product_card_height">310dp</dimen>
+    <dimen name="margin_bottom_above_bottom_app_bar">85dp</dimen>
+    <dimen name="margin_top_under_toolbar">20dp</dimen>
     <dimen name="tab_indicator_size">30dp</dimen>
     <dimen name="padding_big">50dp</dimen>
 
+    <!-- Main Fragment -->
+    <dimen name="cardview_corner_radius">20dp</dimen>
+    <dimen name="product_card_height">310dp</dimen>
 </resources>

@@ -1,9 +1,14 @@
 package com.jsp.freshcartshop.data.repository
 
-import com.jsp.freshcartshop.data.db.FreshCartDao
 import com.jsp.freshcartshop.model.Product
+import com.jsp.freshcartshop.data.db.dao.FreshCartDao
+import kotlinx.coroutines.delay
+import kotlin.coroutines.resume
+import kotlin.coroutines.resumeWithException
+import kotlin.coroutines.suspendCoroutine
 
 class FreshCartRepositoryImpl(private val applicationDao: FreshCartDao) : FreshCartRepository {
+
     override fun loginUser(login : String, password : String) : Boolean {
         val userAccount = applicationDao.getAccount(login)
         return userAccount.loginData.password == password
@@ -14,12 +19,20 @@ class FreshCartRepositoryImpl(private val applicationDao: FreshCartDao) : FreshC
         applicationDao.insert(account)
     }
 
-    override suspend fun getAllProducts(): List<Product>? {
-        return applicationDao.getAllProducts().value
-    }
-
     override suspend fun getProductById(id: Long): Product? {
         return applicationDao.getProduct(id).value
     }
 
+    override suspend fun getProducts(): List<Product>? {
+        // todo simulation of data loading
+        delay(2500)
+        return suspendCoroutine { continuation ->
+            val response = applicationDao.getAllProducts()
+            if (response != null) {
+                continuation.resume(response)
+            } else {
+                continuation.resumeWithException(Exception("Can't load the products"))
+            }
+        }
+    }
 }
