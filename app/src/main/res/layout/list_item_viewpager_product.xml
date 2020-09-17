@@ -14,7 +14,7 @@
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_height="150dp"
         android:orientation="vertical"
         android:gravity="center_vertical"
         >
@@ -90,18 +90,18 @@
                     tools:text="$15"
                     />
 
-                <ImageView
+                <com.google.android.material.imageview.ShapeableImageView
                     android:id="@+id/imgProductRecommendImage"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
+                    android:layout_width="120dp"
+                    android:layout_height="100dp"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintTop_toTopOf="parent"
-                    app:imageResource="@{product.image}"
-                    android:adjustViewBounds="true"
-                    android:maxWidth="150dp"
-                    android:maxHeight="150dp"
-                    tools:src="@drawable/water_lemon"
+                    android:layout_margin="@dimen/margin_small"
+                    app:image="@{product.image}"
+                    app:shapeAppearanceOverlay="@style/ImageViewRounded"
+                    android:scaleType="centerCrop"
+                    tools:src="@drawable/img_placeholder"
                     />
 
             </androidx.constraintlayout.widget.ConstraintLayout>
