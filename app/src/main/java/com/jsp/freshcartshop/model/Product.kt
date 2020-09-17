@@ -1,8 +1,8 @@
 package com.jsp.freshcartshop.model
 
 data class Product(
-    val id: Long,
+    val id: Int,
     val name: String,
     val price: Int,
     val oldPrice: Int,
-    val image: Int)
+    val images: List<Int>)

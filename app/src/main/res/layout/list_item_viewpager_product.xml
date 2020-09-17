@@ -97,7 +97,7 @@
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintTop_toTopOf="parent"
-                    app:imageResource="@{product.image}"
+                    app:imageResource="@{product.images[0]}"
                     android:adjustViewBounds="true"
                     android:maxWidth="150dp"
                     android:maxHeight="150dp"

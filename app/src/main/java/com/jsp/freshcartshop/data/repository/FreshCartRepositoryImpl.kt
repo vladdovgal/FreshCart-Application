@@ -1,7 +1,7 @@
 package com.jsp.freshcartshop.data.repository
 
-import com.jsp.freshcartshop.model.Product
 import com.jsp.freshcartshop.data.db.dao.FreshCartDao
+import com.jsp.freshcartshop.model.Product
 import kotlinx.coroutines.delay
 import kotlin.coroutines.resume
 import kotlin.coroutines.resumeWithException
@@ -19,8 +19,8 @@ class FreshCartRepositoryImpl(private val applicationDao: FreshCartDao) : FreshC
         applicationDao.insert(account)
     }
 
-    override suspend fun getProductById(id: Long): Product? {
-        return applicationDao.getProduct(id).value
+    override suspend fun getProductById(id: Int): Product? {
+        return applicationDao.getProduct(id)
     }
 
     override suspend fun getProducts(): List<Product>? {

@@ -1,16 +1,14 @@
 package com.jsp.freshcartshop.viewmodel
 
 
-import androidx.lifecycle.LiveData
+import android.util.Log
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.jsp.freshcartshop.data.repository.FreshCartRepositoryImpl
 import com.jsp.freshcartshop.model.Product
-import kotlinx.coroutines.Job
 import kotlinx.coroutines.launch
 import org.koin.java.KoinJavaComponent.inject
-import java.lang.Exception
 
 
 class MainViewModel : ViewModel() {
@@ -22,6 +20,10 @@ class MainViewModel : ViewModel() {
     val productList = MutableLiveData<List<Product>>()
     val errorMessageData = MutableLiveData<String>()
     val product = MutableLiveData<Product>()
+
+    init {
+        Log.d("myLogs", "ViewModel created : product : ${product.value.toString()}")
+    }
 
     fun loadProducts() {
         viewModelScope.launch {
@@ -39,7 +41,17 @@ class MainViewModel : ViewModel() {
         }
     }
 
-    fun loadProduct() {
-        // todo implement load of product in VM
+    fun loadProduct(id : Int) {
+        viewModelScope.launch {
+            try {
+                val response = freshCartRepository.getProductById(id)
+                Log.d("myLogs", "Response: ${response.toString()}")
+                product.value = response
+                Log.d("myLogs", "Product in ViewModel: ${product.value.toString()}")
+            } catch (e: Exception) {
+                e.printStackTrace()
+                errorMessageData.postValue(e.message)
+            }
+        }
     }
 }

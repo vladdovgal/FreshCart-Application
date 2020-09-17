@@ -26,6 +26,8 @@ class ProductPagerAdapter(private val context: Context, private val products: Li
         return binding.root
     }
 
+
+
     override fun destroyItem(container: ViewGroup, position: Int, `object`: Any) {
         container.removeView(`object` as View)
     }

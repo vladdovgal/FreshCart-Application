@@ -10,6 +10,8 @@ import com.jsp.freshcartshop.model.Product
 
 class ProductRecyclerAdapter : BaseRecyclerAdapter<Product, ProductRecyclerAdapter.ProductViewHolder>() {
 
+    var onItemClick : ((Product) -> Unit)? = null
+
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int) =
         ProductViewHolder(
             DataBindingUtil.inflate(
@@ -25,7 +27,14 @@ class ProductRecyclerAdapter : BaseRecyclerAdapter<Product, ProductRecyclerAdapt
     }
 
     inner class ProductViewHolder(val listItemRecyclerViewProductBinding: ListItemRecyclerviewProductBinding)
-        : RecyclerView.ViewHolder(listItemRecyclerViewProductBinding.root)
+        : RecyclerView.ViewHolder(listItemRecyclerViewProductBinding.root) {
+        init {
+            itemView.setOnClickListener {
+                onItemClick?.invoke(items[adapterPosition])
+            }
+        }
+    }
+
 
 }
 
