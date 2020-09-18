@@ -60,12 +60,7 @@ class MainFragment : BaseFragment() {
                 it.adapter = ProductRecyclerAdapter().also { it.addAll(products) }
                 // Get clicked item's id
                 (it.adapter as ProductRecyclerAdapter).onItemClick = { product ->
-                    // navigate to Product Fragment
-//                    val bundle = Bundle()
-//                    bundle.putLong("productId", product.id)
                     val action = MainFragmentDirections.actionMainFragmentToProductFragment(product.id)
-
-//                    findNavController().navigate(R.id.productFragment, bundle)
                     findNavController().navigate(action)
                 }
             }
