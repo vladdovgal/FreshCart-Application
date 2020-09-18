@@ -7,7 +7,7 @@ import android.view.ViewGroup
 import androidx.viewpager.widget.PagerAdapter
 import com.jsp.freshcartshop.databinding.PhotoItemViewpagerProductBinding
 
-class ProductPhotosAdapter(private val context : Context, private val images : List<Int>) : PagerAdapter() {
+class ProductPhotosAdapter(private val context : Context, private val images : List<String>) : PagerAdapter() {
 
     override fun isViewFromObject(view: View, `object`: Any): Boolean {
         return view == `object`

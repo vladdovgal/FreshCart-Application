@@ -34,6 +34,7 @@
         <item name="fontWeight">20</item>
     </style>
 
+
     <!-- Style for items_count and add_to_cart buttons at FragmentProduct -->
     <style name="ProductButtonStyle">
         <item name="cardCornerRadius">10dp</item>
@@ -49,8 +50,14 @@
     <style name="ProductNamePriceStyle">
         <item name="fontFamily">@font/poppins_medium</item>
         <item name="android:textColor">@color/colorPrimary</item>
-        <item name="android:textSize">25dp</item>
+        <item name="android:textSize">22sp</item>
         <item name="android:textStyle">bold</item>
+    </style>
+
+    <style name="ImageViewRounded" parent="">
+        <item name="cornerFamily">rounded</item>
+        <item name="cornerSize">25%</item>
+>>>>>>> develop
     </style>
 
 

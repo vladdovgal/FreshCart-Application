@@ -8,7 +8,7 @@
     <data>
         <variable
             name="image"
-            type="int"
+            type="String"
             />
     </data>
 
@@ -32,19 +32,20 @@
                 android:layout_height="match_parent"
                 >
 
-                <ImageView
+                <com.google.android.material.imageview.ShapeableImageView
                     android:id="@+id/imgProductRecommendImage"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:adjustViewBounds="true"
                     android:maxWidth="250dp"
                     android:maxHeight="250dp"
-                    app:imageResource='@{image}'
+                    app:image='@{image}'
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent"
-                    tools:src="@drawable/coconut" />
+                    tools:src="@drawable/img_placeholder"
+                    app:shapeAppearanceOverlay="@style/ImageViewRounded"/>
 
             </androidx.constraintlayout.widget.ConstraintLayout>
 

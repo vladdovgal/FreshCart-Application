@@ -33,7 +33,7 @@
             >
 
             <androidx.viewpager.widget.ViewPager
-                android:id="@+id/product_view_pager"
+                android:id="@+id/vpProductViewPager"
                 android:layout_width="wrap_content"
                 android:layout_height="200dp"
                 app:layout_constraintBottom_toBottomOf="parent"
@@ -42,13 +42,13 @@
                 app:layout_constraintVertical_bias="0.145" />
 
             <com.google.android.material.tabs.TabLayout
-                android:id="@+id/tab_layout_product_viewpager"
+                android:id="@+id/tbProductViewPager"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="16dp"
                 android:background="@android:color/transparent"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/product_view_pager"
+                app:layout_constraintTop_toBottomOf="@id/vpProductViewPager"
                 app:tabBackground="@drawable/tab_selector"
                 app:tabGravity="center"
                 app:tabIndicatorHeight="0dp"
@@ -56,10 +56,12 @@
 
         </androidx.constraintlayout.widget.ConstraintLayout>
 
+
+
         <androidx.cardview.widget.CardView
-            android:id="@+id/fab_add_to_cart"
+            android:id="@+id/fabAddToCart"
             android:layout_width="wrap_content"
-            android:layout_marginEnd="50dp"
+            android:layout_marginEnd="45dp"
             android:backgroundTint="@color/colorPrimary"
             app:layout_anchorGravity="right|bottom"
             style="@style/ProductButtonStyle"
@@ -82,46 +84,59 @@
         </androidx.cardview.widget.CardView>
 
         <androidx.cardview.widget.CardView
-            android:id="@+id/fab_items_count"
+            android:id="@+id/fabItemsCount"
             android:layout_width="wrap_content"
-            android:layout_marginStart="50dp"
+            android:layout_marginStart="45dp"
             android:backgroundTint="@color/colorWhite"
             app:layout_anchorGravity="left|bottom"
             style="@style/ProductButtonStyle"
             >
 
-            <LinearLayout
+            <androidx.constraintlayout.widget.ConstraintLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:orientation="horizontal"
                 android:padding="10dp">
+
                 <ImageButton
+                    android:id="@+id/minusButton"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_gravity="start|center"
                     android:background="@color/colorWhite"
                     android:src="@drawable/ic_count_minus"
-                    />
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    android:contentDescription="@string/decrease_product_count" />
 
                 <TextView
                     android:layout_width="65dp"
                     android:layout_height="wrap_content"
-                    android:text="3"
                     android:layout_gravity="center"
-                    android:textSize="@dimen/large_font"
-                    android:textColor="@color/colorPrimaryDark"
-                    android:textStyle="bold"
-                    android:textAllCaps="false"
+                    android:fontFamily="@font/poppins_medium"
                     android:gravity="center"
-                    android:fontFamily="@font/poppins_medium"/>
+                    android:text="1"
+                    android:textAllCaps="false"
+                    android:textColor="@color/colorPrimaryDark"
+                    android:textSize="@dimen/large_font"
+                    android:textStyle="bold"
+                    app:layout_constraintEnd_toStartOf="@+id/plusButton"
+                    app:layout_constraintStart_toEndOf="@+id/minusButton"
+                    app:layout_constraintBaseline_toBaselineOf="@id/minusButton"/>
 
                 <ImageButton
+                    android:id="@+id/plusButton"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_gravity="end|center"
                     android:background="@color/colorWhite"
-                    android:src="@drawable/ic_count_plus" />
-            </LinearLayout>
+                    android:src="@drawable/ic_count_plus"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    android:contentDescription="@string/increase_product_count" />
+            </androidx.constraintlayout.widget.ConstraintLayout>
 
         </androidx.cardview.widget.CardView>
 
@@ -141,7 +156,7 @@
                 android:layout_height="wrap_content">
 
                 <TextView
-                    android:id="@+id/product_name"
+                    android:id="@+id/productName"
                     style="@style/ProductNamePriceStyle"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -151,7 +166,7 @@
                     app:layout_constraintTop_toTopOf="parent" />
 
                 <TextView
-                    android:id="@+id/product_price"
+                    android:id="@+id/productPrice"
                     style="@style/ProductNamePriceStyle"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -160,11 +175,11 @@
                     app:layout_constraintTop_toTopOf="parent" />
 
                 <RatingBar
-                    android:id="@+id/ratingBar_indicator"
+                    android:id="@+id/ratingBarIndicator"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:numStars="5"
-                    app:layout_constraintTop_toBottomOf="@id/product_name"
+                    app:layout_constraintTop_toBottomOf="@id/productName"
                     app:layout_constraintStart_toStartOf="parent"
                     android:stepSize="0.5"
                     android:rating="4.5"
@@ -177,8 +192,8 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    app:layout_constraintStart_toEndOf="@id/ratingBar_indicator"
-                    app:layout_constraintTop_toBottomOf="@id/product_name"
+                    app:layout_constraintStart_toEndOf="@id/ratingBarIndicator"
+                    app:layout_constraintTop_toBottomOf="@id/productName"
                     android:text="204 review"
                     android:layout_marginStart="25dp"
                     android:fontFamily="@font/poppins_medium"
@@ -188,7 +203,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintTop_toBottomOf="@id/product_price"
+                    app:layout_constraintTop_toBottomOf="@id/productPrice"
                     android:fontFamily="@font/poppins_medium"
                     android:textStyle="bold"
                     android:text="927 in stock"/>
@@ -214,9 +229,9 @@
                 android:background="@drawable/bg_product_card_button"
                 android:backgroundTint="@color/colorWhite"
                 android:fontFamily="@font/poppins_medium"
-                android:text="cash on delivery avaliable all below $100"
+                android:text="@string/min_order_if_cash"
                 android:textColor="@color/colorPrimary"
-                android:textSize="14dp"/>
+                android:textSize="14sp"/>
         </LinearLayout>
 
     </androidx.coordinatorlayout.widget.CoordinatorLayout>

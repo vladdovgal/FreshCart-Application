@@ -22,7 +22,6 @@ class ProductFragment : BaseFragment() {
     private lateinit var binding : FragmentProductBinding
     private var isToolbarBackgroundWhite = false
 
-
     override fun setFragmentLayout(inflater: LayoutInflater,
                                    container: ViewGroup?,
                                    savedInstanceState: Bundle?): View {
@@ -46,19 +45,17 @@ class ProductFragment : BaseFragment() {
     }
 
     private fun observeData() {
-        tab_layout_product_viewpager.setupWithViewPager(product_view_pager, true)
+        tbProductViewPager.setupWithViewPager(vpProductViewPager, true)
         mainViewModel.product.observe(viewLifecycleOwner, Observer {
-                product -> binding.productViewPager.adapter = ProductPhotosAdapter(requireContext(), product.images)
+                product -> binding.vpProductViewPager.adapter = ProductPhotosAdapter(requireContext(), product.images)
         })
     }
-
 
     override fun onStop() {
         super.onStop()
         // switch back gray as toolbar background color
         switchToolbarBackgroundColor()
     }
-
 
     private fun switchToolbarBackgroundColor() {
         if (!isToolbarBackgroundWhite) {
@@ -76,5 +73,4 @@ class ProductFragment : BaseFragment() {
         }
         isToolbarBackgroundWhite = !isToolbarBackgroundWhite
     }
-
 }

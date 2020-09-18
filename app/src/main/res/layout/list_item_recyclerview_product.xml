@@ -28,12 +28,15 @@
             app:cardElevation="0dp"
             >
 
-            <ImageView
+            <com.google.android.material.imageview.ShapeableImageView
                 android:id="@+id/imgProduct"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                app:imageResource="@{product.images[0]}"
-                tools:src="@drawable/coconut"
+                android:padding="@dimen/margin_extra_small"
+                app:image="@{product.images.get(0)}"
+                app:shapeAppearanceOverlay="@style/ImageViewRounded"
+                android:scaleType="centerCrop"
+                tools:src="@drawable/img_placeholder"
                 />
 
         </androidx.cardview.widget.CardView>
