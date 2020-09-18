@@ -8,7 +8,7 @@ interface FreshCartRepository {
 
     fun insertUser(fullName : String, username: String, login: Login)
 
-    suspend fun getProductById(id : Long) : Product?
+    suspend fun getProductById(id : Long) : Product
 
     suspend fun getProducts(): List<Product>?
 }

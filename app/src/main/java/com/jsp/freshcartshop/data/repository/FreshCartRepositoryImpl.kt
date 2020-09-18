@@ -19,7 +19,7 @@ class FreshCartRepositoryImpl(private val applicationDao: FreshCartDao) : FreshC
         applicationDao.insert(account)
     }
 
-    override suspend fun getProductById(id: Long): Product? {
+    override suspend fun getProductById(id: Long): Product {
         return suspendCoroutine { continuation ->
             val response = applicationDao.getProduct(id)
             if (response != null) {
@@ -30,7 +30,7 @@ class FreshCartRepositoryImpl(private val applicationDao: FreshCartDao) : FreshC
         }
     }
 
-    override suspend fun getProducts(): List<Product>? {
+    override suspend fun getProducts(): List<Product> {
         // todo simulation of data loading
         delay(500)
         return suspendCoroutine { continuation ->
