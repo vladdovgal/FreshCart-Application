@@ -25,7 +25,7 @@ class FreshCartRepositoryImpl(private val applicationDao: FreshCartDao) : FreshC
 
     override suspend fun getProducts(): List<Product>? {
         // todo simulation of data loading
-        delay(2500)
+        delay(500)
         return suspendCoroutine { continuation ->
             val response = applicationDao.getAllProducts()
             if (response != null) {

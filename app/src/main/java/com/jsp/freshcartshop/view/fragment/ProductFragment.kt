@@ -1,23 +1,24 @@
 package com.jsp.freshcartshop.view.fragment
 
 import android.os.Bundle
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.core.content.ContextCompat
 import androidx.databinding.DataBindingUtil
+import androidx.lifecycle.Observer
 import com.jsp.freshcartshop.R
+import com.jsp.freshcartshop.adapters.ProductPhotosAdapter
 import com.jsp.freshcartshop.databinding.FragmentProductBinding
 import com.jsp.freshcartshop.view.MainActivity
 import com.jsp.freshcartshop.viewmodel.MainViewModel
 import kotlinx.android.synthetic.main.activity_main.*
+import kotlinx.android.synthetic.main.fragment_product.*
 import org.koin.android.viewmodel.ext.android.sharedViewModel
 
 class ProductFragment : BaseFragment() {
     val mainViewModel by sharedViewModel<MainViewModel>()
 
-    //    private val mainViewModel : MainViewModel = get()
     private lateinit var binding : FragmentProductBinding
     private var isToolbarBackgroundWhite = false
 
@@ -32,12 +33,8 @@ class ProductFragment : BaseFragment() {
                               container: ViewGroup?,
                               savedInstanceState: Bundle?): View? {
         binding = DataBindingUtil.inflate(inflater, R.layout.fragment_product, container, false)
-        observeData()
         binding.product = mainViewModel.product.value
         binding.lifecycleOwner = this
-
-
-        Log.d("myLogs", "Prodid ${arguments?.getInt("productId")}")
         // change toolbar background color
         switchToolbarBackgroundColor()
         return binding.root
@@ -45,17 +42,20 @@ class ProductFragment : BaseFragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        observeData()
     }
 
     private fun observeData() {
-        mainViewModel.loadProduct(arguments?.getInt("productId") ?: -1)
+        tab_layout_product_viewpager.setupWithViewPager(product_view_pager, true)
+        mainViewModel.product.observe(viewLifecycleOwner, Observer {
+                product -> binding.productViewPager.adapter = ProductPhotosAdapter(requireContext(), product.images)
+        })
     }
-
 
 
     override fun onStop() {
         super.onStop()
-        // switch back silver as Toolbar background color
+        // switch back gray as toolbar background color
         switchToolbarBackgroundColor()
     }
 

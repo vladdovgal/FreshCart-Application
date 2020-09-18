@@ -1,7 +1,6 @@
 package com.jsp.freshcartshop.viewmodel
 
 
-import android.util.Log
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
@@ -21,9 +20,6 @@ class MainViewModel : ViewModel() {
     val errorMessageData = MutableLiveData<String>()
     val product = MutableLiveData<Product>()
 
-    init {
-        Log.d("myLogs", "ViewModel created : product : ${product.value.toString()}")
-    }
 
     fun loadProducts() {
         viewModelScope.launch {
@@ -45,9 +41,7 @@ class MainViewModel : ViewModel() {
         viewModelScope.launch {
             try {
                 val response = freshCartRepository.getProductById(id)
-                Log.d("myLogs", "Response: ${response.toString()}")
                 product.value = response
-                Log.d("myLogs", "Product in ViewModel: ${product.value.toString()}")
             } catch (e: Exception) {
                 e.printStackTrace()
                 errorMessageData.postValue(e.message)

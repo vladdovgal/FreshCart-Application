@@ -20,7 +20,7 @@ class FreshCartDao {
     fun getAllProducts() = productList
 
     private fun fillProducts() {
-        productList.add(Product(1, "Water Lemon", 15, 20, listOf(R.drawable.water_lemon)))
+        productList.add(Product(1, "Water Lemon", 15, 20, listOf(R.drawable.water_lemon,R.drawable.water_lemon,R.drawable.water_lemon,R.drawable.water_lemon)))
         productList.add(Product(2, "Coconut", 20, 25, listOf(R.drawable.coconut)))
         productList.add(Product(3, "Pear", 20, 22, listOf(R.drawable.pear)))
         productList.add(Product(4, "Guava", 15, 17, listOf(R.drawable.guava)))
@@ -41,7 +41,6 @@ class FreshCartDao {
 
     fun getProduct(id: Int): Product? {
         // todo get product by id from database
-        val product = productList.find { it.id == id }
-        return product
+        return productList.find { it.id == id }
     }
 }

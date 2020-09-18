@@ -1,12 +1,10 @@
 package com.jsp.freshcartshop.view.fragment
 
 import android.os.Bundle
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ProgressBar
-import androidx.core.os.bundleOf
 import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.Observer
 import androidx.navigation.fragment.findNavController
@@ -24,7 +22,6 @@ class MainFragment : BaseFragment() {
 
     val mainViewModel by sharedViewModel<MainViewModel>()
 
-//    private val mainViewModel: MainViewModel = get()
     private lateinit var binding: FragmentMainBinding
 
     override fun setFragmentLayout(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View {
@@ -64,10 +61,10 @@ class MainFragment : BaseFragment() {
                 it.adapter = ProductRecyclerAdapter().also { it.addAll(products) }
                 // Get clicked item's id
                 (it.adapter as ProductRecyclerAdapter).onItemClick = { product ->
-                    Log.d("myLogs", "Id clicked : ${product.id}")
-                    val bundle = bundleOf("productId" to product.id)
-                    findNavController().navigate(R.id.productFragment, bundle)
-                    Log.d("myLogs", "RV_Adapter : ${mainViewModel.product.value.toString()}")
+                    // load product to View Model
+                    mainViewModel.loadProduct(product.id)
+                    // navigate to Product Fragment
+                    findNavController().navigate(R.id.productFragment)
                 }
             }
         })
@@ -80,10 +77,6 @@ class MainFragment : BaseFragment() {
                 pbRecommendProducts.visibility = ProgressBar.GONE
                 pbAllProducts.visibility = ProgressBar.GONE
             }
-        })
-
-        mainViewModel.product.observe(viewLifecycleOwner, Observer { product ->
-            Log.d("myLogs", "Prod changed : ${mainViewModel.product.value.toString()}")
         })
     }
 

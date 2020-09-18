@@ -6,9 +6,6 @@
     >
 
     <data>
-<!--        <variable-->
-<!--            name="mainViewModel"-->
-<!--            type="com.jsp.freshcartshop.viewmodel.MainViewModel" />-->
         <variable
             name="product"
             type="com.jsp.freshcartshop.model.Product" />
@@ -35,27 +32,27 @@
             android:background="@drawable/bc_product_cardview"
             >
 
-            <!-- gTODO ViewPager Implementation           -->
             <androidx.viewpager.widget.ViewPager
                 android:id="@+id/product_view_pager"
                 android:layout_width="wrap_content"
-                android:layout_height="100dp"
-                android:layout_weight="90"
+                android:layout_height="200dp"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintTop_toTopOf="parent"/>
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintVertical_bias="0.145" />
+
             <com.google.android.material.tabs.TabLayout
                 android:id="@+id/tab_layout_product_viewpager"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                app:tabGravity="center"
-                app:layout_constraintTop_toBottomOf="@id/product_view_pager"
-                app:layout_constraintEnd_toEndOf="parent"
+                android:layout_marginTop="16dp"
                 android:background="@android:color/transparent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/product_view_pager"
                 app:tabBackground="@drawable/tab_selector"
+                app:tabGravity="center"
                 app:tabIndicatorHeight="0dp"
-                app:tabMaxWidth="15dp"
-                />
+                app:tabMaxWidth="15dp" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>
 
