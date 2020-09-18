@@ -5,4 +5,4 @@ data class Product(
     val name: String,
     val price: Int,
     val oldPrice: Int,
-    val image: String)
+    val images: List<String>)

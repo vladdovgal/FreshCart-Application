@@ -33,7 +33,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:padding="@dimen/margin_extra_small"
-                app:image="@{product.image}"
+                app:image="@{product.images.get(0)}"
                 app:shapeAppearanceOverlay="@style/ImageViewRounded"
                 android:scaleType="centerCrop"
                 tools:src="@drawable/img_placeholder"
