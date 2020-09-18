@@ -32,7 +32,6 @@ class MainFragment : BaseFragment() {
         binding = DataBindingUtil.inflate(inflater, R.layout.fragment_main, container, false)
         binding.lifecycleOwner = this
 
-
         return binding.root
     }
 
@@ -61,10 +60,13 @@ class MainFragment : BaseFragment() {
                 it.adapter = ProductRecyclerAdapter().also { it.addAll(products) }
                 // Get clicked item's id
                 (it.adapter as ProductRecyclerAdapter).onItemClick = { product ->
-                    // load product to View Model
-                    mainViewModel.loadProduct(product.id)
                     // navigate to Product Fragment
-                    findNavController().navigate(R.id.productFragment)
+//                    val bundle = Bundle()
+//                    bundle.putLong("productId", product.id)
+                    val action = MainFragmentDirections.actionMainFragmentToProductFragment(product.id)
+
+//                    findNavController().navigate(R.id.productFragment, bundle)
+                    findNavController().navigate(action)
                 }
             }
         })

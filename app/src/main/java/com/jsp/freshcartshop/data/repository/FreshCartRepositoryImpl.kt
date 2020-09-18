@@ -19,8 +19,15 @@ class FreshCartRepositoryImpl(private val applicationDao: FreshCartDao) : FreshC
         applicationDao.insert(account)
     }
 
-    override suspend fun getProductById(id: Int): Product? {
-        return applicationDao.getProduct(id)
+    override suspend fun getProductById(id: Long): Product? {
+        return suspendCoroutine { continuation ->
+            val response = applicationDao.getProduct(id)
+            if (response != null) {
+                continuation.resume(response)
+            } else {
+                continuation.resumeWithException(Exception("Can't load product"))
+            }
+        }
     }
 
     override suspend fun getProducts(): List<Product>? {
@@ -31,7 +38,7 @@ class FreshCartRepositoryImpl(private val applicationDao: FreshCartDao) : FreshC
             if (response != null) {
                 continuation.resume(response)
             } else {
-                continuation.resumeWithException(Exception("Can't load the products"))
+                continuation.resumeWithException(Exception("Can't load products"))
             }
         }
     }

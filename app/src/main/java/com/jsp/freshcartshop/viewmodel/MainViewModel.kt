@@ -37,7 +37,7 @@ class MainViewModel : ViewModel() {
         }
     }
 
-    fun loadProduct(id : Int) {
+    fun loadProduct(id : Long) {
         viewModelScope.launch {
             try {
                 val response = freshCartRepository.getProductById(id)

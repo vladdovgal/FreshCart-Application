@@ -16,5 +16,3 @@ val repositoryModule = module {
     single { FreshCartDao() }
     single { FreshCartRepositoryImpl(get<FreshCartDao>()) }
 }
-
-

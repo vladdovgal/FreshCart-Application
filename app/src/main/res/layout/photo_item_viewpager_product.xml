@@ -45,6 +45,7 @@
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent"
                     tools:src="@drawable/img_placeholder"
+                    android:scaleType="centerCrop"
                     app:shapeAppearanceOverlay="@style/ImageViewRounded"/>
 
             </androidx.constraintlayout.widget.ConstraintLayout>

@@ -2,7 +2,6 @@
 <layout
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
     >
 
     <data>
@@ -36,27 +35,25 @@
                 android:id="@+id/vpProductViewPager"
                 android:layout_width="wrap_content"
                 android:layout_height="200dp"
-                app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
-                app:layout_constraintVertical_bias="0.145" />
+                android:layout_marginTop="30dp"
+                />
 
             <com.google.android.material.tabs.TabLayout
                 android:id="@+id/tbProductViewPager"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="16dp"
+                android:layout_marginTop="10dp"
                 android:background="@android:color/transparent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/vpProductViewPager"
                 app:tabBackground="@drawable/tab_selector"
                 app:tabGravity="center"
                 app:tabIndicatorHeight="0dp"
-                app:tabMaxWidth="15dp" />
-
+                app:tabMaxWidth="15dp"
+                />
         </androidx.constraintlayout.widget.ConstraintLayout>
-
-
 
         <androidx.cardview.widget.CardView
             android:id="@+id/fabAddToCart"
