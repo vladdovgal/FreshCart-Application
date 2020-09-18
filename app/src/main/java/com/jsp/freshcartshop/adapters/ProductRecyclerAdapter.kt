@@ -34,8 +34,6 @@ class ProductRecyclerAdapter : BaseRecyclerAdapter<Product, ProductRecyclerAdapt
             }
         }
     }
-
-
 }
 
 

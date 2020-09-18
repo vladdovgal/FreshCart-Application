@@ -58,5 +58,4 @@ dependencies {
     androidTestImplementation "androidx.test.ext:junit:$androidx_junit_version"
     androidTestImplementation "androidx.test.espresso:espresso-core:$androidx_espresso_version"
     androidTestImplementation "androidx.navigation:navigation-testing:$navigation_version"
-
 }
