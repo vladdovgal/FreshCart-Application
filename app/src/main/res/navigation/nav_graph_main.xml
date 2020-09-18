@@ -51,7 +51,7 @@
         <argument
             android:name="productId"
             app:argType="long"
-            android:defaultValue="0L"
+            app:nullable="false"
             />
     </fragment>
 </navigation>

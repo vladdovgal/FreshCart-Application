@@ -228,7 +228,7 @@
                 android:fontFamily="@font/poppins_medium"
                 android:text="@string/min_order_if_cash"
                 android:textColor="@color/colorPrimary"
-                android:textSize="14sp"/>
+                android:textSize="@dimen/small_font"/>
         </LinearLayout>
 
     </androidx.coordinatorlayout.widget.CoordinatorLayout>
