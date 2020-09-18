@@ -19,7 +19,6 @@ class MainViewModel : ViewModel() {
     val errorMessageData = MutableLiveData<String>()
     val product = MutableLiveData<Product>()
 
-
     fun loadProducts() {
         viewModelScope.launch {
             try {

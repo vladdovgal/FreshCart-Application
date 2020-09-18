@@ -34,7 +34,6 @@
         <item name="fontWeight">20</item>
     </style>
 
-
     <!-- Style for items_count and add_to_cart buttons at FragmentProduct -->
     <style name="ProductButtonStyle">
         <item name="cardCornerRadius">10dp</item>
@@ -58,7 +57,6 @@
         <item name="cornerFamily">rounded</item>
         <item name="cornerSize">25%</item>
     </style>
-
 
     <!--    Rating Bar -->
     <style name="MyRatingBar" parent="Theme.AppCompat">

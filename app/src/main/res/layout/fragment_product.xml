@@ -213,7 +213,7 @@
                 android:layout_height="wrap_content"
                 android:fontFamily="@font/poppins_medium"
                 android:layout_marginTop="@dimen/padding_small"
-                android:text="@string/product_description"
+                android:text="@string/lorem_ipsum"
                 />
 
             <TextView

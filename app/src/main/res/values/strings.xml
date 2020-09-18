@@ -42,7 +42,7 @@
     <!--Product Fragment -->
     <string name="add_to_cart">Add to Cart</string>
     <string name="empty_string" />
-    <string name="product_description">Lorem Ipsum is simply dummy text of the printing and
+    <string name="lorem_ipsum">Lorem Ipsum is simply dummy text of the printing and
         typesetting industry. Lorem Ipsum has been the industry\'s standard dummy text ever
         since the 1500s. </string>
     <string name="min_order_if_cash">cash on delivery avaliable all below $100</string>
