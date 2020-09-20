@@ -16,7 +16,7 @@ class FreshCartDao {
         ))
     }
 
-    fun getAllProducts() = productList
+    fun getAllProducts() = null
 
     private fun fillProducts() {
         productList.add(Product(1, "Water Lemon", 15, 20, listOf("https://previews.123rf.com/images/kovalevaka/kovalevaka1409/kovalevaka140900003/31404789-watermelon-and-slices-isolated-on-white-background-as-package-design-element.jpg")))

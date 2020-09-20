@@ -36,5 +36,6 @@
     <string name="discount">Get %1$d$ Off</string>
     <string name="discount_description">On your first order</string>
     <string name="shop_now">Shop Now</string>
+    <string name="ok">OK</string>
 
 </resources>

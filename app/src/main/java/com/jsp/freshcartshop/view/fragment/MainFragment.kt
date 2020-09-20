@@ -4,18 +4,16 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.ProgressBar
 import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.Observer
 import androidx.recyclerview.widget.GridLayoutManager
 import com.jsp.freshcartshop.R
-import com.jsp.freshcartshop.adapters.ProductRecyclerAdapter
 import com.jsp.freshcartshop.adapters.ProductPagerAdapter
+import com.jsp.freshcartshop.adapters.ProductRecyclerAdapter
 import com.jsp.freshcartshop.databinding.FragmentMainBinding
 import com.jsp.freshcartshop.view.MainActivity
 import com.jsp.freshcartshop.viewmodel.MainViewModel
 import kotlinx.android.synthetic.main.fragment_main.*
-import kotlinx.coroutines.launch
 import org.koin.android.ext.android.get
 
 class MainFragment : BaseFragment() {
@@ -46,6 +44,8 @@ class MainFragment : BaseFragment() {
     }
 
     private fun observeData() {
+        val loader = getLoader()
+
         mainViewModel.loadProducts()
 
         tdMainViewPager.setupWithViewPager(vpMainProducts, true)
@@ -62,11 +62,15 @@ class MainFragment : BaseFragment() {
 
         mainViewModel.isLoading.observe(viewLifecycleOwner, Observer { isLoading ->
             if (isLoading) {
-                pbRecommendProducts.visibility = ProgressBar.VISIBLE
-                pbAllProducts.visibility = ProgressBar.VISIBLE
+                loader.show()
             } else {
-                pbRecommendProducts.visibility = ProgressBar.GONE
-                pbAllProducts.visibility = ProgressBar.GONE
+                loader.dismiss()
+            }
+        })
+
+        mainViewModel.errorMessageData.observe(viewLifecycleOwner, Observer {message ->
+            if (message != null) {
+                showError(message)
             }
         })
     }
