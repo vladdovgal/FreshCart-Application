@@ -9,13 +9,12 @@ import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.Observer
 import androidx.recyclerview.widget.GridLayoutManager
 import com.jsp.freshcartshop.R
-import com.jsp.freshcartshop.adapters.ProductRecyclerAdapter
 import com.jsp.freshcartshop.adapters.ProductPagerAdapter
+import com.jsp.freshcartshop.adapters.ProductRecyclerAdapter
 import com.jsp.freshcartshop.databinding.FragmentMainBinding
 import com.jsp.freshcartshop.view.MainActivity
 import com.jsp.freshcartshop.viewmodel.MainViewModel
 import kotlinx.android.synthetic.main.fragment_main.*
-import kotlinx.coroutines.launch
 import org.koin.android.ext.android.get
 
 class MainFragment : BaseFragment() {
@@ -30,6 +29,7 @@ class MainFragment : BaseFragment() {
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         binding = DataBindingUtil.inflate(inflater, R.layout.fragment_main, container, false)
         binding.lifecycleOwner = this
+        binding.mainViewModel = mainViewModel
 
         return binding.root
     }
