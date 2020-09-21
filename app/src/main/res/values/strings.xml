@@ -3,6 +3,7 @@
     <string name="home">Home</string>
     <string name="cart">Shopping Cart</string>
     <string name="search">Search</string>
+    <string name="product">Product</string>
     <string name="toolbar_title">FreshCart</string>
     <string name="arrow_back">Arrow Back</string>
     <string name="navigation_menu">Navigation Menu</string>
@@ -30,6 +31,7 @@
     <string name="short_pass">Password must be 6 digits or longer</string>
     <string name="empty_fields">Input fields can\'t be empty</string>
     <string name="wrong_login_or_pass">Wrong login or password</string>
+
     <!-- Main Fragment -->
     <string name="deal_of_the_day">Deal of the Day</string>
     <string name="all_products">All products</string>
@@ -37,5 +39,15 @@
     <string name="discount_description">On your first order</string>
     <string name="shop_now">Shop Now</string>
     <string name="ok">OK</string>
+
+    <!--Product Fragment -->
+    <string name="add_to_cart">Add to Cart</string>
+    <string name="empty_string" />
+    <string name="lorem_ipsum">Lorem Ipsum is simply dummy text of the printing and
+        typesetting industry. Lorem Ipsum has been the industry\'s standard dummy text ever
+        since the 1500s. </string>
+    <string name="min_order_if_cash">cash on delivery avaliable all below $100</string>
+    <string name="increase_product_count">Increase quantity by 1</string>
+    <string name="decrease_product_count">Decrease quantity by 1</string>
 
 </resources>

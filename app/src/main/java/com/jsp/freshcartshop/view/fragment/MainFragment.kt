@@ -6,6 +6,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.Observer
+import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.GridLayoutManager
 import com.jsp.freshcartshop.R
 import com.jsp.freshcartshop.adapters.ProductPagerAdapter
@@ -14,11 +15,12 @@ import com.jsp.freshcartshop.databinding.FragmentMainBinding
 import com.jsp.freshcartshop.view.MainActivity
 import com.jsp.freshcartshop.viewmodel.MainViewModel
 import kotlinx.android.synthetic.main.fragment_main.*
-import org.koin.android.ext.android.get
+import org.koin.android.viewmodel.ext.android.sharedViewModel
 
 class MainFragment : BaseFragment() {
 
-    private val mainViewModel: MainViewModel = get()
+    val mainViewModel by sharedViewModel<MainViewModel>()
+
     private lateinit var binding: FragmentMainBinding
 
     override fun setFragmentLayout(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View {
@@ -57,6 +59,11 @@ class MainFragment : BaseFragment() {
             rvMainProducts.also {
                 it.layoutManager = GridLayoutManager(activity, 3)
                 it.adapter = ProductRecyclerAdapter().also { it.addAll(products) }
+                // Get clicked item's id
+                (it.adapter as ProductRecyclerAdapter).onItemClick = { product ->
+                    val action = MainFragmentDirections.actionMainFragmentToProductFragment(product.id)
+                    findNavController().navigate(action)
+                }
             }
         })
 

@@ -12,6 +12,7 @@ class MainViewModel : BaseViewModel() {
     private val freshCartRepository by inject(FreshCartRepositoryImpl::class.java)
 
     val productList = MutableLiveData<List<Product>>()
+    val product = MutableLiveData<Product>()
 
     fun loadProducts() {
         viewModelScope.launch {
@@ -30,4 +31,15 @@ class MainViewModel : BaseViewModel() {
         }
     }
 
+    fun loadProduct(id : Long) {
+        viewModelScope.launch {
+            try {
+                val response = freshCartRepository.getProductById(id)
+                product.value = response
+            } catch (e: Exception) {
+                e.printStackTrace()
+                errorMessageData.postValue(e.message)
+            }
+        }
+    }
 }
