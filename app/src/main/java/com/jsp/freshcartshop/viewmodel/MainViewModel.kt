@@ -7,15 +7,16 @@ import com.jsp.freshcartshop.data.repository.FreshCartRepositoryImpl
 import com.jsp.freshcartshop.model.Product
 import kotlinx.coroutines.launch
 import org.koin.java.KoinJavaComponent.inject
-import java.lang.Exception
 
 class MainViewModel : ViewModel() {
 
     private val freshCartRepository by inject(FreshCartRepositoryImpl::class.java)
+
     val isLoading = MutableLiveData<Boolean>()
     val isLoaded = MutableLiveData<Boolean>()
     val productList = MutableLiveData<List<Product>>()
     val errorMessageData = MutableLiveData<String>()
+    val product = MutableLiveData<Product>()
 
     fun loadProducts() {
         viewModelScope.launch {
@@ -33,4 +34,15 @@ class MainViewModel : ViewModel() {
         }
     }
 
+    fun loadProduct(id : Long) {
+        viewModelScope.launch {
+            try {
+                val response = freshCartRepository.getProductById(id)
+                product.value = response
+            } catch (e: Exception) {
+                e.printStackTrace()
+                errorMessageData.postValue(e.message)
+            }
+        }
+    }
 }

@@ -10,7 +10,7 @@
             name="product"
             type="com.jsp.freshcartshop.model.Product"
             />
-    </data>
+        </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="100dp"
