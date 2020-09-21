@@ -37,7 +37,7 @@ class MainActivity : BaseActivity() {
         }
 
         cartNavButton.setOnClickListener {
-            findNavController(R.id.mainActivityHost).navigate(R.id.productFragment)
+            findNavController(R.id.mainActivityHost).navigate(R.id.shoppingCartFragment)
         }
     }
 

@@ -8,7 +8,6 @@
         <variable
             name="product"
             type="com.jsp.freshcartshop.model.Product" />
-
     </data>
 
     <ScrollView
@@ -34,17 +33,17 @@
             <androidx.viewpager.widget.ViewPager
                 android:id="@+id/vpProductViewPager"
                 android:layout_width="wrap_content"
-                android:layout_height="200dp"
+                android:layout_height="@dimen/product_view_pager_height"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
-                android:layout_marginTop="30dp"
+                android:layout_marginTop="@dimen/margin_large"
                 />
 
             <com.google.android.material.tabs.TabLayout
                 android:id="@+id/tbProductViewPager"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="10dp"
+                android:layout_marginTop="@dimen/margin_small"
                 android:background="@android:color/transparent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/vpProductViewPager"
@@ -58,7 +57,7 @@
         <androidx.cardview.widget.CardView
             android:id="@+id/fabAddToCart"
             android:layout_width="wrap_content"
-            android:layout_marginEnd="45dp"
+            android:layout_marginEnd="@dimen/product_button_margin"
             android:backgroundTint="@color/colorPrimary"
             app:layout_anchorGravity="right|bottom"
             style="@style/ProductButtonStyle"
@@ -67,15 +66,15 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:padding="10dp"
+                android:padding="@dimen/padding_xs"
                 android:text="@string/add_to_cart"
                 android:gravity="center"
                 android:fontFamily="@font/poppins_medium"
                 android:textColor="@color/colorWhite"
-                android:textSize="18sp"
+                android:textSize="@dimen/medium_font"
                 android:textStyle="bold"
-                android:layout_marginEnd="10dp"
-                android:layout_marginStart="10dp"
+                android:layout_marginEnd="@dimen/margin_small"
+                android:layout_marginStart="@dimen/margin_small"
                 />
 
         </androidx.cardview.widget.CardView>
@@ -83,7 +82,7 @@
         <androidx.cardview.widget.CardView
             android:id="@+id/fabItemsCount"
             android:layout_width="wrap_content"
-            android:layout_marginStart="45dp"
+            android:layout_marginStart="@dimen/product_button_margin"
             android:backgroundTint="@color/colorWhite"
             app:layout_anchorGravity="left|bottom"
             style="@style/ProductButtonStyle"
@@ -219,9 +218,9 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:padding="10dp"
-                android:paddingStart="20dp"
-                android:paddingEnd="20dp"
+                android:padding="@dimen/padding_xs"
+                android:paddingStart="@dimen/padding_small"
+                android:paddingEnd="@dimen/padding_small"
                 android:layout_marginTop="@dimen/padding_small"
                 android:background="@drawable/bg_product_card_button"
                 android:backgroundTint="@color/colorWhite"
