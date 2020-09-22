@@ -7,7 +7,7 @@ interface FreshCartRepository {
 
     fun loginUser(login : String, password : String) : Boolean
 
-    fun insertUser(fullName : String, username: String, login: Login) : Unit
+    suspend fun insertUser(fullName : String, username: String, login: Login) : UserAccount?
 
     suspend fun getProducts(): List<Product>?
 }

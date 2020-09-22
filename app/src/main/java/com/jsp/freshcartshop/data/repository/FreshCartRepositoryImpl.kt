@@ -14,9 +14,16 @@ class FreshCartRepositoryImpl(private val applicationDao: FreshCartDao) : FreshC
         return userAccount.loginData.password == password
     }
 
-    override fun insertUser(fullName : String, username: String, login: Login) {
+    override suspend fun insertUser(fullName : String, username: String, login: Login): UserAccount? {
         val account = UserAccount(fullName, username, login)
-        applicationDao.insert(account)
+        return suspendCoroutine { continuation ->
+            val response = applicationDao.insert(account)
+            if (response != null) {
+                continuation.resume(response)
+            } else {
+                continuation.resumeWithException(Exception("Can't save user account"))
+            }
+        }
     }
 
     override suspend fun getProducts(): List<Product>? {

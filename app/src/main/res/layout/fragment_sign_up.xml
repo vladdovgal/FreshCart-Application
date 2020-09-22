@@ -60,6 +60,7 @@
                         android:background="?attr/bcColor"
                         android:fontFamily="@font/poppins_medium"
                         android:paddingBottom="@dimen/padding_extra_small"
+                        android:text="@={signUpViewModel.fullName}"
                         app:validateMinLength="@{4}"
                         app:validateMaxLength="@{50}"
                         />
@@ -89,6 +90,7 @@
                         android:background="?attr/bcColor"
                         android:fontFamily="@font/poppins_medium"
                         android:paddingBottom="@dimen/padding_extra_small"
+                        android:text="@={signUpViewModel.username}"
                         app:validateType='@{"username"}'
                         />
 
@@ -117,6 +119,7 @@
                         android:background="?attr/bcColor"
                         android:fontFamily="@font/poppins_medium"
                         android:paddingBottom="@dimen/padding_extra_small"
+                        android:text="@={signUpViewModel.email}"
                         app:validateType='@{"email"}'
                         />
 
@@ -145,6 +148,7 @@
                         app:boxStrokeColor="?attr/primaryColor"
                         android:background="?attr/bcColor"
                         android:fontFamily="@font/poppins_medium"
+                        android:text="@={signUpViewModel.password}"
                         app:validateMinLength="@{4}"
                         app:validateMaxLength="@{50}"
                         />

@@ -1,5 +1,6 @@
 package com.jsp.freshcartshop.data.db.dao
 
+import android.util.Log
 import com.jsp.freshcartshop.data.repository.Login
 import com.jsp.freshcartshop.data.repository.UserAccount
 import com.jsp.freshcartshop.model.Product
@@ -34,7 +35,10 @@ class FreshCartDao {
             ?: UserAccount("","", Login("", ""))
     }
 
-    fun insert(account: UserAccount) {
-        // todo insert user into database
+    fun insert(account: UserAccount): UserAccount {
+        accountsList.add(account)
+        Log.e("Fresh", account.fullName)
+        return account
     }
+
 }
