@@ -17,9 +17,9 @@ import com.jsp.freshcartshop.viewmodel.MainViewModel
 import kotlinx.android.synthetic.main.fragment_main.*
 import org.koin.android.viewmodel.ext.android.sharedViewModel
 
-class MainFragment : BaseFragment() {
+class MainFragment : BaseFragment<MainViewModel>() {
 
-    val mainViewModel by sharedViewModel<MainViewModel>()
+    override val viewModel: MainViewModel by sharedViewModel()
 
     private lateinit var binding: FragmentMainBinding
 
@@ -46,16 +46,14 @@ class MainFragment : BaseFragment() {
     }
 
     private fun observeData() {
-        val loader = getLoader()
-
-        mainViewModel.loadProducts()
+        viewModel.loadProducts()
 
         tdMainViewPager.setupWithViewPager(vpMainProducts, true)
-        mainViewModel.productList.observe(viewLifecycleOwner, Observer { products ->
+        viewModel.productList.observe(viewLifecycleOwner, Observer { products ->
             binding.vpMainProducts.adapter = ProductPagerAdapter(requireContext(), products)
         })
 
-        mainViewModel.productList.observe(viewLifecycleOwner, Observer { products ->
+        viewModel.productList.observe(viewLifecycleOwner, Observer { products ->
             rvMainProducts.also {
                 it.layoutManager = GridLayoutManager(activity, 3)
                 it.adapter = ProductRecyclerAdapter().also { it.addAll(products) }
@@ -64,20 +62,6 @@ class MainFragment : BaseFragment() {
                     val action = MainFragmentDirections.actionMainFragmentToProductFragment(product.id)
                     findNavController().navigate(action)
                 }
-            }
-        })
-
-        mainViewModel.isLoading.observe(viewLifecycleOwner, Observer { isLoading ->
-            if (isLoading) {
-                loader.show()
-            } else {
-                loader.dismiss()
-            }
-        })
-
-        mainViewModel.errorMessageData.observe(viewLifecycleOwner, Observer {message ->
-            if (message != null) {
-                showError(message)
             }
         })
     }

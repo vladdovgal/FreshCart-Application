@@ -15,9 +15,9 @@ import com.jsp.freshcartshop.viewmodel.LoginViewModel
 import kotlinx.android.synthetic.main.fragment_login.*
 import org.koin.android.ext.android.get
 
-class LoginFragment : BaseFragment() {
+class LoginFragment : BaseFragment<LoginViewModel>() {
 
-    private var loginViewModel: LoginViewModel = get()
+    override val viewModel: LoginViewModel = get()
     private lateinit var binding : FragmentLoginBinding
 
     override fun setFragmentLayout(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View {
@@ -25,10 +25,9 @@ class LoginFragment : BaseFragment() {
     }
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
-        loginViewModel = ViewModelProvider(this).get(LoginViewModel::class.java)
         binding = DataBindingUtil.inflate(inflater, R.layout.fragment_login, container, false)
         binding.lifecycleOwner = this
-        binding.loginViewModel = loginViewModel
+        binding.loginViewModel = viewModel
 
         return binding.root
     }
@@ -51,7 +50,7 @@ class LoginFragment : BaseFragment() {
 
     private fun onSignInClick(view: View) {
         if (checkForSyntaxWarnings())  {
-            if (loginViewModel.validateInput()) {
+            if (viewModel.validateInput()) {
                 view.findNavController().navigate(R.id.action_loginFragment_to_mainActivity)
             } else Toast.makeText(context, resources.getString(R.string.wrong_login_or_pass),
                 Toast.LENGTH_SHORT).show()
@@ -64,29 +63,29 @@ class LoginFragment : BaseFragment() {
 
     private fun checkForSyntaxWarnings() : Boolean {
         var isLoginFieldsValid = true
-        if (loginViewModel.login.value != null && loginViewModel.password.value != null) {
-            if (loginViewModel.errorEmail.value != "") {
-                etLogin.error = loginViewModel.errorEmail.value
+        if (viewModel.login.value != null && viewModel.password.value != null) {
+            if (viewModel.errorEmail.value != "") {
+                etLogin.error = viewModel.errorEmail.value
                 isLoginFieldsValid = false
             }
         } else {
             Toast.makeText(context, resources.getString(R.string.empty_fields), Toast.LENGTH_SHORT).show()
             return false
         }
-        if (loginViewModel.errorPass.value != "") {
-            etPassword.error = loginViewModel.errorPass.value
+        if (viewModel.errorPass.value != "") {
+            etPassword.error = viewModel.errorPass.value
             isLoginFieldsValid = false
         }
         return isLoginFieldsValid
     }
 
     private fun observeData() {
-        loginViewModel.password.observe(viewLifecycleOwner, androidx.lifecycle.Observer {
-            loginViewModel.validatePassword(it)
+        viewModel.password.observe(viewLifecycleOwner, androidx.lifecycle.Observer {
+            viewModel.validatePassword(it)
         })
 
-        loginViewModel.login.observe(viewLifecycleOwner, androidx.lifecycle.Observer {
-            loginViewModel.validateEmail(it)
+        viewModel.login.observe(viewLifecycleOwner, androidx.lifecycle.Observer {
+            viewModel.validateEmail(it)
         })
     }
 }

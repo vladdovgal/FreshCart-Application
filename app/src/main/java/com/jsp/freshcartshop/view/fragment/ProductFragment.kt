@@ -16,9 +16,9 @@ import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.android.synthetic.main.fragment_product.*
 import org.koin.android.viewmodel.ext.android.sharedViewModel
 
-class ProductFragment : BaseFragment() {
+class ProductFragment : BaseFragment<MainViewModel>() {
 
-    val mainViewModel by sharedViewModel<MainViewModel>()
+    override val viewModel by sharedViewModel<MainViewModel>()
     private lateinit var binding : FragmentProductBinding
     private var isToolbarBackgroundWhite = false
 
@@ -33,7 +33,7 @@ class ProductFragment : BaseFragment() {
                               savedInstanceState: Bundle?): View? {
         binding = DataBindingUtil.inflate(inflater, R.layout.fragment_product, container, false)
         loadProduct()
-        binding.product = mainViewModel.product.value
+        binding.product = viewModel.product.value
         binding.lifecycleOwner = this
         // change toolbar background color
         switchToolbarBackgroundColor()
@@ -41,7 +41,7 @@ class ProductFragment : BaseFragment() {
     }
 
     private fun loadProduct() {
-        mainViewModel.loadProduct(
+        viewModel.loadProduct(
             ProductFragmentArgs.fromBundle(requireArguments()).productId
         )
     }
@@ -53,7 +53,7 @@ class ProductFragment : BaseFragment() {
 
     private fun observeData() {
         tbProductViewPager.setupWithViewPager(vpProductViewPager, true)
-        mainViewModel.product.observe(viewLifecycleOwner, Observer {
+        viewModel.product.observe(viewLifecycleOwner, Observer {
                 product -> binding.vpProductViewPager.adapter = ProductPhotosAdapter(requireContext(), product.images)
         })
     }

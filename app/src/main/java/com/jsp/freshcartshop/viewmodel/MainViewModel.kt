@@ -13,6 +13,7 @@ class MainViewModel : BaseViewModel() {
 
     val productList = MutableLiveData<List<Product>>()
     val product = MutableLiveData<Product>()
+    val isLoaded = MutableLiveData<Boolean>()
 
     fun loadProducts() {
         viewModelScope.launch {
