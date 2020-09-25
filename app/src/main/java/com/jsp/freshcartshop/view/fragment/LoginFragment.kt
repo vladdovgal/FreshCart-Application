@@ -50,8 +50,10 @@ class LoginFragment : BaseFragment() {
     }
 
     private fun onSignInClick(view: View) {
+        loginViewModel.checkIfUserExists()
+
         if (checkForSyntaxWarnings())  {
-            if (loginViewModel.validateInput()) {
+            if (loginViewModel.userExists.value == true) {
                 view.findNavController().navigate(R.id.action_loginFragment_to_mainActivity)
             } else Toast.makeText(context, resources.getString(R.string.wrong_login_or_pass),
                 Toast.LENGTH_SHORT).show()

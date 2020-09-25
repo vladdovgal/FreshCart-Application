@@ -9,9 +9,15 @@ import kotlin.coroutines.suspendCoroutine
 
 class FreshCartRepositoryImpl(private val applicationDao: FreshCartDao) : FreshCartRepository {
 
-    override fun loginUser(login : String, password : String) : Boolean {
-        val userAccount = applicationDao.getAccount(login)
-        return userAccount.loginData.password == password
+    override suspend fun loginUser(login : String, password : String) : Boolean {
+        return suspendCoroutine { continuation ->
+            val response = applicationDao.getAccount(login)
+            if (response.loginData.password == password) {
+                continuation.resume(true)
+            } else {
+                continuation.resume(false)
+            }
+        }
     }
 
     override fun insertUser(fullName : String, username: String, login: Login) {
