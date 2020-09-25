@@ -7,7 +7,7 @@ import com.jsp.freshcartshop.utils.ValidationUtils
 import org.koin.java.KoinJavaComponent.inject
 
 
-class LoginViewModel : ViewModel() {
+class LoginViewModel : BaseViewModel() {
     // Application Repository
     private val appRepository by inject(FreshCartRepositoryImpl::class.java)
 

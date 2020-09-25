@@ -7,9 +7,13 @@ import android.view.ViewGroup
 import androidx.navigation.findNavController
 import com.jsp.freshcartshop.R
 import com.jsp.freshcartshop.view.BaseActivity
+import com.jsp.freshcartshop.viewmodel.SignUpViewModel
 import kotlinx.android.synthetic.main.fragment_sign_up.*
+import org.koin.android.viewmodel.ext.android.sharedViewModel
 
-class SignUpFragment : BaseFragment() {
+class SignUpFragment : BaseFragment<SignUpViewModel>() {
+
+    override val viewModel: SignUpViewModel by sharedViewModel()
 
     override fun setFragmentLayout(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View {
         return inflater.inflate(R.layout.fragment_sign_up, container, false)

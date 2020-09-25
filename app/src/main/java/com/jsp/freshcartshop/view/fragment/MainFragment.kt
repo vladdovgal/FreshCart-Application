@@ -4,7 +4,6 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.ProgressBar
 import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.Observer
 import androidx.navigation.fragment.findNavController
@@ -18,9 +17,9 @@ import com.jsp.freshcartshop.viewmodel.MainViewModel
 import kotlinx.android.synthetic.main.fragment_main.*
 import org.koin.android.viewmodel.ext.android.sharedViewModel
 
-class MainFragment : BaseFragment() {
+class MainFragment : BaseFragment<MainViewModel>() {
 
-    val mainViewModel by sharedViewModel<MainViewModel>()
+    override val viewModel: MainViewModel by sharedViewModel()
 
     private lateinit var binding: FragmentMainBinding
 
@@ -47,14 +46,14 @@ class MainFragment : BaseFragment() {
     }
 
     private fun observeData() {
-        mainViewModel.loadProducts()
+        viewModel.loadProducts()
 
         tdMainViewPager.setupWithViewPager(vpMainProducts, true)
-        mainViewModel.productList.observe(viewLifecycleOwner, Observer { products ->
+        viewModel.productList.observe(viewLifecycleOwner, Observer { products ->
             binding.vpMainProducts.adapter = ProductPagerAdapter(requireContext(), products)
         })
 
-        mainViewModel.productList.observe(viewLifecycleOwner, Observer { products ->
+        viewModel.productList.observe(viewLifecycleOwner, Observer { products ->
             rvMainProducts.also {
                 it.layoutManager = GridLayoutManager(activity, 3)
                 it.adapter = ProductRecyclerAdapter().also { it.addAll(products) }
@@ -63,16 +62,6 @@ class MainFragment : BaseFragment() {
                     val action = MainFragmentDirections.actionMainFragmentToProductFragment(product.id)
                     findNavController().navigate(action)
                 }
-            }
-        })
-
-        mainViewModel.isLoading.observe(viewLifecycleOwner, Observer { isLoading ->
-            if (isLoading) {
-                pbRecommendProducts.visibility = ProgressBar.VISIBLE
-                pbAllProducts.visibility = ProgressBar.VISIBLE
-            } else {
-                pbRecommendProducts.visibility = ProgressBar.GONE
-                pbAllProducts.visibility = ProgressBar.GONE
             }
         })
     }

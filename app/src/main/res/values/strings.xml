@@ -38,6 +38,7 @@
     <string name="discount">Get %1$d$ Off</string>
     <string name="discount_description">On your first order</string>
     <string name="shop_now">Shop Now</string>
+    <string name="ok">OK</string>
 
     <!--Product Fragment -->
     <string name="add_to_cart">Add to Cart</string>
