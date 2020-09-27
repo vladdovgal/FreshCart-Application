@@ -4,9 +4,9 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.ProgressBar
 import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.Observer
+import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.GridLayoutManager
 import com.jsp.freshcartshop.R
 import com.jsp.freshcartshop.adapters.ProductPagerAdapter
@@ -15,11 +15,12 @@ import com.jsp.freshcartshop.databinding.FragmentMainBinding
 import com.jsp.freshcartshop.view.MainActivity
 import com.jsp.freshcartshop.viewmodel.MainViewModel
 import kotlinx.android.synthetic.main.fragment_main.*
-import org.koin.android.ext.android.get
+import org.koin.android.viewmodel.ext.android.sharedViewModel
 
-class MainFragment : BaseFragment() {
+class MainFragment : BaseFragment<MainViewModel>() {
 
-    private val mainViewModel: MainViewModel = get()
+    override val viewModel: MainViewModel by sharedViewModel()
+
     private lateinit var binding: FragmentMainBinding
 
     override fun setFragmentLayout(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View {
@@ -29,7 +30,7 @@ class MainFragment : BaseFragment() {
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         binding = DataBindingUtil.inflate(inflater, R.layout.fragment_main, container, false)
         binding.lifecycleOwner = this
-        binding.mainViewModel = mainViewModel
+        binding.mainViewModel = viewModel
 
         return binding.root
     }
@@ -46,27 +47,22 @@ class MainFragment : BaseFragment() {
     }
 
     private fun observeData() {
-        mainViewModel.loadProducts()
+        viewModel.loadProducts()
 
         tdMainViewPager.setupWithViewPager(vpMainProducts, true)
-        mainViewModel.productList.observe(viewLifecycleOwner, Observer { products ->
+        viewModel.productList.observe(viewLifecycleOwner, Observer { products ->
             binding.vpMainProducts.adapter = ProductPagerAdapter(requireContext(), products)
         })
 
-        mainViewModel.productList.observe(viewLifecycleOwner, Observer { products ->
+        viewModel.productList.observe(viewLifecycleOwner, Observer { products ->
             rvMainProducts.also {
                 it.layoutManager = GridLayoutManager(activity, 3)
                 it.adapter = ProductRecyclerAdapter().also { it.addAll(products) }
-            }
-        })
-
-        mainViewModel.isLoading.observe(viewLifecycleOwner, Observer { isLoading ->
-            if (isLoading) {
-                pbRecommendProducts.visibility = ProgressBar.VISIBLE
-                pbAllProducts.visibility = ProgressBar.VISIBLE
-            } else {
-                pbRecommendProducts.visibility = ProgressBar.GONE
-                pbAllProducts.visibility = ProgressBar.GONE
+                // Get clicked item's id
+                (it.adapter as ProductRecyclerAdapter).onItemClick = { product ->
+                    val action = MainFragmentDirections.actionMainFragmentToProductFragment(product.id)
+                    findNavController().navigate(action)
+                }
             }
         })
     }

@@ -34,9 +34,38 @@
         <item name="fontWeight">20</item>
     </style>
 
+    <!-- Style for items_count and add_to_cart buttons at FragmentProduct -->
+    <style name="ProductButtonStyle">
+        <item name="cardCornerRadius">10dp</item>
+        <item name="android:clipToPadding">false</item>
+        <item name="android:clipChildren">false</item>
+        <item name="cardElevation">10dp</item>
+        <item name="cardPreventCornerOverlap">false</item>
+        <item name="layout_anchor">@id/product_image_card</item>
+        <item name="background">@drawable/bg_product_card_button</item>
+        <item name="android:layout_height">50dp</item>
+    </style>
+
+    <style name="ProductNamePriceStyle">
+        <item name="fontFamily">@font/poppins_medium</item>
+        <item name="android:textColor">@color/colorPrimary</item>
+        <item name="android:textSize">22sp</item>
+        <item name="android:textStyle">bold</item>
+    </style>
+
     <style name="ImageViewRounded" parent="">
         <item name="cornerFamily">rounded</item>
         <item name="cornerSize">25%</item>
     </style>
 
+    <!--    Rating Bar -->
+    <style name="MyRatingBar" parent="Theme.AppCompat">
+        <item name="colorControlNormal">@color/colorPrimary</item>
+        <item name="colorControlActivated">@color/colorPrimary</item>
+        <item name="colorPrimary">@color/colorPrimary</item>
+    </style>
+
+    <style name="MyRatingBarStyle" parent="Widget.AppCompat.RatingBar.Small">
+        <item name="ratingBarStyle">@style/MyRatingBarStyle</item>
+    </style>
 </resources>

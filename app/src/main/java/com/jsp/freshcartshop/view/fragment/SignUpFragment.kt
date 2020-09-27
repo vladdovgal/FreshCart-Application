@@ -6,18 +6,19 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.Observer
-import androidx.navigation.findNavController
 import androidx.navigation.fragment.findNavController
 import br.com.ilhasoft.support.validation.Validator
 import com.jsp.freshcartshop.R
 import com.jsp.freshcartshop.databinding.FragmentSignUpBinding
 import com.jsp.freshcartshop.view.BaseActivity
 import com.jsp.freshcartshop.viewmodel.SignUpViewModel
-import org.koin.android.ext.android.get
+import kotlinx.android.synthetic.main.fragment_sign_up.*
+import org.koin.android.viewmodel.ext.android.sharedViewModel
 
-class SignUpFragment : BaseFragment() {
+class SignUpFragment : BaseFragment<SignUpViewModel>() {
 
-    private val signUpViewModel: SignUpViewModel = get()
+    override val viewModel: SignUpViewModel by sharedViewModel()
+
     private lateinit var binding: FragmentSignUpBinding
     private lateinit var validator: Validator
 
@@ -28,7 +29,7 @@ class SignUpFragment : BaseFragment() {
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         binding = DataBindingUtil.inflate(inflater, R.layout.fragment_sign_up, container, false)
         binding.lifecycleOwner = this
-        binding.signUpViewModel = signUpViewModel
+        binding.signUpViewModel = viewModel
         validator = Validator(binding)
 
         return binding.root
@@ -40,26 +41,34 @@ class SignUpFragment : BaseFragment() {
         init()
     }
 
-    fun init() {
+    private fun init() {
         observeData()
 
         binding.signUpButton.setOnClickListener{
             if (validator.validate()) {
-                signUpViewModel.registerUser()
+                viewModel.registerUser()
             }
         }
 
         binding.tvHaveAccount.setOnClickListener {
-            view.findNavController().navigate(R.id.action_signUpFragment_to_loginFragment)
+            findNavController().navigate(R.id.action_signUpFragment_to_loginFragment)
         }
     }
 
-    fun observeData() {
-        signUpViewModel.isLoaded.observe(viewLifecycleOwner, Observer { isLoaded ->
+    private fun observeData() {
+        viewModel.isLoaded.observe(viewLifecycleOwner, Observer { isLoaded ->
             if (isLoaded) {
                 findNavController().navigate(R.id.action_signUpFragment_to_loginFragment)
+                clearInputs()
+                viewModel.isLoaded.postValue(false)
             }
         })
     }
 
+    private fun clearInputs() {
+        etFullName.text?.clear()
+        etUsername.text?.clear()
+        etEmail.text?.clear()
+        etPassword.text?.clear()
+    }
 }

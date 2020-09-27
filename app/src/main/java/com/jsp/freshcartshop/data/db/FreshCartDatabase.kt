@@ -4,6 +4,7 @@ import android.content.Context
 import androidx.room.Database
 import androidx.room.Room
 import androidx.room.RoomDatabase
+import com.jsp.freshcartshop.data.db.dao.UserDao
 import com.jsp.freshcartshop.data.repository.UserAccount
 
 @Database(
@@ -11,6 +12,8 @@ import com.jsp.freshcartshop.data.repository.UserAccount
     version = 1
 )
 abstract class FreshCartDatabase : RoomDatabase() {
+
+    abstract fun getUserDao(): UserDao
 
     companion object{
         @Volatile private var instance: FreshCartDatabase? = null
@@ -22,7 +25,7 @@ abstract class FreshCartDatabase : RoomDatabase() {
 
         private fun buildDatabase(context: Context) =
             Room.databaseBuilder(context.applicationContext,
-                FreshCartDatabase::class.java, "freshkart.db")
+                FreshCartDatabase::class.java, "freshcart.db")
                 .build()
     }
 }
