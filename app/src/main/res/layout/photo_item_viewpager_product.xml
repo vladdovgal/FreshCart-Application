@@ -34,11 +34,9 @@
 
                 <com.google.android.material.imageview.ShapeableImageView
                     android:id="@+id/imgProductRecommendImage"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
+                    android:layout_width="@dimen/max_product_photo_size"
+                    android:layout_height="@dimen/max_product_photo_size"
                     android:adjustViewBounds="true"
-                    android:maxWidth="@dimen/max_product_photo_size"
-                    android:maxHeight="@dimen/max_product_photo_size"
                     app:image='@{image}'
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
@@ -46,7 +44,8 @@
                     app:layout_constraintTop_toTopOf="parent"
                     tools:src="@drawable/img_placeholder"
                     android:scaleType="centerCrop"
-                    app:shapeAppearanceOverlay="@style/ImageViewRounded"/>
+                    app:shapeAppearanceOverlay="@style/ImageViewRounded"
+                    />
 
             </androidx.constraintlayout.widget.ConstraintLayout>
 

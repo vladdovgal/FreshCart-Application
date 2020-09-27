@@ -6,8 +6,8 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
 import androidx.databinding.DataBindingUtil
-import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.findNavController
+import com.google.android.material.snackbar.Snackbar
 import com.jsp.freshcartshop.R
 import com.jsp.freshcartshop.databinding.FragmentLoginBinding
 import com.jsp.freshcartshop.view.BaseActivity
@@ -15,20 +15,27 @@ import com.jsp.freshcartshop.viewmodel.LoginViewModel
 import kotlinx.android.synthetic.main.fragment_login.*
 import org.koin.android.ext.android.get
 
-class LoginFragment : BaseFragment() {
+class LoginFragment : BaseFragment<LoginViewModel>() {
 
-    private var loginViewModel: LoginViewModel = get()
-    private lateinit var binding : FragmentLoginBinding
+    override val viewModel: LoginViewModel = get()
+    private lateinit var binding: FragmentLoginBinding
 
-    override fun setFragmentLayout(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View {
+    override fun setFragmentLayout(
+        inflater: LayoutInflater,
+        container: ViewGroup?,
+        savedInstanceState: Bundle?
+    ): View {
         return inflater.inflate(R.layout.fragment_login, container, false)
     }
 
-    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
-        loginViewModel = ViewModelProvider(this).get(LoginViewModel::class.java)
+    override fun onCreateView(
+        inflater: LayoutInflater,
+        container: ViewGroup?,
+        savedInstanceState: Bundle?
+    ): View? {
         binding = DataBindingUtil.inflate(inflater, R.layout.fragment_login, container, false)
         binding.lifecycleOwner = this
-        binding.loginViewModel = loginViewModel
+        binding.loginViewModel = viewModel
 
         return binding.root
     }
@@ -50,45 +57,48 @@ class LoginFragment : BaseFragment() {
     }
 
     private fun onSignInClick(view: View) {
-        loginViewModel.checkIfUserExists()
+        viewModel.checkIfUserExists()
 
-        if (checkForSyntaxWarnings())  {
-            if (loginViewModel.userExists.value == true) {
-                view.findNavController().navigate(R.id.action_loginFragment_to_mainActivity)
-            } else Toast.makeText(context, resources.getString(R.string.wrong_login_or_pass),
-                Toast.LENGTH_SHORT).show()
+        if (checkForSyntaxWarnings()) {
+            if (viewModel.userExists.value == true) {
+                    view.findNavController().navigate(R.id.action_loginFragment_to_mainActivity)
+                } else {
+                Snackbar.make(requireView(), resources.getString(R.string.wrong_login_or_pass), Snackbar.LENGTH_LONG )
+                    .show()
+                }
+            }
         }
-    }
 
-    private fun onTvNotMemberClick(view: View) {
-        view.findNavController().navigate(R.id.action_loginFragment_to_signUpFragment)
-    }
+        private fun onTvNotMemberClick(view: View) {
+            view.findNavController().navigate(R.id.action_loginFragment_to_signUpFragment)
+        }
 
-    private fun checkForSyntaxWarnings() : Boolean {
-        var isLoginFieldsValid = true
-        if (loginViewModel.login.value != null && loginViewModel.password.value != null) {
-            if (loginViewModel.errorEmail.value != "") {
-                etLogin.error = loginViewModel.errorEmail.value
+        private fun checkForSyntaxWarnings(): Boolean {
+            var isLoginFieldsValid = true
+            if (viewModel.login.value != null && viewModel.password.value != null) {
+                if (viewModel.errorEmail.value != "") {
+                    etLogin.error = viewModel.errorEmail.value
+                    isLoginFieldsValid = false
+                }
+            } else {
+                Snackbar.make(requireView(), resources.getString(R.string.empty_fields), Snackbar.LENGTH_LONG )
+                    .show()
+                return false
+            }
+            if (viewModel.errorPass.value != "") {
+                etPassword.error = viewModel.errorPass.value
                 isLoginFieldsValid = false
             }
-        } else {
-            Toast.makeText(context, resources.getString(R.string.empty_fields), Toast.LENGTH_SHORT).show()
-            return false
+            return isLoginFieldsValid
         }
-        if (loginViewModel.errorPass.value != "") {
-            etPassword.error = loginViewModel.errorPass.value
-            isLoginFieldsValid = false
+
+        private fun observeData() {
+            viewModel.password.observe(viewLifecycleOwner, androidx.lifecycle.Observer {
+                viewModel.validatePassword(it)
+            })
+
+            viewModel.login.observe(viewLifecycleOwner, androidx.lifecycle.Observer {
+                viewModel.validateEmail(it)
+            })
         }
-        return isLoginFieldsValid
     }
-
-    private fun observeData() {
-        loginViewModel.password.observe(viewLifecycleOwner, androidx.lifecycle.Observer {
-            loginViewModel.validatePassword(it)
-        })
-
-        loginViewModel.login.observe(viewLifecycleOwner, androidx.lifecycle.Observer {
-            loginViewModel.validateEmail(it)
-        })
-    }
-}

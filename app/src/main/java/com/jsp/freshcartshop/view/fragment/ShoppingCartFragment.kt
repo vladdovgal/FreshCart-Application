@@ -6,9 +6,12 @@ import android.view.View
 import android.view.ViewGroup
 import com.jsp.freshcartshop.R
 import com.jsp.freshcartshop.view.BaseActivity
+import com.jsp.freshcartshop.viewmodel.ShoppingCartViewModel
+import org.koin.android.viewmodel.ext.android.sharedViewModel
 
+class ShoppingCartFragment : BaseFragment<ShoppingCartViewModel>() {
 
-class ShoppingCartFragment : BaseFragment() {
+    override val viewModel: ShoppingCartViewModel by sharedViewModel()
 
     override fun setFragmentLayout(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View {
         return inflater.inflate(R.layout.fragment_shopping_cart, container, false)

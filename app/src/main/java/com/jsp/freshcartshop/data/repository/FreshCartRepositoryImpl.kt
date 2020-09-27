@@ -20,12 +20,19 @@ class FreshCartRepositoryImpl(private val applicationDao: FreshCartDao) : FreshC
         }
     }
 
-    override fun insertUser(fullName : String, username: String, login: Login) {
-        val account = UserAccount(fullName, username, login)
-        applicationDao.insert(account)
+    override suspend fun insertUser(fullName : String, username: String, login: Login) {
+        return suspendCoroutine { continuation ->
+            val response = applicationDao.insert(UserAccount(fullName, username, login))
+            if (response != null) {
+                continuation.resume(response)
+            } else {
+                continuation.resumeWithException(Exception("Can't insert user"))
+            }
+        }
     }
 
     override suspend fun getProductById(id: Long): Product {
+        delay(500)
         return suspendCoroutine { continuation ->
             val response = applicationDao.getProduct(id)
             if (response != null) {

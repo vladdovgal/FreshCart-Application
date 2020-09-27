@@ -9,9 +9,13 @@ import android.view.Window
 import android.widget.Button
 import android.widget.TextView
 import androidx.fragment.app.Fragment
+import androidx.lifecycle.Observer
 import com.jsp.freshcartshop.R
+import com.jsp.freshcartshop.viewmodel.BaseViewModel
 
-abstract class BaseFragment : Fragment() {
+abstract class BaseFragment<VM : BaseViewModel> : Fragment() {
+
+    protected abstract val viewModel: VM
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         return setFragmentLayout(inflater, container, savedInstanceState);
@@ -19,7 +23,12 @@ abstract class BaseFragment : Fragment() {
 
     abstract fun setFragmentLayout(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View
 
-    fun getLoader(): Dialog {
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+        observeData()
+    }
+
+    private fun getLoader(): Dialog {
         val loadingDialog = Dialog(requireContext())
         loadingDialog.requestWindowFeature(Window.FEATURE_NO_TITLE)
         loadingDialog.setCancelable(false)
@@ -28,7 +37,7 @@ abstract class BaseFragment : Fragment() {
         return loadingDialog
     }
 
-    fun showError(message: String) {
+    private fun showError(message: String) {
         val errorDialog = Dialog(requireContext())
         errorDialog.requestWindowFeature(Window.FEATURE_NO_TITLE)
         errorDialog.setCancelable(false)
@@ -38,5 +47,23 @@ abstract class BaseFragment : Fragment() {
             errorDialog.dismiss()
         }
         errorDialog.show()
+    }
+
+    private fun observeData() {
+        val loader = getLoader()
+
+        viewModel.isLoading.observe(viewLifecycleOwner, Observer { isLoading ->
+            if (isLoading) {
+                loader.show()
+            } else {
+                loader.dismiss()
+            }
+        })
+
+        viewModel.errorMessageData.observe(viewLifecycleOwner, Observer { message ->
+            if (message != null) {
+                showError(message)
+            }
+        })
     }
 }

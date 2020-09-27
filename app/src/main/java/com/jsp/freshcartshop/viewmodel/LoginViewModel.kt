@@ -7,7 +7,6 @@ import com.jsp.freshcartshop.utils.ValidationUtils
 import kotlinx.coroutines.launch
 import org.koin.java.KoinJavaComponent.inject
 
-
 class LoginViewModel : BaseViewModel() {
     // Application Repository
     private val appRepository by inject(FreshCartRepositoryImpl::class.java)
@@ -22,18 +21,21 @@ class LoginViewModel : BaseViewModel() {
 
     // If user exists
     var userExists = MutableLiveData<Boolean>()
+    val isLoaded = MutableLiveData<Boolean>()
 
     // Call repository to check if such user exists
     fun checkIfUserExists() {
         viewModelScope.launch {
             try {
                 isLoading.postValue(true)
-                userExists.value = appRepository.loginUser(login.value.toString(),
-                        password.value.toString())
+                val response = appRepository.loginUser(login.value.toString(),
+                    password.value.toString())
+                userExists.value = response
                 isLoaded.postValue(true)
                 errorMessageData.postValue(null)
             } catch (e : Exception) {
                 e.printStackTrace()
+                errorMessageData.postValue(e.message)
             } finally {
                 isLoading.postValue(false)
             }
