@@ -145,7 +145,6 @@
         android:contentDescription="@string/search"
         android:src="@drawable/ic_search"
         app:backgroundTint="?attr/whiteColor"
-        android:rotation="-90"
         app:tint="?attr/primaryColor"
         />
 
