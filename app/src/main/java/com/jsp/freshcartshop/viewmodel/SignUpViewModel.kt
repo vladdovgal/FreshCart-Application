@@ -17,7 +17,6 @@ class SignUpViewModel : BaseViewModel() {
     val password = MutableLiveData<String>()
     val isLoaded = MutableLiveData<Boolean>()
 
-
     fun registerUser() {
         viewModelScope.launch {
             try {
