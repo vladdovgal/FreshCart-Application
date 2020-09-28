@@ -10,6 +10,5 @@ fun loadWithCoil(imageView: ImageView, imageUrl: String){
     imageView.load(imageUrl){
         placeholder(R.drawable.img_placeholder)
         error(R.drawable.img_error)
-
     }
 }
