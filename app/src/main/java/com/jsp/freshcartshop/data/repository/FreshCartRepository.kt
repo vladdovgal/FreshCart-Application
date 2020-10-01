@@ -4,9 +4,9 @@ import com.jsp.freshcartshop.model.Product
 
 interface FreshCartRepository {
 
-    fun loginUser(login : String, password : String) : Boolean
+    suspend fun loginUser(login : String, password : String) : Boolean
 
-    fun insertUser(fullName : String, username: String, login: Login)
+    suspend fun insertUser(fullName : String, username: String, login: Login)
 
     suspend fun getProductById(id : Long) : Product
 
