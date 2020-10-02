@@ -21,6 +21,4 @@ class SearchFragment : BaseFragment<SearchViewModel>() {
         super.onViewCreated(view, savedInstanceState)
         (activity as BaseActivity).setToolBarTitle(getString(R.string.search))
     }
-
-
 }

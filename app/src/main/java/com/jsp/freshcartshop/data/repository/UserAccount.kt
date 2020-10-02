@@ -11,4 +11,7 @@ data class UserAccount(
     val fullName: String,
     val username: String,
     @Embedded
-    val loginData: Login)
+    val loginData: Login) {
+
+    constructor(fullName: String, username: String, loginData: Login) : this(0L, fullName, username, loginData)
+}
