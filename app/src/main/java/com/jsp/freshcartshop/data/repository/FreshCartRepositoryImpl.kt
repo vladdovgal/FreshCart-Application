@@ -32,7 +32,6 @@ class FreshCartRepositoryImpl(private val applicationDao: FreshCartDao) : FreshC
     }
 
     override suspend fun getProductById(id: Long): Product {
-        delay(500)
         return suspendCoroutine { continuation ->
             val response = applicationDao.getProduct(id)
             if (response != null) {
