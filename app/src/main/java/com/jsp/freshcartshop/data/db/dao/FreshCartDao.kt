@@ -3,7 +3,6 @@ package com.jsp.freshcartshop.data.db.dao
 import com.jsp.freshcartshop.data.repository.Login
 import com.jsp.freshcartshop.data.repository.UserAccount
 import com.jsp.freshcartshop.model.Product
-import java.util.*
 
 class FreshCartDao {
 
@@ -12,7 +11,7 @@ class FreshCartDao {
 
     init {
         fillProducts()
-        accountsList.add(UserAccount(UUID.randomUUID().toString(),"John Root", "root",
+        accountsList.add(UserAccount("John Root", "root",
             Login("root@a.a", "root")
         ))
     }
@@ -32,7 +31,7 @@ class FreshCartDao {
     fun getAccount(login: String): UserAccount {
         // todo getAccount data from database
         return accountsList.find { it.loginData.email == login || it.username == login }
-            ?: UserAccount(UUID.randomUUID().toString(), "","", Login("", ""))
+            ?: UserAccount("","", Login("", ""))
     }
 
     fun insert(account: UserAccount): UserAccount {
