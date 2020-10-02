@@ -1,6 +1,7 @@
 package com.jsp.freshcartshop.view.fragment
 
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -56,6 +57,30 @@ class ProductFragment : BaseFragment<MainViewModel>() {
         viewModel.product.observe(viewLifecycleOwner, Observer {
                 product -> binding.vpProductViewPager.adapter = ProductPhotosAdapter(requireContext(), product.images)
         })
+
+        // add current item to the shopping cart
+        fabAddToCart.setOnClickListener {
+            viewModel.addProductToCart(ProductFragmentArgs.fromBundle(requireArguments()).productId,
+                Integer.parseInt(productCount.text.toString()))
+            Log.d("myLogs", "Product id: ${ProductFragmentArgs.fromBundle(requireArguments()).productId}}")
+            Log.d("myLogs", "Product count: ${Integer.parseInt(productCount.text.toString())}}")
+        }
+
+        // change items count
+        minusButton.setOnClickListener {
+            changeItemsCount(-1)
+        }
+
+        plusButton.setOnClickListener {
+            changeItemsCount(1)
+        }
+    }
+
+    private fun changeItemsCount(count : Int) {
+        val currentCount = Integer.parseInt(productCount.text.toString())
+        if ( (count < 0 && currentCount > 1) || count > 0 ) {
+            productCount.text = (currentCount + count).toString()
+        }
     }
 
     override fun onStop() {

@@ -13,6 +13,7 @@ class MainViewModel : BaseViewModel() {
 
     val productList = MutableLiveData<List<Product>>()
     val product = MutableLiveData<Product>()
+    val cart = MutableLiveData<MutableMap<Long, Int>>()
     val isLoaded = MutableLiveData<Boolean>()
 
     fun loadProducts() {
@@ -42,5 +43,9 @@ class MainViewModel : BaseViewModel() {
                 errorMessageData.postValue(e.message)
             }
         }
+    }
+
+    fun addProductToCart(id : Long, quantity : Int) {
+        cart.value?.put(id, quantity)
     }
 }
