@@ -17,7 +17,7 @@ val viewModelModule =  module {
 }
 
 val repositoryModule = module {
-    single { Room.databaseBuilder(get(), FreshCartDatabase::class.java, "freshcart.db").build() }
+    single { Room.databaseBuilder(get(), FreshCartDatabase::class.java, "freshcart.db").fallbackToDestructiveMigration().build() }
     single { get<FreshCartDatabase>().getUserDao() }
     single { FreshCartDao() }
     single { FreshCartRepositoryImpl(get<FreshCartDao>(), get()) }

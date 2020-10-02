@@ -9,7 +9,7 @@ import com.jsp.freshcartshop.data.repository.UserAccount
 
 @Database(
     entities = [UserAccount::class],
-    version = 1
+    version = 2
 )
 abstract class FreshCartDatabase : RoomDatabase() {
 
@@ -26,6 +26,7 @@ abstract class FreshCartDatabase : RoomDatabase() {
         private fun buildDatabase(context: Context) =
             Room.databaseBuilder(context.applicationContext,
                 FreshCartDatabase::class.java, "freshcart.db")
+                .fallbackToDestructiveMigration()
                 .build()
     }
 }
