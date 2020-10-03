@@ -59,10 +59,11 @@ class ProductFragment : BaseFragment<MainViewModel>() {
         })
 
         // add current item to the shopping cart
-        fabAddToCart.setOnClickListener {
-            viewModel.addProductToCart(ProductFragmentArgs.fromBundle(requireArguments()).productId,
+        binding.fabAddToCart.setOnClickListener {
+            viewModel.addProductToCart(
+                viewModel.product.value!!,
                 Integer.parseInt(productCount.text.toString()))
-            Log.d("myLogs", "Product id: ${ProductFragmentArgs.fromBundle(requireArguments()).productId}}")
+            Log.d("myLogs", "Product id: ${viewModel.product.value!!.id}}")
             Log.d("myLogs", "Product count: ${Integer.parseInt(productCount.text.toString())}}")
         }
 

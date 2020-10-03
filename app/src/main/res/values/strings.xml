@@ -49,5 +49,10 @@
     <string name="min_order_if_cash">cash on delivery avaliable all below $100</string>
     <string name="increase_product_count">Increase quantity by 1</string>
     <string name="decrease_product_count">Decrease quantity by 1</string>
+    <string name="price_total">Total</string>
+    <string name="title_delivery_charge">Delivery Charge</string>
+    <string name="price_sub_total">Sub Total</string>
+    <string name="proceed_to_checkout">Proceed To Checkout</string>
+    <string name="product_total">$ %d</string>
 
 </resources>
