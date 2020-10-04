@@ -80,18 +80,18 @@
 
     </androidx.cardview.widget.CardView>
 
-        <fragment
-            android:id="@+id/mainActivityHost"
-            android:name="androidx.navigation.fragment.NavHostFragment"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            app:layout_constraintTop_toBottomOf="@id/toolbar"
-            app:layout_constraintBottom_toBottomOf="@id/bottomAppBar"
-            android:layout_marginTop="?attr/actionBarSize"
-            android:layout_marginBottom="@dimen/margin_bottom_above_bottom_app_bar"
-            app:defaultNavHost="true"
-            app:navGraph="@navigation/nav_graph_main"
-            />
+    <androidx.fragment.app.FragmentContainerView
+        android:id="@+id/mainActivityHost"
+        android:name="androidx.navigation.fragment.NavHostFragment"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        app:layout_constraintTop_toBottomOf="@id/toolbar"
+        app:layout_constraintBottom_toBottomOf="@id/bottomAppBar"
+        android:layout_marginTop="?attr/actionBarSize"
+        android:layout_marginBottom="@dimen/margin_bottom_above_bottom_app_bar"
+        app:defaultNavHost="true"
+        app:navGraph="@navigation/nav_graph_main"
+        />
 
     <com.google.android.material.bottomappbar.BottomAppBar
         android:id="@+id/bottomAppBar"
@@ -141,12 +141,12 @@
         android:id="@+id/searchButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        app:layout_anchor="@id/bottomAppBar"
+        android:layout_marginBottom="30dp"
         android:contentDescription="@string/search"
+        android:rotation="-90"
         android:src="@drawable/ic_search"
         app:backgroundTint="?attr/whiteColor"
-        android:rotation="-90"
-        app:tint="?attr/primaryColor"
-        />
+        app:layout_anchor="@id/bottomAppBar"
+        app:tint="?attr/primaryColor" />
 
 </androidx.coordinatorlayout.widget.CoordinatorLayout>

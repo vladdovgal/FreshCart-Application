@@ -1,6 +1,5 @@
 package com.jsp.freshcartshop.adapters
 
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
@@ -23,7 +22,6 @@ class ShoppingCartRecyclerAdapter : BaseRecyclerAdapter<CartItem, ShoppingCartRe
 
     override fun onBindViewHolder(holder: CartItemViewHolder, position: Int) {
         holder.listItemRecyclerViewShoppingCartBinding.cartItem = items[position]
-        Log.d("myLogs", "Cart first elem : ${items[0].product.name}")
     }
 
     inner class CartItemViewHolder(val listItemRecyclerViewShoppingCartBinding : ListItemShoppingCartBinding) :

@@ -53,6 +53,7 @@
     <string name="title_delivery_charge">Delivery Charge</string>
     <string name="price_sub_total">Sub Total</string>
     <string name="proceed_to_checkout">Proceed To Checkout</string>
-    <string name="product_total">$ %d</string>
+    <string name="price_template">$%,.2f</string>
+    <string name="empty_cart_tip">Ups, your cart is empty</string>
 
 </resources>

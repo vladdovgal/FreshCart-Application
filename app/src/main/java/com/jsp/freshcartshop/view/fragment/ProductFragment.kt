@@ -1,10 +1,11 @@
 package com.jsp.freshcartshop.view.fragment
 
+import android.content.res.Resources
 import android.os.Bundle
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
 import androidx.core.content.ContextCompat
 import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.Observer
@@ -60,11 +61,13 @@ class ProductFragment : BaseFragment<MainViewModel>() {
 
         // add current item to the shopping cart
         binding.fabAddToCart.setOnClickListener {
-            viewModel.addProductToCart(
-                viewModel.product.value!!,
+            val (product, quantity) = Pair(viewModel.product.value
+                ?: throw Resources.NotFoundException("Product not found"),
                 Integer.parseInt(productCount.text.toString()))
-            Log.d("myLogs", "Product id: ${viewModel.product.value!!.id}}")
-            Log.d("myLogs", "Product count: ${Integer.parseInt(productCount.text.toString())}}")
+            viewModel.addProductToCart(
+                product,
+                quantity)
+            Toast.makeText(context, "Added $quantity ${product.name}s to cart", Toast.LENGTH_SHORT).show()
         }
 
         // change items count
