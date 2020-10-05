@@ -6,8 +6,8 @@
 
    <data>
        <variable
-           name="main"
-           type="com.jsp.freshcartshop.view.fragment.MainFragment"
+           name="mainViewModel"
+           type="com.jsp.freshcartshop.viewmodel.MainViewModel"
            />
    </data>
 

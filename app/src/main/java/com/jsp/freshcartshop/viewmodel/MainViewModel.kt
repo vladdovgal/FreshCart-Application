@@ -41,11 +41,16 @@ class MainViewModel : BaseViewModel() {
     fun loadProduct(id : Long) {
         viewModelScope.launch {
             try {
+                isLoading.postValue(true)
                 val response = freshCartRepository.getProductById(id)
                 product.value = response
+                isLoaded.postValue(true)
+                errorMessageData.postValue(null)
             } catch (e: Exception) {
                 e.printStackTrace()
                 errorMessageData.postValue(e.message)
+            } finally {
+                isLoading.postValue(false)
             }
         }
     }

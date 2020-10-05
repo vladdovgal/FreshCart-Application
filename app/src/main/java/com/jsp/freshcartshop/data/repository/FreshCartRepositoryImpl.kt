@@ -1,13 +1,15 @@
 package com.jsp.freshcartshop.data.repository
 
 import com.jsp.freshcartshop.data.db.dao.FreshCartDao
+import com.jsp.freshcartshop.data.db.dao.UserDao
 import com.jsp.freshcartshop.model.Product
 import kotlinx.coroutines.delay
 import kotlin.coroutines.resume
 import kotlin.coroutines.resumeWithException
 import kotlin.coroutines.suspendCoroutine
 
-class FreshCartRepositoryImpl(private val applicationDao: FreshCartDao) : FreshCartRepository {
+class FreshCartRepositoryImpl(private val applicationDao: FreshCartDao,
+                              private val userDao: UserDao) : FreshCartRepository {
 
     override suspend fun loginUser(login : String, password : String) : Boolean {
         return suspendCoroutine { continuation ->
@@ -21,14 +23,8 @@ class FreshCartRepositoryImpl(private val applicationDao: FreshCartDao) : FreshC
     }
 
     override suspend fun insertUser(fullName : String, username: String, login: Login) {
-        return suspendCoroutine { continuation ->
-            val response = applicationDao.insert(UserAccount(fullName, username, login))
-            if (response != null) {
-                continuation.resume(response)
-            } else {
-                continuation.resumeWithException(Exception("Can't insert user"))
-            }
-        }
+        val account = UserAccount(fullName, username, login)
+        userDao.insert(account)
     }
 
     override suspend fun getProductById(id: Long): Product {
