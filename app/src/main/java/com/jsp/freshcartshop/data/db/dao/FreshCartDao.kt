@@ -1,19 +1,13 @@
 package com.jsp.freshcartshop.data.db.dao
 
-import com.jsp.freshcartshop.data.repository.Login
-import com.jsp.freshcartshop.data.repository.UserAccount
 import com.jsp.freshcartshop.model.Product
 
 class FreshCartDao {
 
     private val productList = mutableListOf<Product>()
-    private val accountsList = mutableListOf<UserAccount>()
 
     init {
         fillProducts()
-        accountsList.add(UserAccount("John Root", "root",
-            Login("root@a.a", "root")
-        ))
     }
 
     fun getAllProducts() = productList
@@ -26,17 +20,6 @@ class FreshCartDao {
         productList.add(Product(5, "Apple", 15, 20, listOf("https://5.imimg.com/data5/LM/DU/MY-22954806/apple-fruit-500x500.jpg")))
         productList.add(Product(6, "Bitter Melon", 18, 22, listOf("https://fruitshop.7uptheme.net/wp-content/uploads/2017/04/fruit_20.jpg")))
         productList.add(Product(7, "Brinjal", 14, 18, listOf("https://qph.fs.quoracdn.net/main-qimg-ecd53c201e40d8e834b7f67a3619e532")))
-    }
-
-    fun getAccount(login: String): UserAccount {
-        // todo getAccount data from database
-        return accountsList.find { it.loginData.email == login || it.username == login }
-            ?: UserAccount("","", Login("", ""))
-    }
-
-    fun insert(account: UserAccount): UserAccount {
-        accountsList.add(account)
-        return account
     }
 
     fun getProduct(id: Long): Product? {

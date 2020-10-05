@@ -1,12 +1,11 @@
 package com.jsp.freshcartshop.view.fragment
 
 import android.os.Bundle
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Toast
 import androidx.databinding.DataBindingUtil
+import androidx.lifecycle.lifecycleScope
 import androidx.navigation.findNavController
 import com.google.android.material.snackbar.Snackbar
 import com.jsp.freshcartshop.R
@@ -14,6 +13,7 @@ import com.jsp.freshcartshop.databinding.FragmentLoginBinding
 import com.jsp.freshcartshop.view.BaseActivity
 import com.jsp.freshcartshop.viewmodel.LoginViewModel
 import kotlinx.android.synthetic.main.fragment_login.*
+import kotlinx.coroutines.launch
 import org.koin.android.ext.android.get
 
 class LoginFragment : BaseFragment<LoginViewModel>() {
@@ -50,25 +50,26 @@ class LoginFragment : BaseFragment<LoginViewModel>() {
     private fun init(view: View) {
         observeData()
         binding.signInButton.setOnClickListener {
-            onSignInClick(view)
+            lifecycleScope.launch {
+                onSignInClick(view)
+            }
         }
         binding.tvNotMember.setOnClickListener {
             onTvNotMemberClick(view)
         }
     }
 
-    private fun onSignInClick(view: View) {
+    private suspend fun onSignInClick(view: View) {
         viewModel.checkIfUserExists()
-
         if (checkForSyntaxWarnings()) {
             if (viewModel.userExists.value == true) {
-                    view.findNavController().navigate(R.id.action_loginFragment_to_mainActivity)
-                } else {
+                view.findNavController().navigate(R.id.action_loginFragment_to_mainActivity)
+            } else {
                 Snackbar.make(requireView(), resources.getString(R.string.wrong_login_or_pass), Snackbar.LENGTH_LONG )
                     .show()
-                }
             }
         }
+    }
 
         private fun onTvNotMemberClick(view: View) {
             view.findNavController().navigate(R.id.action_loginFragment_to_signUpFragment)
