@@ -44,7 +44,7 @@ class ShoppingCartFragment : BaseFragment<MainViewModel>() {
 
     private fun observeData() {
         viewModel.cart.observe(viewLifecycleOwner, Observer { cartItems ->
-            shopping_cart.also { recyclerView ->
+            rvShoppingCart.also { recyclerView ->
                 recyclerView.layoutManager = LinearLayoutManager(activity, LinearLayoutManager.VERTICAL, false)
                 recyclerView.adapter = ShoppingCartRecyclerAdapter().also {
                     it.addAll(cartItems)
@@ -74,9 +74,9 @@ class ShoppingCartFragment : BaseFragment<MainViewModel>() {
      * @param total - total sum by products in the shopping cart.
      */
     private fun updateTotalPrice(total: Int) {
-        total_value.text = getString(R.string.price_template, total.toFloat())
-        sub_total_value.text = getString(R.string.price_template, total.toFloat() + 5.00)
-        delivery_charge.text = getString(R.string.price_template, 5.toFloat())
+        totalPriceValue.text = getString(R.string.price_template, total.toFloat())
+        subTotalValue.text = getString(R.string.price_template, total.toFloat() + 5.00)
+        deliveryChargeValue.text = getString(R.string.price_template, 5.toFloat())
     }
 
     /**
@@ -85,11 +85,11 @@ class ShoppingCartFragment : BaseFragment<MainViewModel>() {
     private fun showPlaceHolderHintIfCartIsEmpty() {
         val isCartNotEmpty = viewModel.cart.value!!.size > 0
         if (isCartNotEmpty) {
-            total_bill_card.visibility = View.VISIBLE
-            empty_cart_tip.visibility = View.GONE
+            cardTotalBill.visibility = View.VISIBLE
+            emptyCartTip.visibility = View.GONE
         } else {
-            total_bill_card.visibility = View.GONE
-            empty_cart_tip.visibility = View.VISIBLE
+            cardTotalBill.visibility = View.GONE
+            emptyCartTip.visibility = View.VISIBLE
         }
     }
 }

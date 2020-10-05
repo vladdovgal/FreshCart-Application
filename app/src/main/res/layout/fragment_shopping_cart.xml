@@ -12,7 +12,7 @@
             android:paddingEnd="@dimen/padding_small">
 
             <TextView
-                android:id="@+id/empty_cart_tip"
+                android:id="@+id/emptyCartTip"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="@string/empty_cart_tip"
@@ -33,7 +33,7 @@
                     android:orientation="vertical">
 
                     <androidx.recyclerview.widget.RecyclerView
-                        android:id="@+id/shopping_cart"
+                        android:id="@+id/rvShoppingCart"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         app:layout_constraintTop_toTopOf="parent"
@@ -41,7 +41,7 @@
                         tools:itemCount="10"/>
 
                     <androidx.constraintlayout.widget.ConstraintLayout
-                        android:id="@+id/total_bill_card"
+                        android:id="@+id/cardTotalBill"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:visibility="visible"
@@ -50,7 +50,7 @@
                         app:layout_constraintBottom_toBottomOf="parent">
 
                         <TextView
-                            android:id="@+id/title_price_total"
+                            android:id="@+id/titleTotalPrice"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:text="@string/price_total"
@@ -60,7 +60,7 @@
                             />
 
                         <TextView
-                            android:id="@+id/total_value"
+                            android:id="@+id/totalPriceValue"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:text='@string/price_template'
@@ -74,29 +74,29 @@
                             android:text="@string/title_delivery_charge"
                             android:fontFamily="@font/poppins_medium"
                             app:layout_constraintStart_toStartOf="parent"
-                            app:layout_constraintTop_toBottomOf="@id/title_price_total"
+                            app:layout_constraintTop_toBottomOf="@id/titleTotalPrice"
                             android:paddingBottom="@dimen/padding_small"
                             android:textSize="@dimen/medium_font"
                             />
 
                         <TextView
-                            android:id="@+id/delivery_charge"
+                            android:id="@+id/deliveryChargeValue"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:text="@string/price_template"
                             android:textSize="@dimen/medium_font"
                             android:fontFamily="@font/poppins_medium"
                             app:layout_constraintEnd_toEndOf="parent"
-                            app:layout_constraintTop_toBottomOf="@id/title_price_total"
+                            app:layout_constraintTop_toBottomOf="@id/titleTotalPrice"
                             />
 
                         <View
-                            android:id="@+id/line_separator"
+                            android:id="@+id/lineSeparator"
                             android:layout_width="match_parent"
                             android:layout_height="1dp"
                             android:background="@color/colorPrimary"
                             android:layout_marginTop="@dimen/margin_small"
-                            app:layout_constraintTop_toBottomOf="@id/delivery_charge"
+                            app:layout_constraintTop_toBottomOf="@id/deliveryChargeValue"
                             />
 
                         <TextView
@@ -104,19 +104,19 @@
                             android:layout_height="wrap_content"
                             android:layout_marginTop="@dimen/margin_small"
                             app:layout_constraintStart_toStartOf="parent"
-                            app:layout_constraintTop_toBottomOf="@id/line_separator"
+                            app:layout_constraintTop_toBottomOf="@id/lineSeparator"
                             style="@style/TotalPriceStyle"
                             android:text="@string/price_sub_total"
                             android:textStyle="bold"
                             />
 
                         <TextView
-                            android:id="@+id/sub_total_value"
+                            android:id="@+id/subTotalValue"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             style="@style/TotalPriceStyle"
                             app:layout_constraintEnd_toEndOf="parent"
-                            app:layout_constraintTop_toBottomOf="@id/line_separator"
+                            app:layout_constraintTop_toBottomOf="@id/lineSeparator"
                             android:layout_marginTop="@dimen/margin_small"
                             android:text="@string/price_template"
                             android:textStyle="bold"
@@ -127,11 +127,13 @@
                             android:layout_height="wrap_content"
                             android:background="@drawable/bg_product_card_button"
                             android:backgroundTint="@color/colorWhite"
-                            app:layout_constraintTop_toBottomOf="@id/sub_total_value"
+                            app:layout_constraintTop_toBottomOf="@id/subTotalValue"
                             app:layout_constraintStart_toStartOf="parent"
                             android:layout_marginTop="@dimen/margin_medium"
                             android:padding="@dimen/padding_xs"
                             android:gravity="center"
+                            android:clickable="true"
+                            android:focusable="true"
                             android:orientation="horizontal">
 
                             <TextView

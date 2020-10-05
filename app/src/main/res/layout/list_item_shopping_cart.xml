@@ -18,7 +18,7 @@
         android:background="@color/colorBackground">
 
         <androidx.cardview.widget.CardView
-            android:id="@+id/product_image"
+            android:id="@+id/cardForProductImage"
             android:layout_width="@dimen/product_image_in_cart"
             android:layout_height="@dimen/product_image_in_cart"
             app:layout_constraintStart_toStartOf="parent"
@@ -41,10 +41,10 @@
         </androidx.cardview.widget.CardView>
 
         <TextView
-            android:id="@+id/product_name"
+            android:id="@+id/productName"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            app:layout_constraintStart_toEndOf="@id/product_image"
+            app:layout_constraintStart_toEndOf="@id/cardForProductImage"
             app:layout_constraintTop_toTopOf="parent"
             android:layout_marginTop="@dimen/margin_extra_small"
             android:layout_marginStart="@dimen/margin_medium"
@@ -54,15 +54,16 @@
             android:textSize="@dimen/total_price_font_size"/>
 
         <androidx.cardview.widget.CardView
-            android:id="@+id/cart_item_count"
+            android:id="@+id/cartItemCount"
             style="@style/ProductButtonStyle"
             android:layout_width="wrap_content"
+            android:layout_height="45dp"
             android:layout_marginStart="@dimen/margin_medium"
             android:backgroundTint="@color/colorWhite"
             app:layout_anchorGravity="left|bottom"
-            app:layout_constraintBottom_toBottomOf="@+id/product_image"
-            app:layout_constraintStart_toEndOf="@id/product_image"
-            app:layout_constraintTop_toBottomOf="@id/product_name">
+            app:layout_constraintBottom_toBottomOf="@+id/cardForProductImage"
+            app:layout_constraintStart_toEndOf="@id/cardForProductImage"
+            app:layout_constraintTop_toBottomOf="@id/productName">
 
             <androidx.constraintlayout.widget.ConstraintLayout
                 android:layout_width="wrap_content"
@@ -84,15 +85,15 @@
 
                 <TextView
                     android:id="@+id/productCount"
-                    android:layout_width="65dp"
+                    android:layout_width="60dp"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center"
                     android:fontFamily="@font/poppins_medium"
                     android:gravity="center"
-                    android:text="@{String.valueOf(cartItem.quantity)}"
+                    android:text="1"
                     android:textAllCaps="false"
                     android:textColor="@color/colorPrimaryDark"
-                    android:textSize="@dimen/large_font"
+                    android:textSize="@dimen/medium_font"
                     android:textStyle="bold"
                     app:layout_constraintBaseline_toBaselineOf="@id/minusButton"
                     app:layout_constraintEnd_toStartOf="@+id/plusButton"
@@ -118,10 +119,10 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toTopOf="@id/cart_item_count"
-            app:layout_constraintBottom_toBottomOf="@id/cart_item_count"
+            app:layout_constraintTop_toTopOf="@id/cartItemCount"
+            app:layout_constraintBottom_toBottomOf="@id/cartItemCount"
             android:text='@{"$" + Double.valueOf(cartItem.product.price)}'
-            android:textSize="@dimen/large_font"
+            android:textSize="@dimen/medium_font"
             android:textColor="@color/colorPrimary"
             android:textStyle="bold"
             />
