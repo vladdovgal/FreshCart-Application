@@ -20,6 +20,7 @@ class ShoppingCartFragment : BaseFragment<MainViewModel>() {
 
     override val viewModel: MainViewModel by sharedViewModel()
     private lateinit var binding : FragmentShoppingCartBinding
+    private val deliveryCharge = 5
 
     override fun setFragmentLayout(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View {
         return inflater.inflate(R.layout.fragment_shopping_cart, container, false)
@@ -74,9 +75,9 @@ class ShoppingCartFragment : BaseFragment<MainViewModel>() {
      * @param total - total sum by products in the shopping cart.
      */
     private fun updateTotalPrice(total: Int) {
-        totalPriceValue.text = getString(R.string.price_template, total.toFloat())
-        subTotalValue.text = getString(R.string.price_template, total.toFloat() + 5.00)
-        deliveryChargeValue.text = getString(R.string.price_template, 5.toFloat())
+        totalPriceValue.text = getString(R.string.price_template, total)
+        subTotalValue.text = getString(R.string.price_template, total + deliveryCharge)
+        deliveryChargeValue.text = getString(R.string.price_template, deliveryCharge)
     }
 
     /**

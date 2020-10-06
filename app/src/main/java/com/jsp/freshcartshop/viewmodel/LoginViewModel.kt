@@ -1,8 +1,10 @@
 package com.jsp.freshcartshop.viewmodel
 
 import androidx.lifecycle.MutableLiveData
+import androidx.lifecycle.viewModelScope
 import com.jsp.freshcartshop.data.repository.FreshCartRepositoryImpl
 import com.jsp.freshcartshop.utils.ValidationUtils
+import kotlinx.coroutines.launch
 import org.koin.java.KoinJavaComponent.inject
 
 class LoginViewModel : BaseViewModel() {
@@ -18,23 +20,25 @@ class LoginViewModel : BaseViewModel() {
     var errorEmail = MutableLiveData<String>()
 
     // If user exists
-    var userExists = MutableLiveData<Boolean>()
-    val isLoaded = MutableLiveData<Boolean>()
+    var isLoginSuccess = MutableLiveData<Boolean>()
+    private val isLoaded = MutableLiveData<Boolean>()
 
     // Call repository to check if such user exists
-    suspend fun checkIfUserExists() {
-        try {
-            isLoading.postValue(true)
-            val response = appRepository.loginUser(login.value.toString(),
+    fun login() {
+        viewModelScope.launch {
+            try {
+                isLoading.postValue(true)
+                val response = appRepository.loginUser(login.value.toString(),
                     password.value.toString())
-            userExists.value = response
-            isLoaded.postValue(true)
-            errorMessageData.postValue(null)
-        } catch (e : Exception) {
-            e.printStackTrace()
-            errorMessageData.postValue(e.message)
-        } finally {
-            isLoading.postValue(false)
+                isLoginSuccess.value = response
+                isLoaded.postValue(true)
+                errorMessageData.postValue(null)
+            } catch (e : Exception) {
+                e.printStackTrace()
+                errorMessageData.postValue(e.message)
+            } finally {
+                isLoading.postValue(false)
+            }
         }
     }
 
