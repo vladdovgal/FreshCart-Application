@@ -17,6 +17,7 @@ import com.jsp.freshcartshop.viewmodel.MainViewModel
 import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.android.synthetic.main.fragment_product.*
 import org.koin.android.viewmodel.ext.android.sharedViewModel
+import java.util.*
 
 class ProductFragment : BaseFragment<MainViewModel>() {
 
@@ -67,7 +68,10 @@ class ProductFragment : BaseFragment<MainViewModel>() {
             viewModel.addProductToCart(
                 product,
                 quantity)
-            Toast.makeText(context, "Added $quantity ${product.name}s to cart", Toast.LENGTH_SHORT).show()
+            Toast.makeText(context,
+                resources.getString(R.string.products_added, quantity,
+                    product.name.toLowerCase(Locale.ROOT)), Toast.LENGTH_SHORT
+            ).show()
         }
 
         // change items count

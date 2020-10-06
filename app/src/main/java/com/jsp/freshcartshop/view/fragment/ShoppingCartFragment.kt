@@ -75,9 +75,9 @@ class ShoppingCartFragment : BaseFragment<MainViewModel>() {
      * @param total - total sum by products in the shopping cart.
      */
     private fun updateTotalPrice(total: Int) {
-        totalPriceValue.text = getString(R.string.price_template, total)
-        subTotalValue.text = getString(R.string.price_template, total + deliveryCharge)
-        deliveryChargeValue.text = getString(R.string.price_template, deliveryCharge)
+        totalPriceValue.text = getString(R.string.price_template, total.toFloat())
+        subTotalValue.text = getString(R.string.price_template, total.toFloat() + deliveryCharge)
+        deliveryChargeValue.text = getString(R.string.price_template, deliveryCharge.toFloat())
     }
 
     /**

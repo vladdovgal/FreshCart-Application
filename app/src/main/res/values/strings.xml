@@ -55,5 +55,6 @@
     <string name="proceed_to_checkout">Proceed To Checkout</string>
     <string name="price_template">$%,.2f</string>
     <string name="empty_cart_tip">Ups, your cart is empty</string>
+    <string name="products_added">Added %d %ss to cart</string>
 
 </resources>
