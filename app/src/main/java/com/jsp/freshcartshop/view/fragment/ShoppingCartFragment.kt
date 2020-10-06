@@ -7,6 +7,7 @@ import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.Observer
 import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.RecyclerView
 import com.jsp.freshcartshop.R
 import com.jsp.freshcartshop.adapters.ShoppingCartRecyclerAdapter
 import com.jsp.freshcartshop.databinding.FragmentShoppingCartBinding
@@ -44,12 +45,9 @@ class ShoppingCartFragment : BaseFragment<MainViewModel>() {
     }
 
     private fun observeData() {
-        viewModel.cart.observe(viewLifecycleOwner, Observer { cartItems ->
+        viewModel.orderedItems.observe(viewLifecycleOwner, Observer { cartItems ->
             rvShoppingCart.also { recyclerView ->
-                recyclerView.layoutManager = LinearLayoutManager(activity, LinearLayoutManager.VERTICAL, false)
-                recyclerView.adapter = ShoppingCartRecyclerAdapter().also {
-                    it.addAll(cartItems)
-                }
+                setUpCartRecyclerView(recyclerView, cartItems)
             }
             // Calculate total cart price
             val total: Int = getTotalCost(cartItems)
@@ -58,6 +56,17 @@ class ShoppingCartFragment : BaseFragment<MainViewModel>() {
             // Check if cart is not empty
             showPlaceHolderHintIfCartIsEmpty()
         })
+    }
+
+    private fun setUpCartRecyclerView(
+        recyclerView: RecyclerView,
+        cartItems: MutableList<CartItem>
+    ) {
+        recyclerView.layoutManager =
+            LinearLayoutManager(activity, LinearLayoutManager.VERTICAL, false)
+        recyclerView.adapter = ShoppingCartRecyclerAdapter().also {
+            it.addAll(cartItems)
+        }
     }
 
     /**
@@ -84,7 +93,7 @@ class ShoppingCartFragment : BaseFragment<MainViewModel>() {
      * If shopping cart is empty, user will see the hint.
      */
     private fun showPlaceHolderHintIfCartIsEmpty() {
-        val isCartNotEmpty = viewModel.cart.value!!.size > 0
+        val isCartNotEmpty = viewModel.orderedItems.value!!.size > 0
         if (isCartNotEmpty) {
             cardTotalBill.visibility = View.VISIBLE
             emptyCartTip.visibility = View.GONE

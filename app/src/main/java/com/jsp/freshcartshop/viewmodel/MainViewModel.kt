@@ -15,10 +15,10 @@ class MainViewModel : BaseViewModel() {
     val productList = MutableLiveData<List<Product>>()
     val product = MutableLiveData<Product>()
     val isLoaded = MutableLiveData<Boolean>()
-    val cart = MutableLiveData<MutableList<CartItem>>()
+    val orderedItems = MutableLiveData<MutableList<CartItem>>()
 
     init {
-        cart.value = mutableListOf()
+        orderedItems.value = mutableListOf()
     }
 
     fun loadProducts() {
@@ -58,14 +58,14 @@ class MainViewModel : BaseViewModel() {
     fun addProductToCart(product: Product, quantity : Int) {
         // update product if already exists in the cart
         var productIsInCart = false
-        for (index in cart.value!!.indices) {
-            if (cart.value!![index].product == product ) {
-                cart.value!![index].quantity += quantity
+        for (index in orderedItems.value!!.indices) {
+            if (orderedItems.value!![index].product == product ) {
+                orderedItems.value!![index].quantity += quantity
                 productIsInCart = true
             }
         }
         if (!productIsInCart) {
-            cart.value!!.add(CartItem(product, quantity))
+            orderedItems.value!!.add(CartItem(product, quantity))
         }
     }
 }
