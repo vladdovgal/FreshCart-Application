@@ -7,7 +7,6 @@ import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.Observer
 import androidx.recyclerview.widget.LinearLayoutManager
-import androidx.recyclerview.widget.RecyclerView
 import com.jsp.freshcartshop.R
 import com.jsp.freshcartshop.adapters.ShoppingCartRecyclerAdapter
 import com.jsp.freshcartshop.databinding.FragmentShoppingCartBinding
@@ -46,9 +45,7 @@ class ShoppingCartFragment : BaseFragment<MainViewModel>() {
 
     private fun observeData() {
         viewModel.orderedItems.observe(viewLifecycleOwner, Observer { cartItems ->
-            rvShoppingCart.also { recyclerView ->
-                setUpCartRecyclerView(recyclerView, cartItems)
-            }
+            setUpCartRecyclerView(cartItems)
             // Calculate total cart price
             val total: Int = getTotalCost(cartItems)
             // Update TextViews
@@ -58,14 +55,13 @@ class ShoppingCartFragment : BaseFragment<MainViewModel>() {
         })
     }
 
-    private fun setUpCartRecyclerView(
-        recyclerView: RecyclerView,
-        cartItems: MutableList<CartItem>
-    ) {
-        recyclerView.layoutManager =
-            LinearLayoutManager(activity, LinearLayoutManager.VERTICAL, false)
-        recyclerView.adapter = ShoppingCartRecyclerAdapter().also {
-            it.addAll(cartItems)
+    private fun setUpCartRecyclerView(cartItems: MutableList<CartItem>) {
+        rvShoppingCart.also { recyclerView ->
+            recyclerView.layoutManager =
+                LinearLayoutManager(activity, LinearLayoutManager.VERTICAL, false)
+            recyclerView.adapter = ShoppingCartRecyclerAdapter().also {
+                it.addAll(cartItems)
+            }
         }
     }
 
