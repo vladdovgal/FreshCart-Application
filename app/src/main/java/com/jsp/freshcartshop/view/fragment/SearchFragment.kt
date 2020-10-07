@@ -75,6 +75,4 @@ class SearchFragment : BaseFragment<MainViewModel>() {
     private fun setSearchValue(value: String?) {
         tvNothingFound.text = resources.getString(R.string.nothing_found, value)
     }
-
-
 }

@@ -29,12 +29,12 @@
 
     <!-- Product Fragment -->
     <dimen name="cardview_corner_radius">20dp</dimen>
-    <dimen name="product_card_height">310dp</dimen>
+    <dimen name="product_card_height">340dp</dimen>
     <dimen name="product_button_margin">45dp</dimen>
-    <dimen name="product_view_pager_height">200dp</dimen>
-    <dimen name="max_product_photo_size">250dp</dimen>
+    <dimen name="product_view_pager_height">230dp</dimen>
+    <dimen name="max_product_photo_size">230dp</dimen>
 
-    <!-- Product Fragment -->
+    <!-- Search Fragment -->
     <dimen name="image_size">100dp</dimen>
 
 </resources>

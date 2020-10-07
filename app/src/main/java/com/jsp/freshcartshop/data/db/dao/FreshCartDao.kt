@@ -34,8 +34,9 @@ class FreshCartDao {
             ?: UserAccount("","", Login("", ""))
     }
 
-    fun insert(account: UserAccount) {
-        // todo insert user into database
+    fun insert(account: UserAccount): UserAccount {
+        accountsList.add(account)
+        return account
     }
 
     fun getProduct(id: Long): Product? {
