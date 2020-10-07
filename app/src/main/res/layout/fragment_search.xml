@@ -107,7 +107,7 @@
                 <androidx.constraintlayout.widget.ConstraintLayout
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:background="@drawable/bc_main_cardview_bottom">
+                    android:background="?attr/primaryColor">
 
                     <TextView
                         android:id="@+id/tvDiscount"
@@ -166,7 +166,7 @@
                 <androidx.constraintlayout.widget.ConstraintLayout
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:background="@drawable/bc_search_second_promotion">
+                    android:background="?attr/primaryColor">
 
                     <TextView
                         android:id="@+id/tvPromotionTitle"
