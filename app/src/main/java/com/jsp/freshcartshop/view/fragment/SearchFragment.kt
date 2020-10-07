@@ -4,6 +4,8 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.view.inputmethod.EditorInfo
+import android.widget.TextView
 import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.Observer
 import androidx.navigation.fragment.findNavController
@@ -42,12 +44,26 @@ class SearchFragment : BaseFragment<MainViewModel>() {
     private fun init() {
         observeData()
         setDiscount(70)
+        initListeners()
+
+    }
+
+    private fun initListeners() {
         inputSearch.setStartIconOnClickListener{
             if (binding.etSearch.text.toString() != "") {
                 viewModel.findProducts()
                 setSearchValue(viewModel.searchValue.value)
             }
         }
+
+        etSearch.setOnEditorActionListener{view, actionId, event ->
+            if(actionId == EditorInfo.IME_ACTION_SEARCH){
+                viewModel.findProducts()
+                setSearchValue(viewModel.searchValue.value)
+                true
+            } else {
+                false
+            }}
     }
 
     private fun observeData() {

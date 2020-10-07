@@ -52,7 +52,10 @@
                         android:fontFamily="@font/poppins_medium"
                         android:paddingStart="@dimen/padding_medium"
                         android:text="@={searchviewmodel.searchValue}"
-                        android:textSize="@dimen/small_font" />
+                        android:textSize="@dimen/small_font"
+                        android:imeOptions="actionSearch"
+                        android:inputType="text"
+                        android:maxLines="1"/>
 
                 </com.google.android.material.textfield.TextInputLayout>
 
