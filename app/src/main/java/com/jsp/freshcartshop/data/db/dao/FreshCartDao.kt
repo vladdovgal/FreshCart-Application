@@ -42,4 +42,10 @@ class FreshCartDao {
         // todo get product by id from database
         return productList.find { it.id == id }
     }
+
+    fun findProducts(productName: String): List<Product> {
+        return productList.filter {
+            it.name.contains(productName, true)
+        }
+    }
 }

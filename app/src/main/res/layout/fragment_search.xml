@@ -2,54 +2,306 @@
 <layout
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     >
     <data>
         <variable
             name="searchviewmodel"
-            type="com.jsp.freshcartshop.viewmodel.SearchViewModel" />
+            type="com.jsp.freshcartshop.viewmodel.MainViewModel" />
     </data>
-    <androidx.constraintlayout.widget.ConstraintLayout
+    <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_marginEnd="@dimen/margin_medium"
-        android:layout_marginStart="@dimen/margin_medium"
-        android:layout_marginTop="@dimen/margin_top_under_toolbar"
+        android:layout_height="wrap_content"
         >
 
-        <androidx.cardview.widget.CardView
+        <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:cardCornerRadius="@dimen/margin_large"
-            app:cardElevation="0dp">
+            android:layout_height="match_parent"
+            android:layout_marginEnd="@dimen/margin_medium"
+            android:layout_marginStart="@dimen/margin_medium"
+            android:layout_marginTop="@dimen/margin_top_under_toolbar"
+            >
 
-            <com.google.android.material.textfield.TextInputLayout
-                android:id="@+id/inputSearch"
+            <androidx.cardview.widget.CardView
+                android:id="@+id/cvSearch"
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
-                android:hint="@string/search_label"
-                app:boxStrokeColor="@null"
-                app:startIconDrawable="@drawable/ic_search"
+                android:layout_height="wrap_content"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:cardCornerRadius="@dimen/margin_large"
+                app:cardElevation="0dp"
+                android:layout_marginEnd="@dimen/margin_medium"
+                android:layout_marginStart="@dimen/margin_medium"
                 >
 
-                <com.google.android.material.textfield.TextInputEditText
-                    android:id="@+id/etSearch"
+                <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/inputSearch"
+                    style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:textSize="@dimen/small_font"
-                    android:fontFamily="@font/poppins_medium"
-                    android:background="?attr/whiteColor"
-                    android:gravity="center_vertical"
-                    />
+                    android:hint="@string/search_label"
+                    app:boxStrokeColor="@null"
+                    app:startIconDrawable="@drawable/ic_search">
 
-            </com.google.android.material.textfield.TextInputLayout>
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/etSearch"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:background="?attr/whiteColor"
+                        android:fontFamily="@font/poppins_medium"
+                        android:paddingStart="@dimen/padding_medium"
+                        android:text="@={searchviewmodel.searchValue}"
+                        android:textSize="@dimen/small_font" />
 
-        </androidx.cardview.widget.CardView>
+                </com.google.android.material.textfield.TextInputLayout>
 
+            </androidx.cardview.widget.CardView>
 
+            <TextView
+                android:id="@+id/tvNothingFound"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/cvSearch"
+                android:layout_marginTop="@dimen/margin_small"
+                android:layout_marginBottom="@dimen/margin_small"
+                android:text="@string/nothing_found"
+                android:textSize="@dimen/medium_font"
+                android:textColor="?attr/primaryColor"
+                android:visibility="gone"
+                />
 
-    </androidx.constraintlayout.widget.ConstraintLayout>
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/rvSearchProducts"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/tvNothingFound"
+                android:layout_marginTop="@dimen/margin_medium"
+                tools:itemCount="6"
+                />
+
+            <androidx.cardview.widget.CardView
+                android:id="@+id/cvFirstPromotion"
+                android:layout_width="match_parent"
+                android:layout_height="100dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/rvSearchProducts"
+                android:layout_marginTop="@dimen/margin_medium"
+                app:cardCornerRadius="@dimen/cardview_corner_radius"
+                app:cardElevation="0dp"
+                >
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:background="@drawable/bc_main_cardview_bottom">
+
+                    <TextView
+                        android:id="@+id/tvDiscount"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="@dimen/margin_medium"
+                        android:text="@string/discount"
+                        android:textColor="?attr/whiteColor"
+                        android:textSize="@dimen/large_font"
+                        android:textStyle="bold"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="@+id/tvShopNowBottom" />
+
+                    <TextView
+                        android:id="@+id/tvDiscountDescription"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="@dimen/margin_medium"
+                        android:layout_marginTop="@dimen/margin_small"
+                        android:text="@string/festival_season_is_here"
+                        android:textColor="?attr/whiteColor"
+                        android:textSize="@dimen/small_font"
+                        app:layout_constraintBottom_toBottomOf="@+id/tvShopNowBottom"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/tvDiscount" />
+
+                    <TextView
+                        android:id="@+id/tvShopNowBottom"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginEnd="@dimen/margin_medium"
+                        android:background="@drawable/bc_button_rounded_white"
+                        android:padding="12dp"
+                        android:text="@string/shop_now"
+                        android:textColor="?attr/whiteColor"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintTop_toTopOf="parent" />
+
+                </androidx.constraintlayout.widget.ConstraintLayout>
+
+            </androidx.cardview.widget.CardView>
+
+            <androidx.cardview.widget.CardView
+                android:id="@+id/cvSecondPromotion"
+                android:layout_width="match_parent"
+                android:layout_height="100dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/cvFirstPromotion"
+                android:layout_marginTop="@dimen/margin_medium"
+                app:cardCornerRadius="@dimen/cardview_corner_radius"
+                app:cardElevation="0dp"
+                >
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:background="@drawable/bc_search_second_promotion">
+
+                    <TextView
+                        android:id="@+id/tvPromotionTitle"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="@id/tvShopNowSecondPromotion"
+                        android:layout_marginStart="@dimen/margin_medium"
+                        android:text="@string/fresh_fruits"
+                        android:textColor="?attr/whiteColor"
+                        android:textSize="@dimen/large_font"
+                        android:textStyle="bold"
+                         />
+
+                    <TextView
+                        android:id="@+id/tvPromotionDescription"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        app:layout_constraintBottom_toBottomOf="@id/tvShopNowSecondPromotion"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@id/tvPromotionTitle"
+                        android:layout_marginStart="@dimen/margin_medium"
+                        android:layout_marginTop="@dimen/margin_small"
+                        android:text="@string/festival_season_is_here"
+                        android:textColor="?attr/whiteColor"
+                        android:textSize="@dimen/small_font"
+                        />
+
+                    <TextView
+                        android:id="@+id/tvShopNowSecondPromotion"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginEnd="@dimen/margin_medium"
+                        android:background="@drawable/bc_button_rounded_white"
+                        android:padding="12dp"
+                        android:text="@string/shop_now"
+                        android:textColor="?attr/whiteColor"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintTop_toTopOf="parent"
+                        />
+
+                </androidx.constraintlayout.widget.ConstraintLayout>
+
+            </androidx.cardview.widget.CardView>
+
+            <TextView
+                android:id="@+id/tvWhatDoYouLike"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/cvSecondPromotion"
+                android:layout_marginTop="@dimen/margin_medium"
+                android:layout_marginBottom="@dimen/margin_small"
+                android:text="@string/what_do_you_like"
+                android:textSize="@dimen/large_font"
+                android:textColor="?attr/primaryColor"
+                android:textStyle="bold"
+                />
+
+            <com.google.android.material.imageview.ShapeableImageView
+                android:id="@+id/imgFruits"
+                android:layout_width="@dimen/image_size"
+                android:layout_height="@dimen/image_size"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/tvWhatDoYouLike"
+                android:layout_marginTop="@dimen/margin_small"
+                android:padding="@dimen/margin_extra_small"
+                app:shapeAppearanceOverlay="@style/ImageViewRounded"
+                android:scaleType="centerCrop"
+                android:src="@drawable/img_fruits"
+                />
+
+            <com.google.android.material.imageview.ShapeableImageView
+                android:id="@+id/imgVegetables"
+                android:layout_width="@dimen/image_size"
+                android:layout_height="@dimen/image_size"
+                android:padding="@dimen/margin_extra_small"
+                android:scaleType="centerCrop"
+                app:layout_constraintEnd_toStartOf="@id/imgLegumes"
+                app:layout_constraintStart_toEndOf="@id/imgFruits"
+                app:layout_constraintTop_toTopOf="@id/imgFruits"
+                app:shapeAppearanceOverlay="@style/ImageViewRounded"
+                android:src="@drawable/img_vegetables"
+                />
+
+            <com.google.android.material.imageview.ShapeableImageView
+                android:id="@+id/imgLegumes"
+                android:layout_width="@dimen/image_size"
+                android:layout_height="@dimen/image_size"
+                android:padding="@dimen/margin_extra_small"
+                android:scaleType="centerCrop"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="@id/imgFruits"
+                app:shapeAppearanceOverlay="@style/ImageViewRounded"
+                android:src="@drawable/img_legumes"
+                />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:layout_constraintEnd_toEndOf="@id/imgFruits"
+                app:layout_constraintStart_toStartOf="@id/imgFruits"
+                app:layout_constraintTop_toBottomOf="@id/imgFruits"
+                android:layout_marginTop="@dimen/margin_extra_small"
+                android:layout_marginBottom="@dimen/margin_small"
+                android:text="@string/fruits"
+                android:textSize="@dimen/small_font"
+                android:textColor="?attr/grayColor"
+                android:textStyle="bold"
+                />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:layout_constraintEnd_toEndOf="@id/imgVegetables"
+                app:layout_constraintStart_toStartOf="@id/imgVegetables"
+                app:layout_constraintTop_toBottomOf="@id/imgVegetables"
+                android:layout_marginTop="@dimen/margin_extra_small"
+                android:layout_marginBottom="@dimen/margin_small"
+                android:text="@string/vegetables"
+                android:textSize="@dimen/small_font"
+                android:textColor="?attr/grayColor"
+                android:textStyle="bold"
+                />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:layout_constraintEnd_toEndOf="@id/imgLegumes"
+                app:layout_constraintStart_toStartOf="@id/imgLegumes"
+                app:layout_constraintTop_toBottomOf="@id/imgLegumes"
+                android:layout_marginTop="@dimen/margin_extra_small"
+                android:layout_marginBottom="@dimen/margin_small"
+                android:text="@string/legumes"
+                android:textSize="@dimen/small_font"
+                android:textColor="?attr/grayColor"
+                android:textStyle="bold"
+                />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+    </ScrollView>
+
 </layout>

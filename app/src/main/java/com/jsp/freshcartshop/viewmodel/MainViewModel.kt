@@ -12,7 +12,9 @@ class MainViewModel : BaseViewModel() {
     private val freshCartRepository by inject(FreshCartRepositoryImpl::class.java)
 
     val productList = MutableLiveData<List<Product>>()
+    val filteredProductList = MutableLiveData<List<Product>>()
     val product = MutableLiveData<Product>()
+    val searchValue = MutableLiveData<String>()
     val isLoaded = MutableLiveData<Boolean>()
 
     fun loadProducts() {
@@ -21,6 +23,25 @@ class MainViewModel : BaseViewModel() {
                 isLoading.postValue(true)
                 val response = freshCartRepository.getProducts()
                 productList.value = response
+                isLoaded.postValue(true)
+                errorMessageData.postValue(null)
+            } catch (e: Exception) {
+                e.printStackTrace()
+                errorMessageData.postValue(e.message)
+            } finally {
+                isLoading.postValue(false)
+            }
+        }
+    }
+
+    fun findProducts() {
+        viewModelScope.launch {
+            try {
+                isLoading.postValue(true)
+                searchValue.value?.let {
+                    val response = freshCartRepository.findProducts(it)
+                    filteredProductList.value = response
+                }
                 isLoaded.postValue(true)
                 errorMessageData.postValue(null)
             } catch (e: Exception) {

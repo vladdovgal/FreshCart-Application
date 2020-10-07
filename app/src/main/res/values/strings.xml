@@ -49,6 +49,16 @@
     <string name="min_order_if_cash">cash on delivery avaliable all below $100</string>
     <string name="increase_product_count">Increase quantity by 1</string>
     <string name="decrease_product_count">Decrease quantity by 1</string>
+
+    <!--Search Fragment -->
     <string name="search_label">Search Specific Item</string>
+    <string name="nothing_found">Nothing Found For "\"%1$s"\"</string>
+    <string name="fresh_fruits">Fresh Fruits</string>
+    <string name="festival_season_is_here">Festival Season is Here</string>
+    <string name="what_do_you_like">What Do You Like?</string>
+    <string name="fruits">Fruits</string>
+    <string name="vegetables">Vegetables</string>
+    <string name="legumes">Legumes</string>
+    <string name="discount_first_promotion">Upto %1$d$ Flat</string>
 
 </resources>

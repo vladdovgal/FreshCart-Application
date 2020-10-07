@@ -11,4 +11,6 @@ interface FreshCartRepository {
     suspend fun getProductById(id : Long) : Product
 
     suspend fun getProducts(): List<Product>?
+
+    suspend fun findProducts(productName: String): List<Product>?
 }
