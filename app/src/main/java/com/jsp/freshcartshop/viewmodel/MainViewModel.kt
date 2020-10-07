@@ -3,6 +3,7 @@ package com.jsp.freshcartshop.viewmodel
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.viewModelScope
 import com.jsp.freshcartshop.data.repository.FreshCartRepositoryImpl
+import com.jsp.freshcartshop.model.CartItem
 import com.jsp.freshcartshop.model.Product
 import kotlinx.coroutines.launch
 import org.koin.java.KoinJavaComponent.inject
@@ -14,6 +15,11 @@ class MainViewModel : BaseViewModel() {
     val productList = MutableLiveData<List<Product>>()
     val product = MutableLiveData<Product>()
     val isLoaded = MutableLiveData<Boolean>()
+    val orderedItems = MutableLiveData<MutableList<CartItem>>()
+
+    init {
+        orderedItems.value = mutableListOf()
+    }
 
     fun loadProducts() {
         viewModelScope.launch {
@@ -46,6 +52,15 @@ class MainViewModel : BaseViewModel() {
             } finally {
                 isLoading.postValue(false)
             }
+        }
+    }
+
+    fun addProductToCart(product: Product, quantity : Int) {
+        // update product if exists else add to the cart
+        orderedItems.value?.find { it.product == product }.also {
+            if (it != null) {
+                it.quantity = it.quantity.plus(quantity)
+            } else orderedItems.value!!.add(CartItem(product, quantity))
         }
     }
 }

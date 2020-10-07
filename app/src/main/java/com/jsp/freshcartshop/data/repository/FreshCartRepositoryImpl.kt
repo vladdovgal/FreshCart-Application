@@ -12,14 +12,10 @@ class FreshCartRepositoryImpl(private val applicationDao: FreshCartDao,
                               private val userDao: UserDao) : FreshCartRepository {
 
     override suspend fun loginUser(login : String, password : String) : Boolean {
-        return suspendCoroutine { continuation ->
-            val response = applicationDao.getAccount(login)
-            if (response.loginData.password == password) {
-                continuation.resume(true)
-            } else {
-                continuation.resume(false)
-            }
-        }
+        // Imitate request to the server
+        delay(500)
+        val resp = userDao.getUserByUsernameOrEmail(login)
+        return resp != null && resp.loginData.password == password
     }
 
     override suspend fun insertUser(fullName : String, username: String, login: Login) {
@@ -39,7 +35,6 @@ class FreshCartRepositoryImpl(private val applicationDao: FreshCartDao,
     }
 
     override suspend fun getProducts(): List<Product>? {
-        // todo simulation of data loading
         delay(1000)
         return suspendCoroutine { continuation ->
             val response = applicationDao.getAllProducts()

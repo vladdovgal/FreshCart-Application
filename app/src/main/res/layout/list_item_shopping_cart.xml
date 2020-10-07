@@ -1,0 +1,130 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+        <variable
+            name="cartItem"
+            type="com.jsp.freshcartshop.model.CartItem"/>
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingBottom="@dimen/padding_xs"
+        android:paddingTop="@dimen/padding_xs"
+        android:background="@color/colorBackground">
+
+        <androidx.cardview.widget.CardView
+            android:id="@+id/cardForProductImage"
+            android:layout_width="@dimen/product_image_in_cart"
+            android:layout_height="@dimen/product_image_in_cart"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:cardCornerRadius="@dimen/cardview_corner_radius"
+            >
+
+            <com.google.android.material.imageview.ShapeableImageView
+                android:id="@+id/imgProduct"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:padding="@dimen/margin_extra_small"
+                android:layout_gravity="center"
+                app:image="@{cartItem.product.images.get(0)}"
+                app:shapeAppearanceOverlay="@style/ImageViewRounded"
+                android:scaleType="centerCrop"
+                tools:src="@drawable/img_placeholder"
+                />
+
+        </androidx.cardview.widget.CardView>
+
+        <TextView
+            android:id="@+id/productName"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintStart_toEndOf="@id/cardForProductImage"
+            app:layout_constraintTop_toTopOf="parent"
+            android:layout_marginTop="@dimen/margin_extra_small"
+            android:layout_marginStart="@dimen/margin_medium"
+            android:text="@{cartItem.product.name}"
+            android:fontFamily="@font/poppins_medium"
+            android:textColor="@color/colorPrimary"
+            android:textSize="@dimen/total_price_font_size"/>
+
+        <androidx.cardview.widget.CardView
+            android:id="@+id/cartItemCount"
+            style="@style/ProductButtonStyle"
+            android:layout_width="wrap_content"
+            android:layout_height="45dp"
+            android:layout_marginStart="@dimen/margin_medium"
+            android:backgroundTint="@color/colorWhite"
+            app:layout_anchorGravity="left|bottom"
+            app:layout_constraintBottom_toBottomOf="@+id/cardForProductImage"
+            app:layout_constraintStart_toEndOf="@id/cardForProductImage"
+            app:layout_constraintTop_toBottomOf="@id/productName">
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:padding="@dimen/padding_xs">
+
+                <ImageButton
+                    android:id="@+id/minusButton"
+                    android:layout_width="20dp"
+                    android:layout_height="20dp"
+                    android:layout_gravity="start|center"
+                    android:background="@color/colorWhite"
+                    android:contentDescription="@string/decrease_product_count"
+                    android:src="@drawable/ic_count_minus"
+                    android:scaleType="centerCrop"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <TextView
+                    android:id="@+id/productCount"
+                    android:layout_width="60dp"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:fontFamily="@font/poppins_medium"
+                    android:gravity="center"
+                    android:text="@{String.valueOf(cartItem.quantity)}"
+                    android:textAllCaps="false"
+                    android:textColor="@color/colorPrimaryDark"
+                    android:textSize="@dimen/medium_font"
+                    android:textStyle="bold"
+                    app:layout_constraintBaseline_toBaselineOf="@id/minusButton"
+                    app:layout_constraintEnd_toStartOf="@+id/plusButton"
+                    app:layout_constraintStart_toEndOf="@+id/minusButton" />
+
+                <ImageButton
+                    android:id="@+id/plusButton"
+                    android:layout_width="20dp"
+                    android:layout_height="20dp"
+                    android:layout_gravity="end|center"
+                    android:background="@color/colorWhite"
+                    android:contentDescription="@string/increase_product_count"
+                    android:src="@drawable/ic_count_plus"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    android:scaleType="centerCrop"/>
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+        </androidx.cardview.widget.CardView>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="@id/cartItemCount"
+            app:layout_constraintBottom_toBottomOf="@id/cartItemCount"
+            android:text='@{"$" + Double.valueOf(cartItem.product.price)}'
+            android:textSize="@dimen/medium_font"
+            android:textColor="@color/colorPrimary"
+            android:textStyle="bold"
+            />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>
