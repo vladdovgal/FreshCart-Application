@@ -63,7 +63,7 @@ class ProductFragment : BaseFragment<MainViewModel>() {
         // add current item to the shopping cart
         binding.fabAddToCart.setOnClickListener {
             val (product, quantity) = Pair(viewModel.product.value
-                ?: throw Resources.NotFoundException("Product not found"),
+                ?: throw Resources.NotFoundException(resources.getString(R.string.product_not_found)),
                 Integer.parseInt(productCount.text.toString()))
             viewModel.addProductToCart(
                 product,

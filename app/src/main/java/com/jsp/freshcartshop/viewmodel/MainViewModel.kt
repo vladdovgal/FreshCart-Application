@@ -58,12 +58,13 @@ class MainViewModel : BaseViewModel() {
     fun addProductToCart(product: Product, quantity : Int) {
         // update product if already exists in the cart
         var productIsInCart = false
-        for (index in orderedItems.value!!.indices) {
-            if (orderedItems.value!![index].product == product ) {
-                orderedItems.value!![index].quantity += quantity
+        orderedItems.value?.find { it.product == product }.also {
+            if (it != null) {
+                it.quantity = it.quantity.plus(quantity)
                 productIsInCart = true
             }
         }
+
         if (!productIsInCart) {
             orderedItems.value!!.add(CartItem(product, quantity))
         }
