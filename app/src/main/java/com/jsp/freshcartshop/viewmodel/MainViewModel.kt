@@ -3,6 +3,7 @@ package com.jsp.freshcartshop.viewmodel
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.viewModelScope
 import com.jsp.freshcartshop.data.repository.FreshCartRepositoryImpl
+import com.jsp.freshcartshop.model.Category
 import com.jsp.freshcartshop.model.Product
 import kotlinx.coroutines.launch
 import org.koin.java.KoinJavaComponent.inject
@@ -13,6 +14,7 @@ class MainViewModel : BaseViewModel() {
 
     val productList = MutableLiveData<List<Product>>()
     val filteredProductList = MutableLiveData<List<Product>>()
+    val categoryList = MutableLiveData<List<Category>>()
     val product = MutableLiveData<Product>()
     val searchValue = MutableLiveData<String>()
     val isLoaded = MutableLiveData<Boolean>()
@@ -59,6 +61,23 @@ class MainViewModel : BaseViewModel() {
                 isLoading.postValue(true)
                 val response = freshCartRepository.getProductById(id)
                 product.value = response
+                isLoaded.postValue(true)
+                errorMessageData.postValue(null)
+            } catch (e: Exception) {
+                e.printStackTrace()
+                errorMessageData.postValue(e.message)
+            } finally {
+                isLoading.postValue(false)
+            }
+        }
+    }
+
+    fun loadCategories() {
+        viewModelScope.launch {
+            try {
+                isLoading.postValue(true)
+                val response = freshCartRepository.getCategories()
+                categoryList.value = response
                 isLoaded.postValue(true)
                 errorMessageData.postValue(null)
             } catch (e: Exception) {

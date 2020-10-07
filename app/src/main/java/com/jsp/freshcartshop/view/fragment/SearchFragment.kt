@@ -5,12 +5,12 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.view.inputmethod.EditorInfo
-import android.widget.TextView
 import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.Observer
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.GridLayoutManager
 import com.jsp.freshcartshop.R
+import com.jsp.freshcartshop.adapters.CategoryRecyclerAdapter
 import com.jsp.freshcartshop.adapters.ProductRecyclerAdapter
 import com.jsp.freshcartshop.databinding.FragmentSearchBinding
 import com.jsp.freshcartshop.view.BaseActivity
@@ -45,7 +45,6 @@ class SearchFragment : BaseFragment<MainViewModel>() {
         observeData()
         setDiscount(70)
         initListeners()
-
     }
 
     private fun initListeners() {
@@ -67,6 +66,8 @@ class SearchFragment : BaseFragment<MainViewModel>() {
     }
 
     private fun observeData() {
+        viewModel.loadCategories()
+
         viewModel.filteredProductList.observe(viewLifecycleOwner, Observer { products ->
             rvSearchProducts.also {
                 it.layoutManager = GridLayoutManager(activity, 3)
@@ -80,6 +81,13 @@ class SearchFragment : BaseFragment<MainViewModel>() {
                 tvNothingFound.visibility = View.VISIBLE
             } else {
                 tvNothingFound.visibility = View.GONE
+            }
+        })
+
+        viewModel.categoryList.observe(viewLifecycleOwner, Observer { categories ->
+            rvCategories.also {
+                it.layoutManager = GridLayoutManager(activity, 3)
+                it.adapter = CategoryRecyclerAdapter().also { it.addAll(categories) }
             }
         })
     }

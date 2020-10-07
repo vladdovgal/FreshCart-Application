@@ -2,6 +2,7 @@ package com.jsp.freshcartshop.data.repository
 
 import com.jsp.freshcartshop.data.db.dao.FreshCartDao
 import com.jsp.freshcartshop.data.db.dao.UserDao
+import com.jsp.freshcartshop.model.Category
 import com.jsp.freshcartshop.model.Product
 import kotlinx.coroutines.delay
 import kotlin.coroutines.resume
@@ -58,6 +59,17 @@ class FreshCartRepositoryImpl(private val applicationDao: FreshCartDao,
                 continuation.resume(response)
             } else {
                 continuation.resumeWithException(Exception("Can't load products"))
+            }
+        }
+    }
+
+    override suspend fun getCategories(): List<Category>? {
+        return suspendCoroutine { continuation ->
+            val response = applicationDao.getCategories()
+            if (response != null) {
+                continuation.resume(response)
+            } else {
+                continuation.resumeWithException(Exception("Can't load categories"))
             }
         }
     }

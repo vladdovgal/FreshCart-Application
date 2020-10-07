@@ -4,11 +4,16 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     >
+
     <data>
+
         <variable
             name="searchviewmodel"
-            type="com.jsp.freshcartshop.viewmodel.MainViewModel" />
+            type="com.jsp.freshcartshop.viewmodel.MainViewModel"
+            />
+
     </data>
+
     <ScrollView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -16,7 +21,7 @@
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
+            android:layout_height="wrap_content"
             android:layout_marginEnd="@dimen/margin_medium"
             android:layout_marginStart="@dimen/margin_medium"
             android:layout_marginTop="@dimen/margin_top_under_toolbar"
@@ -223,84 +228,15 @@
                 android:textStyle="bold"
                 />
 
-            <com.google.android.material.imageview.ShapeableImageView
-                android:id="@+id/imgFruits"
-                android:layout_width="@dimen/image_size"
-                android:layout_height="@dimen/image_size"
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/rvCategories"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/tvWhatDoYouLike"
-                android:layout_marginTop="@dimen/margin_small"
-                android:padding="@dimen/margin_extra_small"
-                app:shapeAppearanceOverlay="@style/ImageViewRounded"
-                android:scaleType="centerCrop"
-                android:src="@drawable/img_fruits"
-                />
-
-            <com.google.android.material.imageview.ShapeableImageView
-                android:id="@+id/imgVegetables"
-                android:layout_width="@dimen/image_size"
-                android:layout_height="@dimen/image_size"
-                android:padding="@dimen/margin_extra_small"
-                android:scaleType="centerCrop"
-                app:layout_constraintEnd_toStartOf="@id/imgLegumes"
-                app:layout_constraintStart_toEndOf="@id/imgFruits"
-                app:layout_constraintTop_toTopOf="@id/imgFruits"
-                app:shapeAppearanceOverlay="@style/ImageViewRounded"
-                android:src="@drawable/img_vegetables"
-                />
-
-            <com.google.android.material.imageview.ShapeableImageView
-                android:id="@+id/imgLegumes"
-                android:layout_width="@dimen/image_size"
-                android:layout_height="@dimen/image_size"
-                android:padding="@dimen/margin_extra_small"
-                android:scaleType="centerCrop"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintTop_toTopOf="@id/imgFruits"
-                app:shapeAppearanceOverlay="@style/ImageViewRounded"
-                android:src="@drawable/img_legumes"
-                />
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                app:layout_constraintEnd_toEndOf="@id/imgFruits"
-                app:layout_constraintStart_toStartOf="@id/imgFruits"
-                app:layout_constraintTop_toBottomOf="@id/imgFruits"
-                android:layout_marginTop="@dimen/margin_extra_small"
-                android:layout_marginBottom="@dimen/margin_small"
-                android:text="@string/fruits"
-                android:textSize="@dimen/small_font"
-                android:textColor="?attr/grayColor"
-                android:textStyle="bold"
-                />
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                app:layout_constraintEnd_toEndOf="@id/imgVegetables"
-                app:layout_constraintStart_toStartOf="@id/imgVegetables"
-                app:layout_constraintTop_toBottomOf="@id/imgVegetables"
-                android:layout_marginTop="@dimen/margin_extra_small"
-                android:layout_marginBottom="@dimen/margin_small"
-                android:text="@string/vegetables"
-                android:textSize="@dimen/small_font"
-                android:textColor="?attr/grayColor"
-                android:textStyle="bold"
-                />
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                app:layout_constraintEnd_toEndOf="@id/imgLegumes"
-                app:layout_constraintStart_toStartOf="@id/imgLegumes"
-                app:layout_constraintTop_toBottomOf="@id/imgLegumes"
-                android:layout_marginTop="@dimen/margin_extra_small"
-                android:layout_marginBottom="@dimen/margin_small"
-                android:text="@string/legumes"
-                android:textSize="@dimen/small_font"
-                android:textColor="?attr/grayColor"
-                android:textStyle="bold"
+                android:layout_marginTop="@dimen/margin_medium"
+                tools:itemCount="6"
                 />
 
         </androidx.constraintlayout.widget.ConstraintLayout>

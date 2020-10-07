@@ -2,21 +2,26 @@ package com.jsp.freshcartshop.data.db.dao
 
 import com.jsp.freshcartshop.data.repository.Login
 import com.jsp.freshcartshop.data.repository.UserAccount
+import com.jsp.freshcartshop.model.Category
 import com.jsp.freshcartshop.model.Product
 
 class FreshCartDao {
 
     private val productList = mutableListOf<Product>()
     private val accountsList = mutableListOf<UserAccount>()
+    private val categoryList = mutableListOf<Category>()
 
     init {
         fillProducts()
+        fillCategories()
         accountsList.add(UserAccount("John Root", "root",
             Login("root@a.a", "root")
         ))
     }
 
     fun getAllProducts() = productList
+
+    fun getCategories() = categoryList
 
     private fun fillProducts() {
         productList.add(Product(1, "Water Lemon", 15, 20, listOf("https://previews.123rf.com/images/kovalevaka/kovalevaka1409/kovalevaka140900003/31404789-watermelon-and-slices-isolated-on-white-background-as-package-design-element.jpg", "https://images.unsplash.com/photo-1581074817932-af423ba4566e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=2000&q=80.jpg")))
@@ -26,6 +31,12 @@ class FreshCartDao {
         productList.add(Product(5, "Apple", 15, 20, listOf("https://5.imimg.com/data5/LM/DU/MY-22954806/apple-fruit-500x500.jpg")))
         productList.add(Product(6, "Bitter Melon", 18, 22, listOf("https://fruitshop.7uptheme.net/wp-content/uploads/2017/04/fruit_20.jpg")))
         productList.add(Product(7, "Brinjal", 14, 18, listOf("https://qph.fs.quoracdn.net/main-qimg-ecd53c201e40d8e834b7f67a3619e532")))
+    }
+
+    private fun fillCategories() {
+        categoryList.add(Category(1, "Fruits", "https://img1.mashed.com/img/uploads/2017/06/fruit-main.jpg"))
+        categoryList.add(Category(2, "Vegetables", "https://cdn.britannica.com/17/196817-050-6A15DAC3/vegetables.jpg"))
+        categoryList.add(Category(3, "Lagumes", "https://d2lswn7b0fl4u2.cloudfront.net/photos/pg-posts-how-to-choose-and-cook-legumes-1576191493132.jpg"))
     }
 
     fun getAccount(login: String): UserAccount {

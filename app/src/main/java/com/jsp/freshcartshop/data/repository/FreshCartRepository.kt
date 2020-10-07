@@ -1,5 +1,6 @@
 package com.jsp.freshcartshop.data.repository
 
+import com.jsp.freshcartshop.model.Category
 import com.jsp.freshcartshop.model.Product
 
 interface FreshCartRepository {
@@ -13,4 +14,6 @@ interface FreshCartRepository {
     suspend fun getProducts(): List<Product>?
 
     suspend fun findProducts(productName: String): List<Product>?
+
+    suspend fun getCategories(): List<Category>?
 }
