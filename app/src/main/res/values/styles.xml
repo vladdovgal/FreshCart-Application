@@ -68,4 +68,10 @@
     <style name="MyRatingBarStyle" parent="Widget.AppCompat.RatingBar.Small">
         <item name="ratingBarStyle">@style/MyRatingBarStyle</item>
     </style>
+
+    <style name="TotalPriceStyle">
+        <item name="android:fontFamily">@font/poppins_medium</item>
+        <item name="android:textSize">@dimen/total_price_font_size</item>
+        <item name="android:textColor">@color/colorPrimary</item>
+    </style>
 </resources>

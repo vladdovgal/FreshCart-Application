@@ -4,6 +4,7 @@ import com.jsp.freshcartshop.data.db.dao.FreshCartDao
 import com.jsp.freshcartshop.data.db.dao.UserDao
 import com.jsp.freshcartshop.model.Category
 import com.jsp.freshcartshop.model.Product
+import com.jsp.freshcartshop.model.Promotion
 import kotlinx.coroutines.delay
 import kotlin.coroutines.resume
 import kotlin.coroutines.resumeWithException
@@ -13,14 +14,10 @@ class FreshCartRepositoryImpl(private val applicationDao: FreshCartDao,
                               private val userDao: UserDao) : FreshCartRepository {
 
     override suspend fun loginUser(login : String, password : String) : Boolean {
-        return suspendCoroutine { continuation ->
-            val response = applicationDao.getAccount(login)
-            if (response.loginData.password == password) {
-                continuation.resume(true)
-            } else {
-                continuation.resume(false)
-            }
-        }
+        // Imitate request to the server
+        delay(500)
+        val resp = userDao.getUserByUsernameOrEmail(login)
+        return resp != null && resp.loginData.password == password
     }
 
     override suspend fun insertUser(fullName : String, username: String, login: Login) {
@@ -70,6 +67,28 @@ class FreshCartRepositoryImpl(private val applicationDao: FreshCartDao,
                 continuation.resume(response)
             } else {
                 continuation.resumeWithException(Exception("Can't load categories"))
+            }
+        }
+    }
+
+    override suspend fun getMainPromotions(): List<Promotion>? {
+        return suspendCoroutine { continuation ->
+            val response = applicationDao.getMainPromotions()
+            if (response != null) {
+                continuation.resume(response)
+            } else {
+                continuation.resumeWithException(Exception("Can't load main promotions"))
+            }
+        }
+    }
+
+    override suspend fun getSearchPromotions(): List<Promotion>? {
+        return suspendCoroutine { continuation ->
+            val response = applicationDao.getSearchPromotions()
+            if (response != null) {
+                continuation.resume(response)
+            } else {
+                continuation.resumeWithException(Exception("Can't load search promotions"))
             }
         }
     }

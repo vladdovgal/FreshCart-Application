@@ -4,16 +4,21 @@ import com.jsp.freshcartshop.data.repository.Login
 import com.jsp.freshcartshop.data.repository.UserAccount
 import com.jsp.freshcartshop.model.Category
 import com.jsp.freshcartshop.model.Product
+import com.jsp.freshcartshop.model.Promotion
 
 class FreshCartDao {
 
     private val productList = mutableListOf<Product>()
     private val accountsList = mutableListOf<UserAccount>()
     private val categoryList = mutableListOf<Category>()
+    private val mainPromotionList = mutableListOf<Promotion>()
+    private val searchPromotionList = mutableListOf<Promotion>()
 
     init {
         fillProducts()
         fillCategories()
+        fillMainPromotions()
+        fillSearchPromotions()
         accountsList.add(UserAccount("John Root", "root",
             Login("root@a.a", "root")
         ))
@@ -22,6 +27,10 @@ class FreshCartDao {
     fun getAllProducts() = productList
 
     fun getCategories() = categoryList
+
+    fun getMainPromotions() = mainPromotionList
+
+    fun getSearchPromotions() = searchPromotionList
 
     private fun fillProducts() {
         productList.add(Product(1, "Water Lemon", 15, 20, listOf("https://previews.123rf.com/images/kovalevaka/kovalevaka1409/kovalevaka140900003/31404789-watermelon-and-slices-isolated-on-white-background-as-package-design-element.jpg", "https://images.unsplash.com/photo-1581074817932-af423ba4566e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=2000&q=80.jpg")))
@@ -39,15 +48,12 @@ class FreshCartDao {
         categoryList.add(Category(3, "Lagumes", "https://d2lswn7b0fl4u2.cloudfront.net/photos/pg-posts-how-to-choose-and-cook-legumes-1576191493132.jpg"))
     }
 
-    fun getAccount(login: String): UserAccount {
-        // todo getAccount data from database
-        return accountsList.find { it.loginData.email == login || it.username == login }
-            ?: UserAccount("","", Login("", ""))
+    private fun fillMainPromotions() {
+        mainPromotionList.add(Promotion(1, "Get 15$ Off", "On your first order", "https://www.diagnosisdiet.com/assets/images/c/fruit-og-d176ef00.jpg"))
     }
-
-    fun insert(account: UserAccount): UserAccount {
-        accountsList.add(account)
-        return account
+    private fun fillSearchPromotions() {
+        searchPromotionList.add(Promotion(1, "Upto 70%  Flat", "Festival Season is Here", "https://www.diagnosisdiet.com/assets/images/c/fruit-og-d176ef00.jpg"))
+        searchPromotionList.add(Promotion(2, "Fresh Fruits", "Festival Season is Here", "https://media.womensweekly.com.sg/public/2016/10/Recipes-With-Fruits-For-Better-Health_Mar1.jpg"))
     }
 
     fun getProduct(id: Long): Product? {

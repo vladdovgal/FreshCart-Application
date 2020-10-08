@@ -20,17 +20,17 @@ class LoginViewModel : BaseViewModel() {
     var errorEmail = MutableLiveData<String>()
 
     // If user exists
-    var userExists = MutableLiveData<Boolean>()
-    val isLoaded = MutableLiveData<Boolean>()
+    var isLoginSuccess = MutableLiveData<Boolean>()
+    private val isLoaded = MutableLiveData<Boolean>()
 
     // Call repository to check if such user exists
-    fun checkIfUserExists() {
+    fun login() {
         viewModelScope.launch {
             try {
                 isLoading.postValue(true)
                 val response = appRepository.loginUser(login.value.toString(),
                     password.value.toString())
-                userExists.value = response
+                isLoginSuccess.value = response
                 isLoaded.postValue(true)
                 errorMessageData.postValue(null)
             } catch (e : Exception) {

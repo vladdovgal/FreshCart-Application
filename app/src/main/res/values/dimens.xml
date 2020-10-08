@@ -34,6 +34,11 @@
     <dimen name="product_view_pager_height">230dp</dimen>
     <dimen name="max_product_photo_size">230dp</dimen>
 
+    <!-- Shopping Cart Fragment -->
+    <dimen name="total_price_font_size">25sp</dimen>
+    <dimen name="font_extra_bold">900</dimen>
+    <dimen name="product_image_in_cart">110dp</dimen>
+
     <!-- Search Fragment -->
     <dimen name="image_size">100dp</dimen>
 

@@ -8,9 +8,11 @@ import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.Observer
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.GridLayoutManager
+import androidx.recyclerview.widget.LinearLayoutManager
 import com.jsp.freshcartshop.R
 import com.jsp.freshcartshop.adapters.ProductPagerAdapter
 import com.jsp.freshcartshop.adapters.ProductRecyclerAdapter
+import com.jsp.freshcartshop.adapters.PromotionRecyclerAdapter
 import com.jsp.freshcartshop.databinding.FragmentMainBinding
 import com.jsp.freshcartshop.view.MainActivity
 import com.jsp.freshcartshop.viewmodel.MainViewModel
@@ -43,11 +45,11 @@ class MainFragment : BaseFragment<MainViewModel>() {
 
     private fun init() {
         observeData()
-        setDiscount(15)
     }
 
     private fun observeData() {
         viewModel.loadProducts()
+        viewModel.loadMainPromotions()
 
         tdMainViewPager.setupWithViewPager(vpMainProducts, true)
         viewModel.productList.observe(viewLifecycleOwner, Observer { products ->
@@ -65,10 +67,12 @@ class MainFragment : BaseFragment<MainViewModel>() {
                 }
             }
         })
-    }
 
-    private fun setDiscount(amount: Int) {
-        tvDiscount.text = resources.getString(R.string.discount, amount)
+        viewModel.mainPromotionList.observe(viewLifecycleOwner, Observer { promotions ->
+            rvMainPromotions.also {
+                it.layoutManager = LinearLayoutManager(activity)
+                it.adapter = PromotionRecyclerAdapter().also { it.addAll(promotions) }
+            }
+        })
     }
-
 }

@@ -9,9 +9,11 @@ import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.Observer
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.GridLayoutManager
+import androidx.recyclerview.widget.LinearLayoutManager
 import com.jsp.freshcartshop.R
 import com.jsp.freshcartshop.adapters.CategoryRecyclerAdapter
 import com.jsp.freshcartshop.adapters.ProductRecyclerAdapter
+import com.jsp.freshcartshop.adapters.PromotionRecyclerAdapter
 import com.jsp.freshcartshop.databinding.FragmentSearchBinding
 import com.jsp.freshcartshop.view.BaseActivity
 import com.jsp.freshcartshop.viewmodel.MainViewModel
@@ -43,7 +45,6 @@ class SearchFragment : BaseFragment<MainViewModel>() {
 
     private fun init() {
         observeData()
-        setDiscount(70)
         initListeners()
     }
 
@@ -67,6 +68,7 @@ class SearchFragment : BaseFragment<MainViewModel>() {
 
     private fun observeData() {
         viewModel.loadCategories()
+        viewModel.loadSearchPromotions()
 
         viewModel.filteredProductList.observe(viewLifecycleOwner, Observer { products ->
             rvSearchProducts.also {
@@ -90,10 +92,13 @@ class SearchFragment : BaseFragment<MainViewModel>() {
                 it.adapter = CategoryRecyclerAdapter().also { it.addAll(categories) }
             }
         })
-    }
 
-    private fun setDiscount(amount: Int) {
-        tvDiscount.text = resources.getString(R.string.discount_first_promotion, amount)
+        viewModel.searchPromotionList.observe(viewLifecycleOwner, Observer { promotions ->
+            rvSearchPromotions.also {
+                it.layoutManager = LinearLayoutManager(activity)
+                it.adapter = PromotionRecyclerAdapter().also { it.addAll(promotions) }
+            }
+        })
     }
 
     private fun setSearchValue(value: String?) {

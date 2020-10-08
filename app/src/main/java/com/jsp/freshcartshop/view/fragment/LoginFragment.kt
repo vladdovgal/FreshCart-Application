@@ -1,12 +1,11 @@
 package com.jsp.freshcartshop.view.fragment
 
 import android.os.Bundle
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Toast
 import androidx.databinding.DataBindingUtil
+import androidx.lifecycle.Observer
 import androidx.navigation.findNavController
 import com.google.android.material.snackbar.Snackbar
 import com.jsp.freshcartshop.R
@@ -50,56 +49,59 @@ class LoginFragment : BaseFragment<LoginViewModel>() {
     private fun init(view: View) {
         observeData()
         binding.signInButton.setOnClickListener {
-            onSignInClick(view)
+            onSignInClick()
         }
         binding.tvNotMember.setOnClickListener {
             onTvNotMemberClick(view)
         }
     }
 
-    private fun onSignInClick(view: View) {
-        viewModel.checkIfUserExists()
-
+    private fun onSignInClick() {
         if (checkForSyntaxWarnings()) {
-            if (viewModel.userExists.value == true) {
-                    view.findNavController().navigate(R.id.action_loginFragment_to_mainActivity)
-                } else {
-                Snackbar.make(requireView(), resources.getString(R.string.wrong_login_or_pass), Snackbar.LENGTH_LONG )
-                    .show()
-                }
-            }
-        }
-
-        private fun onTvNotMemberClick(view: View) {
-            view.findNavController().navigate(R.id.action_loginFragment_to_signUpFragment)
-        }
-
-        private fun checkForSyntaxWarnings(): Boolean {
-            var isLoginFieldsValid = true
-            if (viewModel.login.value != null && viewModel.password.value != null) {
-                if (viewModel.errorEmail.value != "") {
-                    etLogin.error = viewModel.errorEmail.value
-                    isLoginFieldsValid = false
-                }
-            } else {
-                Snackbar.make(requireView(), resources.getString(R.string.empty_fields), Snackbar.LENGTH_LONG )
-                    .show()
-                return false
-            }
-            if (viewModel.errorPass.value != "") {
-                etPassword.error = viewModel.errorPass.value
-                isLoginFieldsValid = false
-            }
-            return isLoginFieldsValid
-        }
-
-        private fun observeData() {
-            viewModel.password.observe(viewLifecycleOwner, androidx.lifecycle.Observer {
-                viewModel.validatePassword(it)
-            })
-
-            viewModel.login.observe(viewLifecycleOwner, androidx.lifecycle.Observer {
-                viewModel.validateEmail(it)
-            })
+            viewModel.login()
         }
     }
+
+    private fun onTvNotMemberClick(view: View) {
+        view.findNavController().navigate(R.id.action_loginFragment_to_signUpFragment)
+    }
+
+    private fun checkForSyntaxWarnings(): Boolean {
+        var isLoginFieldsValid = true
+        if (viewModel.login.value != null && viewModel.password.value != null) {
+            if (viewModel.errorEmail.value != "") {
+                etLogin.error = viewModel.errorEmail.value
+                isLoginFieldsValid = false
+            }
+        } else {
+            Snackbar.make(requireView(), resources.getString(R.string.empty_fields), Snackbar.LENGTH_LONG )
+                .show()
+            return false
+        }
+        if (viewModel.errorPass.value != "") {
+            etPassword.error = viewModel.errorPass.value
+            isLoginFieldsValid = false
+        }
+        return isLoginFieldsValid
+    }
+
+    private fun observeData() {
+        viewModel.password.observe(viewLifecycleOwner, androidx.lifecycle.Observer {
+            viewModel.validatePassword(it)
+        })
+
+        viewModel.login.observe(viewLifecycleOwner, androidx.lifecycle.Observer {
+            viewModel.validateEmail(it)
+        })
+
+        // Observe result of login query
+        viewModel.isLoginSuccess.observe(viewLifecycleOwner, Observer {
+            if (viewModel.isLoginSuccess.value == true) {
+                view?.findNavController()?.navigate(R.id.action_loginFragment_to_mainActivity)
+            } else {
+                Snackbar.make(requireView(), resources.getString(R.string.wrong_login_or_pass), Snackbar.LENGTH_LONG )
+                    .show()
+            }
+        })
+    }
+}

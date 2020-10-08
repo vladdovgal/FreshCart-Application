@@ -2,6 +2,7 @@ package com.jsp.freshcartshop.data.repository
 
 import com.jsp.freshcartshop.model.Category
 import com.jsp.freshcartshop.model.Product
+import com.jsp.freshcartshop.model.Promotion
 
 interface FreshCartRepository {
 
@@ -16,4 +17,8 @@ interface FreshCartRepository {
     suspend fun findProducts(productName: String): List<Product>?
 
     suspend fun getCategories(): List<Category>?
+
+    suspend fun getMainPromotions(): List<Promotion>?
+
+    suspend fun getSearchPromotions(): List<Promotion>?
 }

@@ -92,126 +92,15 @@
                 tools:itemCount="6"
                 />
 
-            <androidx.cardview.widget.CardView
-                android:id="@+id/cvFirstPromotion"
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/rvSearchPromotions"
                 android:layout_width="match_parent"
-                android:layout_height="100dp"
+                android:layout_height="wrap_content"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/rvSearchProducts"
-                android:layout_marginTop="@dimen/margin_medium"
-                app:cardCornerRadius="@dimen/cardview_corner_radius"
-                app:cardElevation="0dp"
-                >
-
-                <androidx.constraintlayout.widget.ConstraintLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:background="?attr/primaryColor">
-
-                    <TextView
-                        android:id="@+id/tvDiscount"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginStart="@dimen/margin_medium"
-                        android:text="@string/discount"
-                        android:textColor="?attr/whiteColor"
-                        android:textSize="@dimen/large_font"
-                        android:textStyle="bold"
-                        app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toTopOf="@+id/tvShopNowBottom" />
-
-                    <TextView
-                        android:id="@+id/tvDiscountDescription"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginStart="@dimen/margin_medium"
-                        android:layout_marginTop="@dimen/margin_small"
-                        android:text="@string/festival_season_is_here"
-                        android:textColor="?attr/whiteColor"
-                        android:textSize="@dimen/small_font"
-                        app:layout_constraintBottom_toBottomOf="@+id/tvShopNowBottom"
-                        app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toBottomOf="@+id/tvDiscount" />
-
-                    <TextView
-                        android:id="@+id/tvShopNowBottom"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginEnd="@dimen/margin_medium"
-                        android:background="@drawable/bc_button_rounded_white"
-                        android:padding="12dp"
-                        android:text="@string/shop_now"
-                        android:textColor="?attr/whiteColor"
-                        app:layout_constraintBottom_toBottomOf="parent"
-                        app:layout_constraintEnd_toEndOf="parent"
-                        app:layout_constraintTop_toTopOf="parent" />
-
-                </androidx.constraintlayout.widget.ConstraintLayout>
-
-            </androidx.cardview.widget.CardView>
-
-            <androidx.cardview.widget.CardView
-                android:id="@+id/cvSecondPromotion"
-                android:layout_width="match_parent"
-                android:layout_height="100dp"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/cvFirstPromotion"
-                android:layout_marginTop="@dimen/margin_medium"
-                app:cardCornerRadius="@dimen/cardview_corner_radius"
-                app:cardElevation="0dp"
-                >
-
-                <androidx.constraintlayout.widget.ConstraintLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:background="?attr/primaryColor">
-
-                    <TextView
-                        android:id="@+id/tvPromotionTitle"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toTopOf="@id/tvShopNowSecondPromotion"
-                        android:layout_marginStart="@dimen/margin_medium"
-                        android:text="@string/fresh_fruits"
-                        android:textColor="?attr/whiteColor"
-                        android:textSize="@dimen/large_font"
-                        android:textStyle="bold"
-                         />
-
-                    <TextView
-                        android:id="@+id/tvPromotionDescription"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        app:layout_constraintBottom_toBottomOf="@id/tvShopNowSecondPromotion"
-                        app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toBottomOf="@id/tvPromotionTitle"
-                        android:layout_marginStart="@dimen/margin_medium"
-                        android:layout_marginTop="@dimen/margin_small"
-                        android:text="@string/festival_season_is_here"
-                        android:textColor="?attr/whiteColor"
-                        android:textSize="@dimen/small_font"
-                        />
-
-                    <TextView
-                        android:id="@+id/tvShopNowSecondPromotion"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginEnd="@dimen/margin_medium"
-                        android:background="@drawable/bc_button_rounded_white"
-                        android:padding="12dp"
-                        android:text="@string/shop_now"
-                        android:textColor="?attr/whiteColor"
-                        app:layout_constraintBottom_toBottomOf="parent"
-                        app:layout_constraintEnd_toEndOf="parent"
-                        app:layout_constraintTop_toTopOf="parent"
-                        />
-
-                </androidx.constraintlayout.widget.ConstraintLayout>
-
-            </androidx.cardview.widget.CardView>
+                tools:itemCount="6" />
 
             <TextView
                 android:id="@+id/tvWhatDoYouLike"
@@ -219,9 +108,9 @@
                 android:layout_height="wrap_content"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/cvSecondPromotion"
+                app:layout_constraintTop_toBottomOf="@id/rvSearchPromotions"
                 android:layout_marginTop="@dimen/margin_medium"
-                android:layout_marginBottom="@dimen/margin_small"
+                android:layout_marginBottom="@dimen/margin_medium"
                 android:text="@string/what_do_you_like"
                 android:textSize="@dimen/large_font"
                 android:textColor="?attr/primaryColor"
@@ -235,7 +124,7 @@
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/tvWhatDoYouLike"
-                android:layout_marginTop="@dimen/margin_medium"
+                android:layout_marginBottom="@dimen/margin_small"
                 tools:itemCount="6"
                 />
 
