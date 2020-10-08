@@ -1,7 +1,5 @@
 package com.jsp.freshcartshop.data.db.dao
 
-import com.jsp.freshcartshop.data.repository.Login
-import com.jsp.freshcartshop.data.repository.UserAccount
 import com.jsp.freshcartshop.model.Category
 import com.jsp.freshcartshop.model.Product
 import com.jsp.freshcartshop.model.Promotion
@@ -9,7 +7,6 @@ import com.jsp.freshcartshop.model.Promotion
 class FreshCartDao {
 
     private val productList = mutableListOf<Product>()
-    private val accountsList = mutableListOf<UserAccount>()
     private val categoryList = mutableListOf<Category>()
     private val mainPromotionList = mutableListOf<Promotion>()
     private val searchPromotionList = mutableListOf<Promotion>()
@@ -19,9 +16,6 @@ class FreshCartDao {
         fillCategories()
         fillMainPromotions()
         fillSearchPromotions()
-        accountsList.add(UserAccount("John Root", "root",
-            Login("root@a.a", "root")
-        ))
     }
 
     fun getAllProducts() = productList

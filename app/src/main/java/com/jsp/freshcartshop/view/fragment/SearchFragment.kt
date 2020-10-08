@@ -52,14 +52,14 @@ class SearchFragment : BaseFragment<MainViewModel>() {
         inputSearch.setStartIconOnClickListener{
             if (binding.etSearch.text.toString() != "") {
                 viewModel.findProducts()
-                setSearchValue(viewModel.searchValue.value)
+                setSearchValue(viewModel.searchValue.value!!)
             }
         }
 
-        etSearch.setOnEditorActionListener{view, actionId, event ->
+        binding.etSearch.setOnEditorActionListener{view, actionId, event ->
             if(actionId == EditorInfo.IME_ACTION_SEARCH){
                 viewModel.findProducts()
-                setSearchValue(viewModel.searchValue.value)
+                setSearchValue(viewModel.searchValue.value!!)
                 true
             } else {
                 false
@@ -81,6 +81,7 @@ class SearchFragment : BaseFragment<MainViewModel>() {
             }
             if (products.isEmpty()) {
                 tvNothingFound.visibility = View.VISIBLE
+                setSearchValue(viewModel.searchValue.value!!)
             } else {
                 tvNothingFound.visibility = View.GONE
             }
@@ -101,7 +102,7 @@ class SearchFragment : BaseFragment<MainViewModel>() {
         })
     }
 
-    private fun setSearchValue(value: String?) {
-        tvNothingFound.text = resources.getString(R.string.nothing_found, value)
+    private fun setSearchValue(value: String) {
+        binding.tvNothingFound.text = resources.getString(R.string.nothing_found, value)
     }
 }
