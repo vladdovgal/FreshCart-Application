@@ -2,7 +2,9 @@ package com.jsp.freshcartshop.data.repository
 
 import com.jsp.freshcartshop.data.db.dao.FreshCartDao
 import com.jsp.freshcartshop.data.db.dao.UserDao
+import com.jsp.freshcartshop.model.Category
 import com.jsp.freshcartshop.model.Product
+import com.jsp.freshcartshop.model.Promotion
 import kotlinx.coroutines.delay
 import kotlin.coroutines.resume
 import kotlin.coroutines.resumeWithException
@@ -35,13 +37,58 @@ class FreshCartRepositoryImpl(private val applicationDao: FreshCartDao,
     }
 
     override suspend fun getProducts(): List<Product>? {
-        delay(1000)
+        // todo simulation of data loading
+        delay(500)
         return suspendCoroutine { continuation ->
             val response = applicationDao.getAllProducts()
             if (response != null) {
                 continuation.resume(response)
             } else {
                 continuation.resumeWithException(Exception("Can't load products"))
+            }
+        }
+    }
+
+    override suspend fun findProducts(productName: String): List<Product>? {
+        return suspendCoroutine { continuation ->
+            val response = applicationDao.findProducts(productName)
+            if (response != null) {
+                continuation.resume(response)
+            } else {
+                continuation.resumeWithException(Exception("Can't load products"))
+            }
+        }
+    }
+
+    override suspend fun getCategories(): List<Category>? {
+        return suspendCoroutine { continuation ->
+            val response = applicationDao.getCategories()
+            if (response != null) {
+                continuation.resume(response)
+            } else {
+                continuation.resumeWithException(Exception("Can't load categories"))
+            }
+        }
+    }
+
+    override suspend fun getMainPromotions(): List<Promotion>? {
+        return suspendCoroutine { continuation ->
+            val response = applicationDao.getMainPromotions()
+            if (response != null) {
+                continuation.resume(response)
+            } else {
+                continuation.resumeWithException(Exception("Can't load main promotions"))
+            }
+        }
+    }
+
+    override suspend fun getSearchPromotions(): List<Promotion>? {
+        return suspendCoroutine { continuation ->
+            val response = applicationDao.getSearchPromotions()
+            if (response != null) {
+                continuation.resume(response)
+            } else {
+                continuation.resumeWithException(Exception("Can't load search promotions"))
             }
         }
     }

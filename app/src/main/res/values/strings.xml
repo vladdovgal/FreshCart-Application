@@ -35,8 +35,6 @@
     <!-- Main Fragment -->
     <string name="deal_of_the_day">Deal of the Day</string>
     <string name="all_products">All products</string>
-    <string name="discount">Get %1$d$ Off</string>
-    <string name="discount_description">On your first order</string>
     <string name="shop_now">Shop Now</string>
     <string name="ok">OK</string>
 
@@ -57,5 +55,15 @@
     <string name="empty_cart_tip">Ups, your cart is empty</string>
     <string name="products_added">Added %d %ss to cart</string>
     <string name="product_not_found">Product Not Found</string>
+
+    <!--Search Fragment -->
+    <string name="search_label">Search Specific Item</string>
+    <string name="nothing_found">Nothing Found For "\"%1$s"\"</string>
+    <string name="fresh_fruits">Fresh Fruits</string>
+    <string name="festival_season_is_here">Festival Season is Here</string>
+    <string name="what_do_you_like">What Do You Like?</string>
+    <string name="fruits">Fruits</string>
+    <string name="vegetables">Vegetables</string>
+    <string name="legumes">Legumes</string>
 
 </resources>

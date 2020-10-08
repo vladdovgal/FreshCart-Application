@@ -12,7 +12,6 @@ val viewModelModule =  module {
     viewModel { LoginViewModel() }
     viewModel { MainViewModel() }
     viewModel { SignUpViewModel() }
-    viewModel { SearchViewModel() }
     viewModel { ShoppingCartViewModel() }
 }
 

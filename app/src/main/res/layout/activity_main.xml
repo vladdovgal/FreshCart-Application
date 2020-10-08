@@ -141,12 +141,11 @@
         android:id="@+id/searchButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="30dp"
+        app:layout_anchor="@id/bottomAppBar"
         android:contentDescription="@string/search"
-        android:rotation="-90"
         android:src="@drawable/ic_search"
         app:backgroundTint="?attr/whiteColor"
-        app:layout_anchor="@id/bottomAppBar"
-        app:tint="?attr/primaryColor" />
+        app:tint="?attr/primaryColor"
+        />
 
 </androidx.coordinatorlayout.widget.CoordinatorLayout>

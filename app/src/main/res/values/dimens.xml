@@ -38,4 +38,8 @@
     <dimen name="total_price_font_size">25sp</dimen>
     <dimen name="font_extra_bold">900</dimen>
     <dimen name="product_image_in_cart">110dp</dimen>
+
+    <!-- Search Fragment -->
+    <dimen name="image_size">100dp</dimen>
+
 </resources>
