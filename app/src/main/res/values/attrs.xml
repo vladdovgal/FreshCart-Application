@@ -7,4 +7,5 @@
     <attr name="accentColor" format="reference"/>
     <attr name="bcColor" format="reference"/>
     <attr name="blackColor" format="reference"/>
+    <attr name="blackColorTransparent" format="reference"/>
 </resources>
