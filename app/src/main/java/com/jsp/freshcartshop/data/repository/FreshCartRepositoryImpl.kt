@@ -1,7 +1,8 @@
 package com.jsp.freshcartshop.data.repository
 
 import com.jsp.freshcartshop.data.db.dao.FreshCartDao
-import com.jsp.freshcartshop.data.db.dao.UserDao
+import com.jsp.freshcartshop.data.db.dao.UserCallback
+import com.jsp.freshcartshop.data.db.dao.UserFirebaseDao
 import com.jsp.freshcartshop.model.Category
 import com.jsp.freshcartshop.model.Product
 import com.jsp.freshcartshop.model.Promotion
@@ -11,18 +12,31 @@ import kotlin.coroutines.resumeWithException
 import kotlin.coroutines.suspendCoroutine
 
 class FreshCartRepositoryImpl(private val applicationDao: FreshCartDao,
-                              private val userDao: UserDao) : FreshCartRepository {
+                              private val userFirebaseDao: UserFirebaseDao) : FreshCartRepository {
 
     override suspend fun loginUser(login : String, password : String) : Boolean {
-        // Imitate request to the server
-        delay(500)
-        val resp = userDao.getUserByUsernameOrEmail(login)
-        return resp != null && resp.loginData.password == password
+        return suspendCoroutine { continuation ->
+            userFirebaseDao.getUser(login, password, object : UserCallback {
+                override fun isUserExist(exist: Boolean) {
+                    if (exist) {
+                        continuation.resume(true)
+                    } else {
+                        continuation.resume(false)
+                    }
+                }
+            })
+        }
     }
 
     override suspend fun insertUser(fullName : String, username: String, login: Login) {
-        val account = UserAccount(fullName, username, login)
-        userDao.insert(account)
+        return suspendCoroutine { continuation ->
+            val response = userFirebaseDao.insertUser(fullName, username, login)
+            if (response != null) {
+                continuation.resume(response)
+            } else {
+                continuation.resumeWithException(Exception("Can't insert user"))
+            }
+        }
     }
 
     override suspend fun getProductById(id: Long): Product {

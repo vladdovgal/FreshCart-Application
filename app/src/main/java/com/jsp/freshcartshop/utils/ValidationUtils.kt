@@ -5,8 +5,8 @@ import android.util.Patterns
 import java.util.*
 
 object ValidationUtils {
-    private const val MIN_PASSWORD_LENGTH = 4
-    private const val MIN_USERNAME_LENGTH = 4
+    private const val MIN_PASSWORD_LENGTH = 6
+    private const val MIN_USERNAME_LENGTH = 6
     private const val EMPTY_PASSWORD = "Password can't be empty"
     private const val EMPTY_EMAIL = "Email can't be empty"
     private const val NOT_VALID_EMAIL = "Email is not valid"
