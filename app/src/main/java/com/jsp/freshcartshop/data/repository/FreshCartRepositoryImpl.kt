@@ -4,6 +4,7 @@ import com.jsp.freshcartshop.data.db.dao.FreshCartDao
 import com.jsp.freshcartshop.data.db.dao.UserCallback
 import com.jsp.freshcartshop.data.db.dao.UserFirebaseDao
 import com.jsp.freshcartshop.model.Category
+import com.jsp.freshcartshop.model.Login
 import com.jsp.freshcartshop.model.Product
 import com.jsp.freshcartshop.model.Promotion
 import kotlinx.coroutines.delay
@@ -28,9 +29,9 @@ class FreshCartRepositoryImpl(private val applicationDao: FreshCartDao,
         }
     }
 
-    override suspend fun insertUser(fullName : String, username: String, login: Login) {
+    override suspend fun insertUser(fullName : String, login: Login) {
         return suspendCoroutine { continuation ->
-            val response = userFirebaseDao.insertUser(fullName, username, login)
+            val response = userFirebaseDao.insertUser(fullName, login)
             if (response != null) {
                 continuation.resume(response)
             } else {

@@ -67,7 +67,6 @@ class SignUpFragment : BaseFragment<SignUpViewModel>() {
 
     private fun clearInputs() {
         etFullName.text?.clear()
-        etUsername.text?.clear()
         etEmail.text?.clear()
         etPassword.text?.clear()
     }

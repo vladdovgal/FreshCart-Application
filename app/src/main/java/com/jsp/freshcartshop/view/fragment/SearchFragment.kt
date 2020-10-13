@@ -56,7 +56,7 @@ class SearchFragment : BaseFragment<MainViewModel>() {
             }
         }
 
-        binding.etSearch.setOnEditorActionListener{view, actionId, event ->
+        binding.etSearch.setOnEditorActionListener{ _, actionId, _ ->
             if(actionId == EditorInfo.IME_ACTION_SEARCH){
                 viewModel.findProducts()
                 setSearchValue(viewModel.searchValue.value!!)
