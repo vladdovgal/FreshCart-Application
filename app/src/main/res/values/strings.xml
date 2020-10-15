@@ -7,7 +7,7 @@
     <string name="toolbar_title">FreshCart</string>
     <string name="arrow_back">Arrow Back</string>
     <string name="navigation_menu">Navigation Menu</string>
-    <string name="login_tip">Username or Email</string>
+    <string name="login_tip">Email</string>
     <string name="password_tip">Password</string>
     <string name="remember_me">&#160;&#160;Remember Me</string>
     <string name="forgot_password"><u>Forgot Password ?</u></string>
@@ -16,7 +16,6 @@
     <string name="login_title">Login</string>
     <!-- Sign Up -->
     <string name="sign_up_full_name">Full Name</string>
-    <string name="sign_up_username">Username</string>
     <string name="sign_up_email">Email</string>
     <string name="sign_up">Sign Up</string>
     <string name="create_account">Create Account</string>

@@ -68,35 +68,6 @@
                 </com.google.android.material.textfield.TextInputLayout>
 
                 <com.google.android.material.textfield.TextInputLayout
-                    android:id="@+id/inputUsername"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:hint="@string/sign_up_username"
-                    app:boxBackgroundColor="?attr/whiteColor"
-                    app:boxStrokeColor="?attr/primaryColor"
-                    android:fontFamily="@font/poppins_medium"
-                    >
-
-                    <com.google.android.material.textfield.TextInputEditText
-                        android:id="@+id/etUsername"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:gravity="center"
-                        android:layout_marginTop="@dimen/padding_small"
-                        android:inputType="text"
-                        android:textSize="@dimen/large_font"
-                        android:textColor="?attr/grayColor"
-                        app:boxStrokeColor="?attr/primaryColor"
-                        android:background="?attr/bcColor"
-                        android:fontFamily="@font/poppins_medium"
-                        android:paddingBottom="@dimen/padding_extra_small"
-                        android:text="@={signUpViewModel.username}"
-                        app:validateType='@{"username"}'
-                        />
-
-                </com.google.android.material.textfield.TextInputLayout>
-
-                <com.google.android.material.textfield.TextInputLayout
                     android:id="@+id/inputEmail"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
