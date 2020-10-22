@@ -3,8 +3,8 @@
 It is a simple android online shopping application. (team project for JetSoftPro SummerCamp_Lviv)
 
 ## Team: 
-- [Vladyslav Dovhal] (https://github.com/vladdovgal)
-- [Marian Dutchyn] (https://github.com/MarianDutchyn)
+- [Vladyslav Dovhal](https://github.com/vladdovgal)
+- [Marian Dutchyn](https://github.com/MarianDutchyn)
 
 # Pattern:MVVM
  
