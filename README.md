@@ -30,10 +30,6 @@ Application features:
 - Coroutines
 
 ## Screenshots
-![Login fragment](https://user-images.githubusercontent.com/39419270/96555502-8b98cd80-12c0-11eb-8d14-f7b3490c32a5.png)
-![Sign Up fragment](https://user-images.githubusercontent.com/39419270/96555519-8f2c5480-12c0-11eb-89ac-53bcd4fa0557.png)
-![Products fragment](https://user-images.githubusercontent.com/39419270/96555544-96ebf900-12c0-11eb-803e-ed730bbd8907.png)
-![Product details fragment](https://user-images.githubusercontent.com/39419270/96555333-53918a80-12c0-11eb-9c7f-75feb095df95.png)
-![Shopping cart fragment](https://user-images.githubusercontent.com/39419270/96555720-c995f180-12c0-11eb-9494-f8c35fff8c41.png)
-![Search fragment](https://user-images.githubusercontent.com/39419270/96555341-54c2b780-12c0-11eb-8ca2-ff4e57447039.png)
-
+<img src="https://user-images.githubusercontent.com/39419270/96555502-8b98cd80-12c0-11eb-8d14-f7b3490c32a5.png" width="300" /><img src="https://user-images.githubusercontent.com/39419270/96555519-8f2c5480-12c0-11eb-89ac-53bcd4fa0557.png" width="300" />
+<img src="https://user-images.githubusercontent.com/39419270/96555544-96ebf900-12c0-11eb-803e-ed730bbd8907.png" width="300" /><img src="https://user-images.githubusercontent.com/39419270/96555333-53918a80-12c0-11eb-9c7f-75feb095df95.png" width="300" />
+<img src="https://user-images.githubusercontent.com/39419270/96555720-c995f180-12c0-11eb-9494-f8c35fff8c41.png" width="300" /><img src="https://user-images.githubusercontent.com/39419270/96555341-54c2b780-12c0-11eb-8ca2-ff4e57447039.png" width="300" />
